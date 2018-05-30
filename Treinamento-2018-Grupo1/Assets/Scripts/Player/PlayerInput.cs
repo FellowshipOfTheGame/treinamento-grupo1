@@ -19,9 +19,10 @@ public class PlayerInput : MonoBehaviour {
 
     void Update () {
 
-        // Detecta e passa os inputs do teclado ao player.
-        Player.input.horizontalAxis = Input.GetComponent("Horizontal");
-        Player.input.jumpButton = Input.GetComponent("Jump");
+        // Detecta e passa os inputs do teclado ao player. 
+        target.input.horizontalAxis = Input.GetAxis("Horizontal");
+        target.input.jumpButton = Input.GetButton("Jump");
+        target.input.useButton = Input.GetButton("Fire1");
 
     }
 
