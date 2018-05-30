@@ -38,4 +38,22 @@ public class Player : MonoBehaviour {
 
     }
 
+    // Muda a habilidade do player.
+    public void SetHability(string hability) {
+        
+        for(int i = 0; i < habilities.Count; i++) { 
+            if(habilities[i]._name == hability) { // Encontra na lista a habilidade desejada.
+
+                currentHability = hability;
+
+                // (NÃO IMPLEMENTADO) <<<<------------ Resto das coisas que devêm acontecer
+
+                return;
+            }
+        }
+
+        // Mostra um erro caso a habilidade seja inválida,
+        Debug.LogError("(Player) Hability <+" + hability + "+> is not valid!");
+
+    }
 }

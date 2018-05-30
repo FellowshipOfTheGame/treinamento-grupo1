@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-[AddComponentMenu("Scripts/Utility/Actions/Base")]
 // Base para os scripts que realizam ações no jogo.
+[AddComponentMenu("Scripts/Utility/Actions/Base")]
 public class ActionBase : MonoBehaviour {
 
     // Destrói esse script depois de um certo número de usos (0 = Destruído imediatamente / Números negativos = infinito).
