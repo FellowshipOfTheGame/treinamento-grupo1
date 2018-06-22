@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: Earth-Plant
   m_EditorClassIdentifier: 
   _name: earth
-  displayEffect: {fileID: 0}
+  displayEffect: {fileID: 21300006, guid: 125021dc0196aa74a97fb778bdd7c545, type: 3}
   movimentationEffect:
     effect: {fileID: 0}
     velocityModifier: 1
