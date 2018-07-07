@@ -25,8 +25,10 @@ public class Player : MonoBehaviour {
     public class Input {
 
         public float horizontalAxis = 0.0f;
+        public float verticalAxis = 0.0f;
         public bool jumpButton = false;
         public bool useButton = false;
+        public bool fireButton = false;
 
     } public Input input;
 
@@ -41,7 +43,16 @@ public class Player : MonoBehaviour {
 
     // Deve conter todas as habilidades que o player pode usar.
     public List<Hability> habilities;
-    public string currentHability = "none";
+    public Hability currentHability = null;
+
+    // Spawns dos projéteis do player. Coloca-los começando da direita em sentido horário.
+    public Transform[] projectileSpawns;
+
+    // Usado para contar o delay entre disparo de projéteis.
+    private float projectileDelay = 0;
+
+    // Guarda para que lado o player está olhando.
+    public int playerFacing = 1;
 
     void Awake () {
 
@@ -75,15 +86,45 @@ public class Player : MonoBehaviour {
 
 
         if (input.horizontalAxis > 0)
-            playerRenderer.flipX = false;
+            playerFacing = 1;
         else if (input.horizontalAxis < 0)
-            playerRenderer.flipX = true;
-
-
+            playerFacing = -1;
+            
         if (playerMov.grounded)
             playerAnim.SetBool("InAir", false);
         else
             playerAnim.SetBool("InAir", true);
+
+        if(projectileDelay > 0)
+            projectileDelay -= Time.deltaTime;
+
+
+        if (input.fireButton) {
+
+            if(currentHability != null && currentHability.type == Hability.Type.Projectile) {
+
+                if (projectileDelay <= 0) {
+                    if(input.verticalAxis > 0) {
+                        Instantiate(currentHability.projectileSettings._object, projectileSpawns[1].position, projectileSpawns[1].rotation);
+                        projectileDelay = currentHability.projectileSettings.delay;
+                    } else if (playerFacing == 1) {
+                        Instantiate(currentHability.projectileSettings._object, projectileSpawns[0].position, projectileSpawns[0].rotation);
+                        projectileDelay = currentHability.projectileSettings.delay;
+                    }
+                    else if (playerFacing == -1) {
+                        Instantiate(currentHability.projectileSettings._object, projectileSpawns[2].position, projectileSpawns[2].rotation);
+                        projectileDelay = currentHability.projectileSettings.delay;
+                    }
+                }
+
+            }
+
+        }
+
+        if (playerFacing == -1)
+            playerRenderer.flipX = true;
+        else
+            playerRenderer.flipX = false;
 
     }
 
@@ -93,11 +134,11 @@ public class Player : MonoBehaviour {
         for(int i = 0; i < habilities.Count; i++) { 
             if(habilities[i]._name == hability) { // Encontra na lista a habilidade desejada.
 
-                currentHability = hability;
+                currentHability = habilities[i];
 
                 // (NÃO IMPLEMENTADO) <<<<------------ Resto das coisas que devêm acontecer
 
-                effects.habilityEffect.sprite = habilities[i].displayEffect;
+                effects.habilityEffect.sprite = currentHability.displayEffect;
 
                 return;
             }
