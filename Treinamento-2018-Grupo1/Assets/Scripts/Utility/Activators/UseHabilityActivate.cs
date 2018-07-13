@@ -30,7 +30,7 @@ public class UseHabilityActivate : ActivatorBase {
     void Update() {
         
         // Verifica se o player está dentro da área de ativação e com a habilidade certa.
-        if(isOnRange && Player.player.currentHability._name == targetHabilty) {
+        if(isOnRange && Player.player.currentHability != null && Player.player.currentHability._name == targetHabilty) {
             if (Player.player.input.useButton) // Detecta quando o player tenta usar este objeto.
                 ActivateTargets();
         }

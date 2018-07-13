@@ -49,7 +49,7 @@ public class PlayerMovement : MonoBehaviour {
 
         
         // Verifica se o Player está tentando andar contra uma parede, usado para evitar que ele possa "grudar em paredes" durante um pulo.
-        if (Physics2D.Raycast(transform.position - new Vector3( 0, 0.95f), Mathf.Sign(hNewVel) * Vector2.right, 0.35f, rayMask))
+        if (Physics2D.Raycast(transform.position - new Vector3( 0, 0.95f, 0), Mathf.Sign(hNewVel) * Vector2.right, 0.32f, rayMask))
             hNewVel = 0;
 
         // Evita a soma de addForces no pulo.
