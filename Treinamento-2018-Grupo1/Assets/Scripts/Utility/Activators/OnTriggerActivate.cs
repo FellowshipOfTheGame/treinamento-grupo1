@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
-[AddComponentMenu("Scripts/Utility/Activators/Base")]
+[AddComponentMenu("Scripts/Utility/Activators/On Trigger Activate")]
 // Trigger usado para ativar ações.
 public class OnTriggerActivate : ActivatorBase {
 
