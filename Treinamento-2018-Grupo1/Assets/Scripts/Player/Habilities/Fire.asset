@@ -13,6 +13,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: fire
   displayEffect: {fileID: 21300002, guid: 125021dc0196aa74a97fb778bdd7c545, type: 3}
+  type: 0
+  projectileSettings:
+    _object: {fileID: 1360303304893458, guid: c7662119dc422b94b8d50477b7bebac4, type: 2}
+    delay: 0.5
   movimentationEffect:
     effect: {fileID: 0}
     velocityModifier: 1
