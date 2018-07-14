@@ -103,7 +103,6 @@ GameObject:
   - component: {fileID: 4322351494227126}
   - component: {fileID: 20133882295622530}
   - component: {fileID: 81218965252382304}
-  - component: {fileID: 114359770932840420}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -332,19 +331,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 114747814657226192}
---- !u!114 &114359770932840420
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1756564503419272}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee1ef0a0dcf07f24eba3c0ad8252147f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 20133882295622530}
-  pixelsPerUnityRef: 64
 --- !u!114 &114747814657226192
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -356,9 +342,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de20fe611fdf92f45b15ed0228d59497, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMov: {fileID: 114788229468223738}
-  playerRenderer: {fileID: 212999126857171956}
-  playerAnim: {fileID: 95534083621945604}
+  _movement: {fileID: 114788229468223738}
+  _renderer: {fileID: 212999126857171956}
+  _animator: {fileID: 95534083621945604}
+  _rigidbody: {fileID: 50447676289528406}
+  _collider: {fileID: 70286393104603948}
+  pixelsPerUnityRate: 64
   input:
     horizontalAxis: 0
     verticalAxis: 0
@@ -375,7 +364,7 @@ MonoBehaviour:
   - {fileID: 4098608086491598}
   - {fileID: 4979838440245478}
   - {fileID: 4103755122108106}
-  playerFacing: 1
+  facing: 1
 --- !u!114 &114788229468223738
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -390,7 +379,6 @@ MonoBehaviour:
   hAce: 1.5
   hMax: 2
   jumpHeight: 1.5
-  target: {fileID: 114747814657226192}
   rayMask:
     serializedVersion: 2
     m_Bits: 512

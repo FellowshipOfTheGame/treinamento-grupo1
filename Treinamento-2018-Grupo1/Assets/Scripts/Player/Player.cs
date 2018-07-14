@@ -12,13 +12,23 @@ public class Player : MonoBehaviour {
     public static Player player = null;
 
     // Script que controla a moviumentação do player.
-    public PlayerMovement playerMov;
+    public PlayerMovement _movement;
 
     // SpriteRenderer do player.
-    public SpriteRenderer playerRenderer;
+    public SpriteRenderer _renderer;
 
     // Animator do player.
-    public Animator playerAnim;
+    public Animator _animator;
+
+    // Rigidbody do player.
+    public Rigidbody2D _rigidbody;
+
+    // Collider do player.
+    public CapsuleCollider2D _collider;
+
+    // Usado para ajustar o tamanho da camera.
+    [Space(10)]
+    public int pixelsPerUnityRate = 64;
 
     // Guarda o input passado através de um PlayerInput.
     [System.Serializable]
@@ -30,7 +40,9 @@ public class Player : MonoBehaviour {
         public bool useButton = false;
         public bool fireButton = false;
 
-    } public Input input;
+    }
+    [Space(10)]
+    public Input input;
 
     // Guarda os efeitos visuais produzidos pelo player..
     [System.Serializable]
@@ -39,20 +51,24 @@ public class Player : MonoBehaviour {
         public SpriteRenderer habilityEffect;
 
     }
+    [Space(10)]
     public Effects effects;
 
     // Deve conter todas as habilidades que o player pode usar.
+    [Space(10)]
     public List<Hability> habilities;
     public Hability currentHability = null;
 
     // Spawns dos projéteis do player. Coloca-los começando da direita em sentido horário.
+    [Space(10)]
     public Transform[] projectileSpawns;
 
     // Usado para contar o delay entre disparo de projéteis.
     private float projectileDelay = 0;
 
     // Guarda para que lado o player está olhando.
-    public int playerFacing = 1;
+    [Space(10)]
+    public int facing = 1;
 
     void Awake () {
 
@@ -62,38 +78,48 @@ public class Player : MonoBehaviour {
         else
             Debug.LogError("(Player) More than one player found! There should only be a single instance of the player script at any given time!");
 
+        // Ajusta a camera para o tamanho apropriado baseado na resolução.
+        CameraAdjustments.Adjust(Camera.main, pixelsPerUnityRate);
 
         // Verfica se foi passado um PlayerMovement para esse script, se não tenta encontrar um.
-        if (playerMov == null)
-            playerMov = GetComponent<PlayerMovement>();
+        if (_movement == null)
+            _movement = GetComponent<PlayerMovement>();
 
         // Verfica se foi passado um SpriteRenderer para esse script, se não tenta encontrar um.
-        if (playerRenderer == null)
-            playerRenderer = GetComponentInChildren<SpriteRenderer>();
+        if (_renderer == null)
+            _renderer = GetComponentInChildren<SpriteRenderer>();
 
         // Verfica se foi passado um Animator para esse script, se não tenta encontrar um.
-        if (playerAnim == null)
-            playerAnim = GetComponentInChildren<Animator>();
+        if (_animator == null)
+            _animator = GetComponentInChildren<Animator>();
+
+        // Verfica se foi passado um Rigidbody2D para esse script, se não tenta encontrar um.
+        if (_movement == null)
+            _rigidbody = GetComponent<Rigidbody2D>();
+
+        // Verfica se foi passado um Collider2D para esse script, se não tenta encontrar um.
+        if (_renderer == null)
+            _collider = GetComponentInChildren<CapsuleCollider2D>();
 
     }
 
     void Update () {
 
         if (Mathf.Abs(input.horizontalAxis) > 0.2f) {
-            playerAnim.SetBool("Walking", true);       
+            _animator.SetBool("Walking", true);       
         } else
-            playerAnim.SetBool("Walking", false);
+            _animator.SetBool("Walking", false);
 
 
         if (input.horizontalAxis > 0)
-            playerFacing = 1;
+            facing = 1;
         else if (input.horizontalAxis < 0)
-            playerFacing = -1;
+            facing = -1;
             
-        if (playerMov.grounded)
-            playerAnim.SetBool("InAir", false);
+        if (_movement.grounded)
+            _animator.SetBool("InAir", false);
         else
-            playerAnim.SetBool("InAir", true);
+            _animator.SetBool("InAir", true);
 
         if(projectileDelay > 0)
             projectileDelay -= Time.deltaTime;
@@ -107,11 +133,11 @@ public class Player : MonoBehaviour {
                     if(input.verticalAxis > 0) {
                         Instantiate(currentHability.projectileSettings._object, projectileSpawns[1].position, projectileSpawns[1].rotation);
                         projectileDelay = currentHability.projectileSettings.delay;
-                    } else if (playerFacing == 1) {
+                    } else if (facing == 1) {
                         Instantiate(currentHability.projectileSettings._object, projectileSpawns[0].position, projectileSpawns[0].rotation);
                         projectileDelay = currentHability.projectileSettings.delay;
                     }
-                    else if (playerFacing == -1) {
+                    else if (facing == -1) {
                         Instantiate(currentHability.projectileSettings._object, projectileSpawns[2].position, projectileSpawns[2].rotation);
                         projectileDelay = currentHability.projectileSettings.delay;
                     }
@@ -121,10 +147,10 @@ public class Player : MonoBehaviour {
 
         }
 
-        if (playerFacing == -1)
-            playerRenderer.flipX = true;
+        if (facing == -1)
+            _renderer.flipX = true;
         else
-            playerRenderer.flipX = false;
+            _renderer.flipX = false;
 
     }
 
