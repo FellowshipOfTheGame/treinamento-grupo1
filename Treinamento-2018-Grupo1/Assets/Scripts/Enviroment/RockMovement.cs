@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[AddComponentMenu("Scripts/Enviroment/Rock Movement")]
 public class RockMovement : MonoBehaviour {
 
 	public int ativo;//movimentando ou parado
@@ -16,7 +17,7 @@ public class RockMovement : MonoBehaviour {
 	private Transform trans;//transform da rocha
 	void Start () {
 		//recebendo os pontos iniciais e finais
-		trans = trans = GetComponent<Transform>();
+		trans = GetComponent<Transform>();
 		posInicio = trans.position;
 		posFinal = pontoFinal.GetComponent<Transform>().position;
 	}

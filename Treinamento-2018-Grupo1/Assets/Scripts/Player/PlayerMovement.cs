@@ -46,14 +46,6 @@ public class PlayerMovement : MonoBehaviour {
 
         // Verifica que esta tocando no chão.
         grounded = Physics2D.Raycast(transform.position + new Vector3(_collider.offset.x, _collider.offset.y, 0) - new Vector3(0, _collider.size.y / 2, 0), -Vector2.up, _collider.size.y * 0.05f, rayMask);
-
-        //Veiricando se morreu esmagado
-        if(grounded ){
-            if( Physics2D.Raycast(transform.position, Vector2.up, 1.1f, rayMask)){
-                Debug.Log("MORREU ESMAGADO");
-            }
-        }
-
         
         // DEBUG
         #if UNITY_EDITOR
@@ -62,6 +54,21 @@ public class PlayerMovement : MonoBehaviour {
         else
             Debug.DrawLine(transform.position + new Vector3(_collider.offset.x, _collider.offset.y, 0) - new Vector3(0, _collider.size.y / 2, 0), transform.position + new Vector3(_collider.offset.x, _collider.offset.y, 0) - new Vector3(0, _collider.size.y / 2, 0) - new Vector3(0, _collider.size.y * 0.05f, 0), Color.green);
         #endif
+
+        // Verifica se o player foi esmagado.
+        if (grounded) {
+            bool crushed = Physics2D.Raycast(transform.position + new Vector3(_collider.offset.x, _collider.offset.y, 0) + new Vector3(0, _collider.size.y / 2, 0), Vector2.up, _collider.size.y * 0.05f, rayMask);
+            if (crushed)
+                Debug.Log("Player was crushed!");
+
+            // DEBUG
+            #if UNITY_EDITOR
+            if (crushed)
+                Debug.DrawLine(transform.position + new Vector3(_collider.offset.x, _collider.offset.y, 0) + new Vector3(0, _collider.size.y / 2, 0), transform.position + new Vector3(_collider.offset.x, _collider.offset.y, 0) + new Vector3(0, _collider.size.y / 2, 0) + new Vector3(0, _collider.size.y * 0.05f, 0), Color.red);
+            else
+                Debug.DrawLine(transform.position + new Vector3(_collider.offset.x, _collider.offset.y, 0) + new Vector3(0, _collider.size.y / 2, 0), transform.position + new Vector3(_collider.offset.x, _collider.offset.y, 0) + new Vector3(0, _collider.size.y / 2, 0) + new Vector3(0, _collider.size.y * 0.05f, 0), Color.green);
+            #endif
+        }
 
         // Verifica se o Player está tentando andar contra uma parede, usado para evitar que ele possa "grudar em paredes" durante um pulo.
         bool blocked = Physics2D.Raycast(transform.position + new Vector3(_collider.offset.x, _collider.offset.y, 0) - new Vector3(0, _collider.size.y / 2, 0), Player.player.facing * Vector2.right, _collider.size.x * 0.525f, rayMask);
