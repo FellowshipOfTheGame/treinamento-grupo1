@@ -47,6 +47,13 @@ public class PlayerMovement : MonoBehaviour {
         // Verifica que esta tocando no chão.
         grounded = Physics2D.Raycast(transform.position, -Vector2.up, 1.1f, rayMask);
 
+        //Veiricando se morreu esmagado
+        if(grounded ){
+            if( Physics2D.Raycast(transform.position, Vector2.up, 1.1f, rayMask)){
+                Debug.Log("MORREU ESMAGADO");
+            }
+        }
+
         
         // Verifica se o Player está tentando andar contra uma parede, usado para evitar que ele possa "grudar em paredes" durante um pulo.
         if (Physics2D.Raycast(transform.position - new Vector3( 0, 0.95f, 0), Mathf.Sign(hNewVel) * Vector2.right, 0.32f, rayMask))
@@ -64,4 +71,15 @@ public class PlayerMovement : MonoBehaviour {
 			rigi.AddForce(Mathf.Sqrt(2 * jumpHeight * 10) * Vector2.up,ForceMode2D.Impulse);	
 
 	}
+
+    //"colando" player a plataforma
+    void OnCollisionEnter2D(Collision2D other){
+        if(other.gameObject.tag == "Plataform")
+            transform.SetParent (other.transform);
+    }
+
+    void OnCollisionExit2D(Collision2D other){
+        if(other.gameObject.tag == "Plataform")
+            transform.SetParent (null);
+    }
 }
