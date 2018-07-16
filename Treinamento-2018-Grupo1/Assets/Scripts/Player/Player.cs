@@ -70,7 +70,7 @@ public class Player : MonoBehaviour {
     [Space(10)]
     public int facing = 1;
 
-    void Awake () {
+    private void Awake () {
 
         // Pega uma referência ao player no iníco e da um erro caso exista mais de um player.
         if (player == null)
@@ -103,7 +103,7 @@ public class Player : MonoBehaviour {
 
     }
 
-    void Update () {
+    private void Update () {
 
         if (Mathf.Abs(input.horizontalAxis) > 0.2f) {
             _animator.SetBool("Walking", true);       

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 // Esta ação muda o sprite de um objeto.
-[AddComponentMenu("Scripts/Utility/Actions/Base")]
+[AddComponentMenu("Scripts/Utility/Actions/Change Sprite")]
 public class ChangeSpriteAction : MonoBehaviour {
 
     // Novo sprite,

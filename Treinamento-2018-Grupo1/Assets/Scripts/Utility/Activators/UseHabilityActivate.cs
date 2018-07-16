@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
-[AddComponentMenu("Scripts/Utility/Activators/Base")]
+[AddComponentMenu("Scripts/Utility/Activators/Use Hability Activate")]
 // Ativador usado para objetos que o player pode interagir quando está com certa habilidade.
 public class UseHabilityActivate : ActivatorBase {
 
