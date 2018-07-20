@@ -30,7 +30,16 @@ public class CameraScript : MonoBehaviour {
     private void Update () {
 
         // Faz com que a camera siga o player dentro dos limites da fase.
-        transform.position = new Vector3(Mathf.Clamp(target.position.x, boundary.minX, boundary.maxX), target.position.y, transform.position.z);
+
+        float camX = target.position.x;
+        if (boundary.limitX)
+            camX = Mathf.Clamp(camX, boundary.minX, boundary.maxX);
+
+        float camY = target.position.y;
+        if (boundary.limitY)
+            camY = Mathf.Clamp(camY, boundary.minY, boundary.maxY);
+
+        transform.position = new Vector3(camX, camY, transform.position.z);
 
 	}
 }

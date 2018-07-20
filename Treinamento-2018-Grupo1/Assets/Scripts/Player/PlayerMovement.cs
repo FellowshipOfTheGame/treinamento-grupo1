@@ -93,7 +93,7 @@ public class PlayerMovement : MonoBehaviour {
 
         // Realiza o pulo.
         if (target.input.jumpButton && grounded)
-            _rigidbody.AddForce( _rigidbody.mass * Mathf.Sqrt(2 * jumpHeight * 10) * Vector2.up,ForceMode2D.Impulse);	
+            _rigidbody.AddForce( _rigidbody.mass * Mathf.Sqrt(2 * jumpHeight * 10) * Vector2.up, ForceMode2D.Impulse);	
 
 	}
 
