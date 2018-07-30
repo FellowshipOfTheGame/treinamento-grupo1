@@ -71,7 +71,7 @@ public class PlayerMovement : MonoBehaviour {
         }
 
         // Verifica se o Player está tentando andar contra uma parede, usado para evitar que ele possa "grudar em paredes" durante um pulo.
-        bool blocked = Physics2D.CapsuleCast(transform.position + new Vector3(_collider.offset.x, _collider.offset.y, 0), _collider.size, CapsuleDirection2D.Vertical, 0, Player.player.facing * Vector2.right, 0.05f, rayMask);
+        bool blocked = Physics2D.CapsuleCast(transform.position + new Vector3(_collider.offset.x, _collider.offset.y, 0), new Vector2(_collider.size.x, _collider.size.y / 2), CapsuleDirection2D.Vertical, 0, Player.player.facing * Vector2.right, 0.05f, rayMask);
 
         if (blocked)
             hNewVel = 0;
