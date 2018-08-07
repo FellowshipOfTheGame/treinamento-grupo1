@@ -45,14 +45,14 @@ public class PlayerMovement : MonoBehaviour {
         vNewVel = _rigidbody.velocity.y;            
 
         // Verifica que esta tocando no chão.
-        grounded = Physics2D.CapsuleCast( transform.position + new Vector3(_collider.offset.x, _collider.offset.y, 0), new Vector2(_collider.size.x * 0.5f, _collider.size.y), CapsuleDirection2D.Vertical, 0, -Vector2.up, 0.05f, rayMask);
+        grounded = Physics2D.CapsuleCast( transform.position + new Vector3(_collider.offset.x, _collider.offset.y, 0), new Vector2(_collider.size.x * 0.95f, _collider.size.y), CapsuleDirection2D.Vertical, 0, -Vector2.up, 0.075f, rayMask);
 
         // DEBUG
         #if UNITY_EDITOR
         if (grounded)
-            Debug.DrawLine(transform.position + new Vector3(_collider.offset.x, _collider.offset.y, 0) - new Vector3(0, _collider.size.y / 2, 0), transform.position + new Vector3(_collider.offset.x, _collider.offset.y, 0) - new Vector3(0, _collider.size.y / 2, 0) - new Vector3(0, _collider.size.y * 0.05f, 0), Color.red);
+            Debug.DrawLine(transform.position + new Vector3(_collider.offset.x, _collider.offset.y, 0) - new Vector3(0, _collider.size.y / 2, 0), transform.position + new Vector3(_collider.offset.x, _collider.offset.y, 0) - new Vector3(0, _collider.size.y / 2, 0) - new Vector3(0, _collider.size.y * 0.075f, 0), Color.red);
         else
-            Debug.DrawLine(transform.position + new Vector3(_collider.offset.x, _collider.offset.y, 0) - new Vector3(0, _collider.size.y / 2, 0), transform.position + new Vector3(_collider.offset.x, _collider.offset.y, 0) - new Vector3(0, _collider.size.y / 2, 0) - new Vector3(0, _collider.size.y * 0.05f, 0), Color.green);
+            Debug.DrawLine(transform.position + new Vector3(_collider.offset.x, _collider.offset.y, 0) - new Vector3(0, _collider.size.y / 2, 0), transform.position + new Vector3(_collider.offset.x, _collider.offset.y, 0) - new Vector3(0, _collider.size.y / 2, 0) - new Vector3(0, _collider.size.y * 0.075f, 0), Color.green);
         #endif
 
         // Verifica se o player foi esmagado.
