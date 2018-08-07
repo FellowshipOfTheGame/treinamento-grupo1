@@ -45,14 +45,14 @@ public class PlayerMovement : MonoBehaviour {
         vNewVel = _rigidbody.velocity.y;            
 
         // Verifica que esta tocando no chão.
-        grounded = Physics2D.Raycast(transform.position + new Vector3(_collider.offset.x, _collider.offset.y, 0) - new Vector3(0, _collider.size.y / 2, 0), -Vector2.up, _collider.size.y * 0.05f, rayMask);
-        
+        grounded = Physics2D.CapsuleCast( transform.position + new Vector3(_collider.offset.x, _collider.offset.y, 0), new Vector2(_collider.size.x * 0.95f, _collider.size.y), CapsuleDirection2D.Vertical, 0, -Vector2.up, 0.075f, rayMask);
+
         // DEBUG
         #if UNITY_EDITOR
         if (grounded)
-            Debug.DrawLine(transform.position + new Vector3(_collider.offset.x, _collider.offset.y, 0) - new Vector3(0, _collider.size.y / 2, 0), transform.position + new Vector3(_collider.offset.x, _collider.offset.y, 0) - new Vector3(0, _collider.size.y / 2, 0) - new Vector3(0, _collider.size.y * 0.05f, 0), Color.red);
+            Debug.DrawLine(transform.position + new Vector3(_collider.offset.x, _collider.offset.y, 0) - new Vector3(0, _collider.size.y / 2, 0), transform.position + new Vector3(_collider.offset.x, _collider.offset.y, 0) - new Vector3(0, _collider.size.y / 2, 0) - new Vector3(0, _collider.size.y * 0.075f, 0), Color.red);
         else
-            Debug.DrawLine(transform.position + new Vector3(_collider.offset.x, _collider.offset.y, 0) - new Vector3(0, _collider.size.y / 2, 0), transform.position + new Vector3(_collider.offset.x, _collider.offset.y, 0) - new Vector3(0, _collider.size.y / 2, 0) - new Vector3(0, _collider.size.y * 0.05f, 0), Color.green);
+            Debug.DrawLine(transform.position + new Vector3(_collider.offset.x, _collider.offset.y, 0) - new Vector3(0, _collider.size.y / 2, 0), transform.position + new Vector3(_collider.offset.x, _collider.offset.y, 0) - new Vector3(0, _collider.size.y / 2, 0) - new Vector3(0, _collider.size.y * 0.075f, 0), Color.green);
         #endif
 
         // Verifica se o player foi esmagado.
@@ -71,16 +71,17 @@ public class PlayerMovement : MonoBehaviour {
         }
 
         // Verifica se o Player está tentando andar contra uma parede, usado para evitar que ele possa "grudar em paredes" durante um pulo.
-        bool blocked = Physics2D.Raycast(transform.position + new Vector3(_collider.offset.x, _collider.offset.y, 0) - new Vector3(0, _collider.size.y / 2, 0), Player.player.facing * Vector2.right, _collider.size.x * 0.525f, rayMask);
-        if(blocked)
+        bool blocked = Physics2D.CapsuleCast(transform.position + new Vector3(_collider.offset.x, _collider.offset.y, 0), new Vector2(_collider.size.x, _collider.size.y / 2), CapsuleDirection2D.Vertical, 0, Player.player.facing * Vector2.right, 0.05f, rayMask);
+
+        if (blocked)
             hNewVel = 0;
 
         // DEBUG
-        #if UNITY_EDITOR
-        if(blocked)
-            Debug.DrawLine(transform.position + new Vector3(_collider.offset.x, _collider.offset.y, 0) - new Vector3(0, _collider.size.y / 2, 0), transform.position - new Vector3(0, _collider.size.y / 2, 0) + Player.player.facing * Vector3.right * _collider.size.x * 0.525f, Color.red);
+#if UNITY_EDITOR
+        if (blocked)
+            Debug.DrawLine(transform.position + new Vector3(_collider.offset.x, _collider.offset.y, 0), transform.position + Player.player.facing * (new Vector3(0.05f, 0, 0) + new Vector3(_collider.size.x / 2, 0, 0)), Color.red);
         else
-            Debug.DrawLine(transform.position + new Vector3(_collider.offset.x, _collider.offset.y, 0) - new Vector3(0, _collider.size.y / 2, 0), transform.position - new Vector3(0, _collider.size.y / 2, 0) + Player.player.facing * Vector3.right * _collider.size.x * 0.525f, Color.green);
+            Debug.DrawLine(transform.position + new Vector3(_collider.offset.x, _collider.offset.y, 0), transform.position + Player.player.facing * (new Vector3(0.05f, 0, 0) + new Vector3(_collider.size.x / 2, 0, 0)), Color.green);
         #endif
 
         // Evita a soma de addForces no pulo.
@@ -92,7 +93,7 @@ public class PlayerMovement : MonoBehaviour {
 
         // Realiza o pulo.
         if (target.input.jumpButton && grounded)
-            _rigidbody.AddForce(Mathf.Sqrt(2 * jumpHeight * 10) * Vector2.up,ForceMode2D.Impulse);	
+            _rigidbody.AddForce( _rigidbody.mass * Mathf.Sqrt(2 * jumpHeight * 10) * Vector2.up, ForceMode2D.Impulse);	
 
 	}
 

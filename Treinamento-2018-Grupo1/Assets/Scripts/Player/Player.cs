@@ -70,7 +70,7 @@ public class Player : MonoBehaviour {
     [Space(10)]
     public int facing = 1;
 
-    void Awake () {
+    private void Awake () {
 
         // Pega uma referência ao player no iníco e da um erro caso exista mais de um player.
         if (player == null)
@@ -78,8 +78,10 @@ public class Player : MonoBehaviour {
         else
             Debug.LogError("(Player) More than one player found! There should only be a single instance of the player script at any given time!");
 
+        /*
         // Ajusta a camera para o tamanho apropriado baseado na resolução.
         CameraAdjustments.Adjust(Camera.main, pixelsPerUnityRate);
+        */
 
         // Verfica se foi passado um PlayerMovement para esse script, se não tenta encontrar um.
         if (_movement == null)
@@ -103,7 +105,7 @@ public class Player : MonoBehaviour {
 
     }
 
-    void Update () {
+    private void Update () {
 
         if (Mathf.Abs(input.horizontalAxis) > 0.2f) {
             _animator.SetBool("Walking", true);       
@@ -115,7 +117,7 @@ public class Player : MonoBehaviour {
             facing = 1;
         else if (input.horizontalAxis < 0)
             facing = -1;
-            
+             
         if (_movement.grounded)
             _animator.SetBool("InAir", false);
         else
