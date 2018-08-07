@@ -27,12 +27,16 @@ public class RockMovement : MonoBehaviour {
 
 		if(direcao == 1){
 			trans.position = Vector2.MoveTowards(trans.position, posFinal,ativo* vel);
-			if((Vector2.Distance(trans.position,posFinal) <0.1))//caso chegue no ponto final
+			if((Vector2.Distance(trans.position,posFinal) <0.1)){//caso chegue no ponto final
 				direcao = 0;
+				chegouPosFinal();
+			}
 		}else{
 			trans.position = Vector2.MoveTowards(trans.position, posInicio,ativo* vel);
-			if((Vector2.Distance(trans.position,posInicio) <0.1))//caso chegue no ponto inicial
+			if((Vector2.Distance(trans.position,posInicio) <0.1)){//caso chegue no ponto inicial
 				direcao = 1;
+				chegouPosInicial();
+			}
 		}
 
 
@@ -43,4 +47,10 @@ public class RockMovement : MonoBehaviour {
 		if(ativo == 1)ativo = 0;
 		else if(ativo == 0)ativo = 1;
 	}
+
+	//ativa quando chega na posicao final
+	protected virtual void chegouPosFinal(){}
+
+	//ativa quando chega na posicao inicial
+	protected virtual void chegouPosInicial(){}
 }

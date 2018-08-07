@@ -57,9 +57,10 @@ public class PlayerMovement : MonoBehaviour {
 
         // Verifica se o player foi esmagado.
         if (grounded) {
-            bool crushed = Physics2D.Raycast(transform.position + new Vector3(_collider.offset.x, _collider.offset.y, 0) + new Vector3(0, _collider.size.y / 2, 0), Vector2.up, _collider.size.y * 0.05f, rayMask);
+            bool crushed = Physics2D.Raycast(transform.position + new Vector3(_collider.offset.x, _collider.offset.y, 0) + new Vector3(0, _collider.size.y / 2, 0), Vector2.up, _collider.size.y * 0.03f, rayMask);
+            crushed &= Physics2D.Raycast(transform.position + new Vector3(_collider.offset.x, _collider.offset.y, 0) + new Vector3(0, _collider.size.y / 2, 0), -Vector2.up, _collider.size.y * 0.03f, rayMask);
             if (crushed)
-                Debug.Log("Player was crushed!");
+                gameObject.GetComponent<Player>().morreu();
 
             // DEBUG
             #if UNITY_EDITOR
