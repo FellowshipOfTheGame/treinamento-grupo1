@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [AddComponentMenu("Scripts/Enviroment/Rock Movement")]
 public class RockMovement : MonoBehaviour {

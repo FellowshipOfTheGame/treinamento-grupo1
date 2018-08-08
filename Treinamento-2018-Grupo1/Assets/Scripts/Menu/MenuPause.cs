@@ -83,7 +83,7 @@ public class MenuPause : MonoBehaviour {
 
 	public void Restart(){
 		sairMenu();
-		player.GetComponent<Player>().morreu();
+		player.GetComponent<Player>().Death();
 	}
 	//sair para tel principal
 	public void Exit(){

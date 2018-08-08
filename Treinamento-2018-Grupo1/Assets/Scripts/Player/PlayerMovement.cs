@@ -60,7 +60,7 @@ public class PlayerMovement : MonoBehaviour {
             bool crushed = Physics2D.Raycast(transform.position + new Vector3(_collider.offset.x, _collider.offset.y, 0) + new Vector3(0, _collider.size.y / 2, 0), Vector2.up, _collider.size.y * 0.03f, rayMask);
             crushed &= Physics2D.Raycast(transform.position + new Vector3(_collider.offset.x, _collider.offset.y, 0) + new Vector3(0, _collider.size.y / 2, 0), -Vector2.up, _collider.size.y * 0.03f, rayMask);
             if (crushed)
-                gameObject.GetComponent<Player>().morreu();
+                gameObject.GetComponent<Player>().Death();
 
             // DEBUG
             #if UNITY_EDITOR

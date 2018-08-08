@@ -1,8 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 //Controla a funcionalidade de peso para botao
+[AddComponentMenu("Scripts/Enviroment/Box Movement")]
 public class BoxMovement : MonoBehaviour {
 
 	public float peso;
