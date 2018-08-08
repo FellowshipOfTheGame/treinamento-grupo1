@@ -11,7 +11,7 @@ public class Player : MonoBehaviour {
     // Singleton para o player.
     public static Player player = null;
 
-    // Script que controla a moviumentação do player.
+    // Script que controla a moviumentaï¿½ï¿½o do player.
     public PlayerMovement _movement;
 
     // SpriteRenderer do player.
@@ -30,7 +30,7 @@ public class Player : MonoBehaviour {
     [Space(10)]
     public int pixelsPerUnityRate = 64;
 
-    // Guarda o input passado através de um PlayerInput.
+    // Guarda o input passado atravï¿½s de um PlayerInput.
     [System.Serializable]
     public class Input {
 
@@ -59,47 +59,49 @@ public class Player : MonoBehaviour {
     public List<Hability> habilities;
     public Hability currentHability = null;
 
-    // Spawns dos projéteis do player. Coloca-los começando da direita em sentido horário.
+    // Spawns dos projï¿½teis do player. Coloca-los comeï¿½ando da direita em sentido horï¿½rio.
     [Space(10)]
     public Transform[] projectileSpawns;
 
-    // Usado para contar o delay entre disparo de projéteis.
+    // Usado para contar o delay entre disparo de projï¿½teis.
     private float projectileDelay = 0;
 
-    // Guarda para que lado o player está olhando.
+    // Guarda para que lado o player estï¿½ olhando.
     [Space(10)]
     public int facing = 1;
 
+    public GameObject pontoRespawn;
+
     private void Awake () {
 
-        // Pega uma referência ao player no iníco e da um erro caso exista mais de um player.
+        // Pega uma referï¿½ncia ao player no inï¿½co e da um erro caso exista mais de um player.
         if (player == null)
             player = this;
         else
             Debug.LogError("(Player) More than one player found! There should only be a single instance of the player script at any given time!");
 
         /*
-        // Ajusta a camera para o tamanho apropriado baseado na resolução.
+        // Ajusta a camera para o tamanho apropriado baseado na resoluï¿½ï¿½o.
         CameraAdjustments.Adjust(Camera.main, pixelsPerUnityRate);
         */
 
-        // Verfica se foi passado um PlayerMovement para esse script, se não tenta encontrar um.
+        // Verfica se foi passado um PlayerMovement para esse script, se nï¿½o tenta encontrar um.
         if (_movement == null)
             _movement = GetComponent<PlayerMovement>();
 
-        // Verfica se foi passado um SpriteRenderer para esse script, se não tenta encontrar um.
+        // Verfica se foi passado um SpriteRenderer para esse script, se nï¿½o tenta encontrar um.
         if (_renderer == null)
             _renderer = GetComponentInChildren<SpriteRenderer>();
 
-        // Verfica se foi passado um Animator para esse script, se não tenta encontrar um.
+        // Verfica se foi passado um Animator para esse script, se nï¿½o tenta encontrar um.
         if (_animator == null)
             _animator = GetComponentInChildren<Animator>();
 
-        // Verfica se foi passado um Rigidbody2D para esse script, se não tenta encontrar um.
+        // Verfica se foi passado um Rigidbody2D para esse script, se nï¿½o tenta encontrar um.
         if (_movement == null)
             _rigidbody = GetComponent<Rigidbody2D>();
 
-        // Verfica se foi passado um Collider2D para esse script, se não tenta encontrar um.
+        // Verfica se foi passado um Collider2D para esse script, se nï¿½o tenta encontrar um.
         if (_renderer == null)
             _collider = GetComponentInChildren<CapsuleCollider2D>();
 
@@ -127,7 +129,7 @@ public class Player : MonoBehaviour {
             projectileDelay -= Time.deltaTime;
 
 
-        if (input.fireButton) {
+        if (input.fireButton & !MenuPause.pausado & !MenuOptions.pausado ) {
 
             if(currentHability != null && currentHability.type == Hability.Type.Projectile) {
 
@@ -164,7 +166,7 @@ public class Player : MonoBehaviour {
 
                 currentHability = habilities[i];
 
-                // (NÃO IMPLEMENTADO) <<<<------------ Resto das coisas que devêm acontecer
+                // (Nï¿½O IMPLEMENTADO) <<<<------------ Resto das coisas que devï¿½m acontecer
 
                 effects.habilityEffect.sprite = currentHability.displayEffect;
 
@@ -172,8 +174,16 @@ public class Player : MonoBehaviour {
             }
         }
 
-        // Mostra um erro caso a habilidade seja inválida,
+        // Mostra um erro caso a habilidade seja invï¿½lida,
         Debug.LogError("(Player) Hability <+" + hability + "+> is not valid!");
 
+    }
+
+    //Respawna o player
+    public void morreu(){
+
+        SetHability(pontoRespawn.GetComponent<pontoRespawn>().hability);
+        GetComponent<Transform>().position = pontoRespawn.GetComponent<pontoRespawn>().posicao.GetComponent<Transform>().position;
+        GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
     }
 }
