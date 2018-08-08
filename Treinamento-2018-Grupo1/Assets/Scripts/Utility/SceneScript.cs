@@ -12,12 +12,12 @@ public class SceneScript : MonoBehaviour {
     public struct CameraBoundary {
 
         public bool limitX;
-        public int minX;
-        public int maxX;
+        public float minX;
+        public float maxX;
 
         public bool limitY;
-        public int minY;
-        public int maxY;
+        public float minY;
+        public float maxY;
 
     } public CameraBoundary cameraBoundary; // Limites nos quais a camera dessa cena tem que ficar no eixo-x.
 

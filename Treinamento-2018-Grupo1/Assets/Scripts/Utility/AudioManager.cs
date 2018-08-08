@@ -53,8 +53,8 @@ public class AudioManager : MonoBehaviour {
 
 	public void play(string name, bool sfx){
 		Sound s = null;
-		if(sfx) s =Array.Find(sfxs, sound =>sound.nome == name);
-		else s =Array.Find(musics, sound =>sound.nome == name);
+		if(sfx) s =Array.Find(sfxs, sound =>sound.name == name);
+		else s =Array.Find(musics, sound =>sound.name == name);
 
 		if(s !=null)s.source.Play();
 			else Debug.Log(name + " nao encontrado");

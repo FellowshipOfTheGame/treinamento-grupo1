@@ -70,7 +70,8 @@ public class Player : MonoBehaviour {
     [Space(10)]
     public int facing = 1;
 
-    public GameObject pontoRespawn;
+    // Último ponto de respawn do player.
+    public GameObject respawnPoint;
 
     private void Awake () {
 
@@ -180,10 +181,12 @@ public class Player : MonoBehaviour {
     }
 
     //Respawna o player
-    public void morreu(){
+    public void Death() {
 
-        SetHability(pontoRespawn.GetComponent<pontoRespawn>().hability);
-        GetComponent<Transform>().position = pontoRespawn.GetComponent<pontoRespawn>().posicao.GetComponent<Transform>().position;
+        RespawnPoint respawn = respawnPoint.GetComponent<RespawnPoint>();
+
+        SetHability(respawn.hability);
+        GetComponent<Transform>().position = respawn.respawnPosition.position;
         GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
     }
 }
