@@ -15,17 +15,13 @@ public class PlayerMovement : MonoBehaviour {
     private Rigidbody2D _rigidbody; // Rigidbody do target.
     private CapsuleCollider2D _collider; // Collider do target.
 
-    public float hAce = 1.5f; // Aceleracao horizontal(andar).
-	public float hMax = 2.0f; // Velocidade horizontal maxima.
-
+    public float velocity = 3.0f; // Velocidade do player.
+    public float airAcelerationMultiplier = 0.05f; // Modifica a aceleração do player no ar.
     public float jumpHeight = 2.0f; // Altura maxima do pulo
 
     public LayerMask rayMask; // Mascára usada para filtrar raycasts.
 
     public bool grounded; // Verifica se está tocando no solo.
-
-    private float hNewVel; // Nova velocidade horizontal do player.
-	private float vNewVel; // Nova velocidade vertical do player.
 
 
     void Start () {
@@ -39,8 +35,15 @@ public class PlayerMovement : MonoBehaviour {
 
     void Update () {
 
+        float hNewVel; // Nova velocidade horizontal do player.
+        float vNewVel; // Nova velocidade vertical do player.
+
         // Movimento horizontal, também garante que o player nunca ultrapasse a velocidade máxima.
-        hNewVel = Mathf.Clamp(hAce * target.input.horizontalAxis + _rigidbody.velocity.x, -hMax, hMax);
+        if (grounded)
+            hNewVel = target.input.horizontalAxis * velocity;
+        else
+            hNewVel = Mathf.Clamp(_rigidbody.velocity.x + Mathf.CeilToInt(target.input.horizontalAxis * velocity) * airAcelerationMultiplier, -velocity, velocity);
+
         // Movimento vertical.
         vNewVel = _rigidbody.velocity.y;            
 
@@ -78,7 +81,7 @@ public class PlayerMovement : MonoBehaviour {
             hNewVel = 0;
 
         // DEBUG
-#if UNITY_EDITOR
+        #if UNITY_EDITOR
         if (blocked)
             Debug.DrawLine(transform.position + new Vector3(_collider.offset.x, _collider.offset.y, 0), transform.position + Player.player.facing * (new Vector3(0.05f, 0, 0) + new Vector3(_collider.size.x / 2, 0, 0)), Color.red);
         else

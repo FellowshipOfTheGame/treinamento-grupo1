@@ -56,14 +56,15 @@ public class Player : MonoBehaviour {
 
     // Deve conter todas as habilidades que o player pode usar.
     [Space(10)]
+    public string startingAbility = "fire";
     public List<Hability> habilities;
     public Hability currentHability = null;
 
-    // Spawns dos proj�teis do player. Coloca-los come�ando da direita em sentido hor�rio.
+    // Spawns dos proj�teis do player. Coloca-los começando da direita em sentido horário.
     [Space(10)]
     public Transform[] projectileSpawns;
 
-    // Usado para contar o delay entre disparo de proj�teis.
+    // Usado para contar o delay entre disparo de projéteis.
     private float projectileDelay = 0;
 
     // Guarda para que lado o player est� olhando.
@@ -75,14 +76,18 @@ public class Player : MonoBehaviour {
 
     private void Awake () {
 
-        // Pega uma refer�ncia ao player no in�co e da um erro caso exista mais de um player.
+        // Pega uma refer�ncia ao player no iníco e da um erro caso exista mais de um player.
         if (player == null)
             player = this;
         else
             Debug.LogError("(Player) More than one player found! There should only be a single instance of the player script at any given time!");
 
+        // Força um poder inicial o player (none = sem poder inicial).
+        if (startingAbility != "none")
+            SetAbility(startingAbility);
+
         /*
-        // Ajusta a camera para o tamanho apropriado baseado na resolu��o.
+        // Ajusta a camera para o tamanho apropriado baseado na resolução.
         CameraAdjustments.Adjust(Camera.main, pixelsPerUnityRate);
         */
 
@@ -110,9 +115,9 @@ public class Player : MonoBehaviour {
 
     private void Update () {
 
-        if (Mathf.Abs(input.horizontalAxis) > 0.2f) {
+        if (Mathf.Abs(input.horizontalAxis) != 0)
             _animator.SetBool("Walking", true);       
-        } else
+        else
             _animator.SetBool("Walking", false);
 
 
@@ -160,7 +165,7 @@ public class Player : MonoBehaviour {
     }
 
     // Muda a habilidade do player.
-    public void SetHability(string hability) {
+    public void SetAbility(string hability) {
         
         for(int i = 0; i < habilities.Count; i++) { 
             if(habilities[i]._name == hability) { // Encontra na lista a habilidade desejada.
@@ -185,7 +190,7 @@ public class Player : MonoBehaviour {
 
         RespawnPoint respawn = respawnPoint.GetComponent<RespawnPoint>();
 
-        SetHability(respawn.hability);
+        SetAbility(respawn.hability);
         GetComponent<Transform>().position = respawn.respawnPosition.position;
         GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
     }
