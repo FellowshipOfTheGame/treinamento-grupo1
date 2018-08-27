@@ -32,7 +32,7 @@ public class HabilitySource : MonoBehaviour {
         // Verifica se o player está dentro da área de ativação.
         if(isOnRange)
             if (Player.player.input.useButton) // Detecta quando o player tenta usar este objeto.
-                Player.player.SetHability(habilityName);
+                Player.player.SetAbility(habilityName);
 
     }
 }

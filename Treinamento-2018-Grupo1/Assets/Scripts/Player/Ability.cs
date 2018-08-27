@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 
 // Usado para conter as informações sobre uma determinada habilidade.
-[CreateAssetMenu(fileName = "NewHability", menuName = "ScriptableObjects/Hability")]
+[CreateAssetMenu(fileName = "NewAbility", menuName = "ScriptableObjects/Ability")]
 public class Hability : ScriptableObject {
 
     // Nome usado para se referir a essa habilidade.
-    public string _name = "newHability";
+    public string _name = "newAbility";
 
     // Efeito ao redor do player quando está com essa habilidade.
     public Sprite displayEffect;

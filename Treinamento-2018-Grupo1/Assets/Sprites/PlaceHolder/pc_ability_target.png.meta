@@ -2,12 +2,12 @@ fileFormatVersion: 2
 guid: 925d6f4e6cdb9fc4f89167b3a78a81b7
 TextureImporter:
   fileIDToRecycleName:
-    21300000: pc_hability_target_fire
-    21300002: pc_hability_target_water
-    21300004: pc_hability_target_earth
-    21300006: pc_hability_target_air
+    21300000: pc_ability_target_fire
+    21300002: pc_ability_target_water
+    21300004: pc_ability_target_earth
+    21300006: pc_ability_target_air
   externalObjects: {}
-  serializedVersion: 5
+  serializedVersion: 7
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -25,6 +25,8 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
   isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -35,7 +37,7 @@ TextureImporter:
     serializedVersion: 2
     filterMode: 0
     aniso: -1
-    mipBias: -1
+    mipBias: -100
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -97,7 +99,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: pc_hability_target_fire
+      name: pc_ability_target_fire
       rect:
         serializedVersion: 2
         x: 0
@@ -117,7 +119,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pc_hability_target_water
+      name: pc_ability_target_water
       rect:
         serializedVersion: 2
         x: 0
@@ -137,7 +139,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pc_hability_target_earth
+      name: pc_ability_target_earth
       rect:
         serializedVersion: 2
         x: 0
@@ -157,7 +159,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pc_hability_target_air
+      name: pc_ability_target_air
       rect:
         serializedVersion: 2
         x: 0
@@ -185,6 +187,8 @@ TextureImporter:
     edges: []
     weights: []
   spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
