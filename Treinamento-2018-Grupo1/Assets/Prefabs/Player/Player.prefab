@@ -323,7 +323,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocity: 3
-  airAcelerationMultiplier: 0.05
+  airAcelerationMultiplier: 0.025
   jumpHeight: 1.5
   rayMask:
     serializedVersion: 2
