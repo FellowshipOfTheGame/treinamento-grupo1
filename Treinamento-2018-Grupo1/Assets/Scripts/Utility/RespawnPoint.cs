@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿/*using UnityEngine;
 
 //modifica ponto de respawn caso em contato
 [AddComponentMenu("Scripts/Utility/Respawn Point")]
@@ -14,3 +14,4 @@ public class RespawnPoint : MonoBehaviour {
 
     }
 }
+*/

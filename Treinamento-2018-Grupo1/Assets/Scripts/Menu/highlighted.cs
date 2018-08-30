@@ -8,7 +8,7 @@ public class highlighted : MonoBehaviour, ISelectHandler , IPointerEnterHandler{
     public string menuName;
     //modifica pos do menuPause caso de highlighted no botao
     public void OnPointerEnter(PointerEventData eventData){
-        if(menuName == "MenuPause")panell.GetComponent<MenuPause>().mudarPos(valor);
+        if(menuName == "MenuPause")panell.GetComponent<PauseMenu>().mudarPos(valor);
         else if(menuName == "MenuOptions")panell.GetComponent<MenuOptions>().mudarPos(valor);
     }
 

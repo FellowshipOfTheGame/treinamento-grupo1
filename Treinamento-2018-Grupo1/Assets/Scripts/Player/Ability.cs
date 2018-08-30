@@ -2,7 +2,7 @@
 
 // Usado para conter as informações sobre uma determinada habilidade.
 [CreateAssetMenu(fileName = "NewAbility", menuName = "ScriptableObjects/Ability")]
-public class Hability : ScriptableObject {
+public class Ability : ScriptableObject {
 
     // Nome usado para se referir a essa habilidade.
     public string _name = "newAbility";

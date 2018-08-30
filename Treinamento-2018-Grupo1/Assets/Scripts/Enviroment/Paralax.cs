@@ -15,9 +15,21 @@ public class Paralax : MonoBehaviour {
 
     public ParalaxLayer[] layers;
 
+    void Awake() {
+        
+        // Coloca o background dentro da camera para evitar que o background se mova de um jeito estranho.
+        if(GameController.gameController != null)
+            transform.SetParent(Camera.main.transform);
+
+    }
+
     void Update () {
-        // "Move" cada camada em uma velocidade baseada na camera principal.
-        for (int i = 0; i < layers.Length; i++) {
+
+        if (GameController.gameController == null)
+            return;
+
+            // "Move" cada camada em uma velocidade baseada na camera principal.
+            for (int i = 0; i < layers.Length; i++) {
 
             Vector2 layer_pos = layers[i].layerObject.transform.position;
             layer_pos.x = Camera.main.transform.position.x * layers[i].x_multiplier;
