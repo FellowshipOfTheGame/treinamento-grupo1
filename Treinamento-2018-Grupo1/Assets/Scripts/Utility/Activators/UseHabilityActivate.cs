@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
 [AddComponentMenu("Scripts/Utility/Activators/Use Hability Activate")]
@@ -7,6 +9,8 @@ public class UseHabilityActivate : ActivatorBase {
 
     // Nome da habilidade capaz de ativar esse script.
     public string targetHabilty = "none";
+    public float cooldown = 0;
+    private bool pdAtivar = true;
 
     // Guarda se o player está na área em que pode ativar esse script.
     private bool isOnRange = false;
@@ -30,10 +34,23 @@ public class UseHabilityActivate : ActivatorBase {
     void Update() {
         
         // Verifica se o player está dentro da área de ativação e com a habilidade certa.
-        if(isOnRange && Player.player.currentAbility != null && Player.player.currentAbility._name == targetHabilty) {
-            if (Player.player.input.useButton) // Detecta quando o player tenta usar este objeto.
-                ActivateTargets();
+        if(isOnRange ) {
+            if(targetHabilty ==  "none" || (Player.player.currentAbility != null && Player.player.currentAbility._name == targetHabilty)){
+                if (Player.player.input.useButton && pdAtivar){ // Detecta quando o player tenta usar este objeto.
+                    ActivateTargets();
+                   StartCoroutine( comecarCooldown());
+                }
+            }
         }
 
     }
+
+
+    IEnumerator comecarCooldown(){
+        pdAtivar = false;//desativar ate termianr cooldown
+ 		yield return new WaitForSeconds(cooldown);
+        pdAtivar = true;//ativa denovo
+
+	}
+
 }

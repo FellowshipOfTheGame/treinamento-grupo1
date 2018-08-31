@@ -7,11 +7,10 @@ public class OnCollisionActivate : ActivatorBase {
 
     // Se diferente de "none", esse trigger só é ativado por objetos com essa tag.
     public string targetTag = "none";
-
-    private void OnCollisionEnter2D(Collision2D collision) {
-
-        if (targetTag == "none" || collision.gameObject.tag == targetTag)
+    void OnCollisionEnter2D(Collision2D other){
+        if (targetTag == "none" || other.gameObject.tag == targetTag){
             ActivateTargets();
+        }
 
     }
 }

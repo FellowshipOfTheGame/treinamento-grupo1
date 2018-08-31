@@ -6,7 +6,9 @@ using UnityEngine;
 public class BoxMovement : MonoBehaviour {
 
 	public float peso;
-    public GameObject botao;//botao o qual a caixa esta sobre
+
+    [HideInInspector]
+    public GameObject botao = null;//botao o qual a caixa esta sobre
     private List<GameObject> boxs;//caixas imediatamente em cima 
 
     void Start(){
@@ -77,6 +79,7 @@ public class BoxMovement : MonoBehaviour {
 
     //resetando valor de botao de todas as caixas
     public void sairDoContato(){
+        botao.GetComponent<ButtonActivator>().pesoAtual -= peso;
         botao = null;
         for(int i =0;i<boxs.Count;i++){
             boxs[i].GetComponent<BoxMovement>().sairDoContato();
@@ -90,5 +93,6 @@ public class BoxMovement : MonoBehaviour {
             boxs[i].GetComponent<BoxMovement>().entrarEmContato(other);
         }
     }
+
 }
 

@@ -6,11 +6,16 @@ using UnityEngine;
 public class TimerActivator : ActivatorBase {
 
 	public float cooldown;
+	public bool ativarOnstart;
 	void Start () {
-		 StartCoroutine(ativar());
+		if(ativarOnstart)
+			ativar();
 	}
 	
-	IEnumerator ativar(){
+	public void ativar(){
+		StartCoroutine(subrotina());
+	}
+	IEnumerator subrotina(){
 
 		//espera cooldown
  		yield return new WaitForSeconds(cooldown);

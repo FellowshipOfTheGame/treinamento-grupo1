@@ -30,6 +30,9 @@ public class Player : MonoBehaviour {
     [Space(10)]
     public int pixelsPerUnityRate = 64;
 
+    [HideInInspector]
+    public float velY;
+
     // Guarda o input passado atrav�s de um PlayerInput.
     [System.Serializable]
     public class Input {
@@ -187,5 +190,9 @@ public class Player : MonoBehaviour {
 
         GameController.gameController.currentState = GameController.GameState.Dead;
 
+    }
+
+    void LateUpdate(){
+        velY = _rigidbody.velocity.y;
     }
 }

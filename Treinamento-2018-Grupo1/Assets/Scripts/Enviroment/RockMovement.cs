@@ -1,10 +1,16 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 [AddComponentMenu("Scripts/Enviroment/Rock Movement")]
 public class RockMovement : MonoBehaviour {
 
 	public int ativo;//movimentando ou parado
-	public float vel;//velocidade
+	public float velIr;//velocidade para ir
+
+	public float tempoMaximoAr;
+
+	public float velVoltar;//velocidade para voltar
 	private int direcao = 1;
 
 	public Transform pontoFinal;	//pontos  fim do percurso
@@ -13,6 +19,13 @@ public class RockMovement : MonoBehaviour {
 
 	private Vector3 posInicio;//position inicial
 	private Transform trans;//transform da rocha
+
+	public List<ActionBase> acoesEntrandoPosFinal;
+
+	public List<ActionBase> acoesEntrandoPosInicial;
+
+	public List<ActionBase> acoesSaindoPosFinal;
+
 	void Start () {
 		//recebendo os pontos iniciais e finais
 		trans = GetComponent<Transform>();
@@ -24,13 +37,14 @@ public class RockMovement : MonoBehaviour {
 	void FixedUpdate() {
 
 		if(direcao == 1){
-			trans.position = Vector2.MoveTowards(trans.position, posFinal,ativo* vel);
-			if((Vector2.Distance(trans.position,posFinal) <0.1)){//caso chegue no ponto final
-				direcao = 0;
+			trans.position = Vector2.MoveTowards(trans.position, posFinal,ativo* velIr);
+			if((Vector2.Distance(trans.position,posFinal) <0.3)){//caso chegue no ponto final
+				direcao = 2;
+				StartCoroutine(esperarCooldown());
 				chegouPosFinal();
 			}
-		}else{
-			trans.position = Vector2.MoveTowards(trans.position, posInicio,ativo* vel);
+		}else if(direcao == 0){
+			trans.position = Vector2.MoveTowards(trans.position, posInicio,ativo* velVoltar);
 			if((Vector2.Distance(trans.position,posInicio) <0.1)){//caso chegue no ponto inicial
 				direcao = 1;
 				chegouPosInicial();
@@ -40,15 +54,37 @@ public class RockMovement : MonoBehaviour {
 
 	}
 
+	IEnumerator esperarCooldown(){
+		direcao = 2;
+		//espera cooldown
+ 		yield return new WaitForSeconds(tempoMaximoAr);
+		direcao =0;
+	}
+
 	//muda estado atual de ativo
 	public void mudarEst(){
 		if(ativo == 1)ativo = 0;
 		else if(ativo == 0)ativo = 1;
 	}
 
-	//ativa quando chega na posicao final
-	protected virtual void chegouPosFinal(){}
+	protected virtual void chegouPosFinal(){
+		//ativo = 0;
 
-	//ativa quando chega na posicao inicial
-	protected virtual void chegouPosInicial(){}
+		for(int i=0;i< acoesEntrandoPosFinal.Count;i++)
+			acoesEntrandoPosFinal[i].Activate();
+	}
+
+	protected virtual void chegouPosInicial(){
+		//ativo = 0;
+
+		for(int i=0;i< acoesEntrandoPosInicial.Count;i++)
+			acoesEntrandoPosInicial[i].Activate();
+	}
+
+	protected virtual void saindoPosFinal(){
+		//ativo = 0;
+
+		for(int i=0;i< acoesSaindoPosFinal.Count;i++)
+			acoesSaindoPosFinal[i].Activate();
+	}
 }
