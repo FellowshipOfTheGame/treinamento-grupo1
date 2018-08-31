@@ -1,11 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class MenuPause : MonoBehaviour {
+[AddComponentMenu("Scripts/Menu/Pause")]
+public class PauseMenu : MonoBehaviour {
 
-	public static bool pausado = false;
 	public GameObject player;
 	public static int pos = 0;//posicao atual
 
@@ -27,14 +25,18 @@ public class MenuPause : MonoBehaviour {
 	}
 
 	public void Update(){
-		//entrando/saindo do menu
-		if(Input.GetKeyDown(KeyCode.Escape)){
-			if(pausado)
+
+        if (GameController.gameController == null)
+            return;
+
+        //entrando/saindo do menu
+        if (Input.GetKeyDown(KeyCode.Escape)){
+			if(GameController.gameController.currentState == GameController.GameState.Paused)
 				sairMenu();
 			else
 				entrarMenu();
 		}
-		else if(pausado){
+		else if(GameController.gameController.currentState == GameController.GameState.Paused) {
 			//selecionando opções dentro do menu
 			if(Input.GetKeyDown(KeyCode.W)){
 				int novaPos;
@@ -62,14 +64,14 @@ public class MenuPause : MonoBehaviour {
 	}
 
 	public void entrarMenu(){
-		pausado = true;
+        GameController.gameController.currentState = GameController.GameState.Paused;
 		pos = 0;
 		Time.timeScale = 0f;
 		menuPausaUI.SetActive(true);
 		mudarPos(0);
 	}
 	public void sairMenu(){
-		pausado = false;
+        GameController.gameController.currentState = GameController.GameState.Play;
 		Time.timeScale = 1f;
 		menuPausaUI.SetActive(false);
 		mudarPos(0);
@@ -83,12 +85,11 @@ public class MenuPause : MonoBehaviour {
 
 	public void Restart(){
 		sairMenu();
-		player.GetComponent<Player>().Death();
+        GameController.gameController.RestartLevel();
 	}
 	//sair para tel principal
 	public void Exit(){
-		//ainda não há cena para entrar
-		//SceneManager.LoadScene("...");
+		GameController.gameController.QuitToMainMenu();
 	}
 
 	public void mudarPos(int novaPos){

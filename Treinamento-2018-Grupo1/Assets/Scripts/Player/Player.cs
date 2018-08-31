@@ -57,8 +57,8 @@ public class Player : MonoBehaviour {
     // Deve conter todas as habilidades que o player pode usar.
     [Space(10)]
     public string startingAbility = "fire";
-    public List<Hability> habilities;
-    public Hability currentHability = null;
+    public List<Ability> habilities;
+    public Ability currentAbility = null;
 
     // Spawns dos proj�teis do player. Coloca-los começando da direita em sentido horário.
     [Space(10)]
@@ -70,9 +70,6 @@ public class Player : MonoBehaviour {
     // Guarda para que lado o player est� olhando.
     [Space(10)]
     public int facing = 1;
-
-    // Último ponto de respawn do player.
-    public GameObject respawnPoint;
 
     private void Awake () {
 
@@ -135,21 +132,21 @@ public class Player : MonoBehaviour {
             projectileDelay -= Time.deltaTime;
 
 
-        if (input.fireButton & !MenuPause.pausado & !MenuOptions.pausado ) {
+        if (input.fireButton && GameController.gameController.currentState == GameController.GameState.Play) {
 
-            if(currentHability != null && currentHability.type == Hability.Type.Projectile) {
+            if(currentAbility != null && currentAbility.type == Ability.Type.Projectile) {
 
                 if (projectileDelay <= 0) {
                     if(input.verticalAxis > 0) {
-                        Instantiate(currentHability.projectileSettings._object, projectileSpawns[1].position, projectileSpawns[1].rotation);
-                        projectileDelay = currentHability.projectileSettings.delay;
+                        Instantiate(currentAbility.projectileSettings._object, projectileSpawns[1].position, projectileSpawns[1].rotation);
+                        projectileDelay = currentAbility.projectileSettings.delay;
                     } else if (facing == 1) {
-                        Instantiate(currentHability.projectileSettings._object, projectileSpawns[0].position, projectileSpawns[0].rotation);
-                        projectileDelay = currentHability.projectileSettings.delay;
+                        Instantiate(currentAbility.projectileSettings._object, projectileSpawns[0].position, projectileSpawns[0].rotation);
+                        projectileDelay = currentAbility.projectileSettings.delay;
                     }
                     else if (facing == -1) {
-                        Instantiate(currentHability.projectileSettings._object, projectileSpawns[2].position, projectileSpawns[2].rotation);
-                        projectileDelay = currentHability.projectileSettings.delay;
+                        Instantiate(currentAbility.projectileSettings._object, projectileSpawns[2].position, projectileSpawns[2].rotation);
+                        projectileDelay = currentAbility.projectileSettings.delay;
                     }
                 }
 
@@ -170,28 +167,25 @@ public class Player : MonoBehaviour {
         for(int i = 0; i < habilities.Count; i++) { 
             if(habilities[i]._name == hability) { // Encontra na lista a habilidade desejada.
 
-                currentHability = habilities[i];
+                currentAbility = habilities[i];
 
                 // (N�O IMPLEMENTADO) <<<<------------ Resto das coisas que dev�m acontecer
 
-                effects.habilityEffect.sprite = currentHability.displayEffect;
+                effects.habilityEffect.sprite = currentAbility.displayEffect;
 
                 return;
             }
         }
 
         // Mostra um erro caso a habilidade seja inv�lida,
-        Debug.LogError("(Player) Hability <+" + hability + "+> is not valid!");
+        Debug.LogError("(Player) Hability <" + hability + "> is not valid!");
 
     }
 
     //Respawna o player
     public void Death() {
 
-        RespawnPoint respawn = respawnPoint.GetComponent<RespawnPoint>();
+        GameController.gameController.currentState = GameController.GameState.Dead;
 
-        SetAbility(respawn.hability);
-        GetComponent<Transform>().position = respawn.respawnPosition.position;
-        GetComponent<Rigidbody2D>().velocity = new Vector2(0,0);
     }
 }

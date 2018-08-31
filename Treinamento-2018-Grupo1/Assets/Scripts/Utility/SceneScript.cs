@@ -8,6 +8,8 @@ public class SceneScript : MonoBehaviour {
     // Guarda uma referência estática a esse script.
     public static SceneScript currentSceneScript;
 
+    public Transform playerSpawn;
+
     [System.Serializable]
     public struct CameraBoundary {
 

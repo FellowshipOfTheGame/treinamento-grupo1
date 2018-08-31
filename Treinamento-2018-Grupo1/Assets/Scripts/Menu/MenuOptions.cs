@@ -1,11 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class MenuOptions : MonoBehaviour {
 
-	public static bool pausado = false;
 	public scrollBarOptions[] scrolls;
 	public GameObject player;
 	public GameObject menuOptionsUI;
@@ -16,8 +13,11 @@ public class MenuOptions : MonoBehaviour {
 
 
 	public void Update(){
-		
-		if(pausado){
+
+        if (GameController.gameController == null)
+            return;
+
+		if(GameController.gameController.currentState == GameController.GameState.Paused) {
 			//Saindo do menu
 			if(Input.GetKeyDown(KeyCode.Escape))
 				sairMenu();
@@ -52,18 +52,18 @@ public class MenuOptions : MonoBehaviour {
 	}
 
 	public void entrarMenu(){
-		pausado = true;
+        GameController.gameController.currentState = GameController.GameState.Paused;
 		pos = 0;
 		Time.timeScale = 0f;
 		menuOptionsUI.SetActive(true);
 		mudarPos(0);
 	}
 	public void sairMenu(){
-		pausado = false;
+        GameController.gameController.currentState = GameController.GameState.Play;
 		Time.timeScale = 1f;
 		menuOptionsUI.SetActive(false);
 		mudarPos(0);
-		FindObjectsOfType<MenuPause>()[0].GetComponent<MenuPause>().entrarMenu();
+		FindObjectsOfType<PauseMenu>()[0].GetComponent<PauseMenu>().entrarMenu();
 	}
 
 	public void mudarVolumeSfx(){
