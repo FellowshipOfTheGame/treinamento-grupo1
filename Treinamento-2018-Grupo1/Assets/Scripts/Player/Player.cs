@@ -76,6 +76,8 @@ public class Player : MonoBehaviour {
 
     private void Awake () {
 
+        DontDestroyOnLoad(gameObject);
+
         // Pega uma refer�ncia ao player no iníco e da um erro caso exista mais de um player.
         if (player == null)
             player = this;

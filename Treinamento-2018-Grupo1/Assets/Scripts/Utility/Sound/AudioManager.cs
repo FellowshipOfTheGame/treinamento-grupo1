@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.Audio;
 
+[AddComponentMenu("Scripts/Utility/Audio Manager")]
 public class AudioManager : MonoBehaviour {
 
 	public Sound[] sfxs;

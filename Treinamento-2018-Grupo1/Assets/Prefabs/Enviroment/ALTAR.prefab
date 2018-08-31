@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4482359206385388}
   - component: {fileID: 212480713025704226}
   m_Layer: 0
-  m_Name: ALTAR
+  m_Name: Altar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

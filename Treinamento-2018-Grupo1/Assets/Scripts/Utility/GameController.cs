@@ -28,12 +28,20 @@ public class GameController : MonoBehaviour {
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
 
-        if (scene.name.Contains("Level_") && Player.player == null) {
+        if (scene.name.Contains("Level_")) {
 
-            GameObject new_player = Instantiate(player, SceneScript.currentSceneScript.playerSpawn.position, SceneScript.currentSceneScript.playerSpawn.rotation);
-            CameraScript cam_script = Camera.main.GetComponent<CameraScript>();
+            if (Player.player == null) {
 
-            cam_script.UpdateCameraScript(new_player.transform);
+                GameObject new_player = Instantiate(player, SceneScript.currentSceneScript.playerSpawn.position, SceneScript.currentSceneScript.playerSpawn.rotation);
+                CameraScript cam_script = Camera.main.GetComponent<CameraScript>();
+                cam_script.UpdateCameraScript(new_player.transform);
+
+            } else {
+                Player.player.transform.position = SceneScript.currentSceneScript.playerSpawn.position;
+                Player.player._rigidbody.velocity = Vector3.zero;
+            }
+
+            
         }
 
     }
@@ -48,7 +56,6 @@ public class GameController : MonoBehaviour {
         Time.timeScale = 1;
 
         gameController = null;
-        Destroy(Player.player.gameObject);
         SceneManager.LoadScene("MainMenu");
         Destroy(gameObject);
 
