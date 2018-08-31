@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[AddComponentMenu("Scripts/Utility/Activators/On Trigger Activate")]
+[AddComponentMenu("Scripts/Utility/Activators/Start Activate")]
 //ativa acoes quando starta
 public class StartActivator : ActivatorBase {
 

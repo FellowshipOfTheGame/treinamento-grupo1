@@ -180,7 +180,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Resolu\xE7\xE3o:"
+  m_Text: 'Resolution:'
 --- !u!222 &30546173
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -675,7 +675,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Sair
+  m_Text: Exit
 --- !u!222 &258958792
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1293,7 +1293,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Cr\xE9ditos necess\xE1rios."
+  m_Text: Credits go here!
 --- !u!222 &634727201
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1615,7 +1615,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Cr\xE9ditos"
+  m_Text: Credits
 --- !u!222 &773752681
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2142,7 +2142,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Voltar
+  m_Text: Back
 --- !u!222 &1022249162
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2219,7 +2219,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Carregando...
+  m_Text: Loading...
 --- !u!222 &1042737903
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3480,7 +3480,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\xC1udio:"
+  m_Text: 'Audio:'
 --- !u!222 &1470405395
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3751,7 +3751,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Op\xE7\xF5es"
+  m_Text: Options
 --- !u!222 &1508092085
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4138,7 +4138,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Voltar
+  m_Text: Back
 --- !u!222 &1642199761
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4462,7 +4462,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Tela-cheia
+  m_Text: Fullscreen
 --- !u!222 &1778134067
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4728,7 +4728,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Jogar
+  m_Text: Play
 --- !u!222 &1829873770
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4817,7 +4817,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Volume Principal:'
+  m_Text: 'Master Volume:'
 --- !u!222 &1836752834
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4961,7 +4961,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Volume da M\xFAsica: (TODO)"
+  m_Text: 'Music Volume (TODO):'
 --- !u!222 &1890168520
 CanvasRenderer:
   m_ObjectHideFlags: 0

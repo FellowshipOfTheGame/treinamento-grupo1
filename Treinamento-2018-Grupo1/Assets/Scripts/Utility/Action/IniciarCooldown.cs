@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-
+[AddComponentMenu("Scripts/Utility/Action/Start Cooldown")]
 public class IniciarCooldown : ActionBase {
 
     // Lista de objetos a serem destruídos.

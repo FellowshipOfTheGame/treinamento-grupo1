@@ -1,8 +1,8 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 //Ativador por timer
+[AddComponentMenu("Scripts/Utility/Activators/Button")]
 public class TimerActivator : ActivatorBase {
 
 	public float cooldown;

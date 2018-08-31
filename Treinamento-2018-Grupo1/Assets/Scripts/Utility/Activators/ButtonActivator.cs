@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
-
+[AddComponentMenu("Scripts/Utility/Button Activator")]
 public class ButtonActivator : ActivatorBase {
 
 	public float pesoNecessario;//peso necessario para ativar botao

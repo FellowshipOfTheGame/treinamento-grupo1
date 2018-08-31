@@ -29,6 +29,9 @@ public class CameraScript : MonoBehaviour {
 
     private void Update () {
 
+        if (seekTarget == null)
+            return;
+
         // Faz com que a camera siga o player dentro dos limites da fase.
         float camX = seekTarget.position.x;
         if (boundary.limitX)
