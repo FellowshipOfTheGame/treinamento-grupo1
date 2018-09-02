@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212624811920629894}
   - component: {fileID: 61003371484495932}
   - component: {fileID: 114832720123876772}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: IronDoorColision
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4248895244741258}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: pontoFinal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52,7 +52,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4373075070954228}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: IronDoor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,7 +178,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: cc9da4bd96fd2ac4e96993c62e86a6ea, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

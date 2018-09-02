@@ -71,10 +71,17 @@ public class PauseMenu : MonoBehaviour {
 		mudarPos(0);
 	}
 	public void sairMenu(){
+		menuPausaUI.SetActive(false);
         GameController.gameController.currentState = GameController.GameState.Play;
 		Time.timeScale = 1f;
-		menuPausaUI.SetActive(false);
+
 		mudarPos(0);
+		for(int i=0;i<4;i++){
+		ColorBlock cb = botoes[i].GetComponent<Button>().colors;
+		cb.normalColor = corNormal;
+		cb.highlightedColor = corNormal;
+		botoes[i].GetComponent<Button>().colors = cb;
+		}
 	}
 
 	//entrar no menu de opcoes
@@ -95,12 +102,14 @@ public class PauseMenu : MonoBehaviour {
 	public void mudarPos(int novaPos){
 		ColorBlock cb = botoes[pos].GetComponent<Button>().colors;
 		cb.normalColor = corNormal;
+		cb.highlightedColor = corNormal;
 		botoes[pos].GetComponent<Button>().colors = cb;
 
 		pos = novaPos;
 
 		cb = botoes[pos].GetComponent<Button>().colors;
 		cb.normalColor = corHighlighted;
+		cb.highlightedColor = corHighlighted;
 		botoes[pos].GetComponent<Button>().colors = cb;
 	}
 }

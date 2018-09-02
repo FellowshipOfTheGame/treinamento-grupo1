@@ -3,7 +3,7 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
 [AddComponentMenu("Scripts/Utility/UI/Highlighted")]
-public class Highlighted : MonoBehaviour, ISelectHandler , IPointerEnterHandler{
+public class highlighted : MonoBehaviour, ISelectHandler , IPointerEnterHandler{
     public int valor;
     public GameObject panell; 
     public string menuName;

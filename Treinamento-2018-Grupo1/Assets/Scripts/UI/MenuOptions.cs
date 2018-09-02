@@ -37,7 +37,7 @@ public class MenuOptions : MonoBehaviour {
 				if(scrolls[pos].scroll.GetComponent<Scrollbar>().value < 0f)scrolls[pos].scroll.GetComponent<Scrollbar>().value = 0f;
 
 			}
-			else if(Input.GetKeyDown(KeyCode.S)){
+			else if(Input.GetKeyDown(KeyCode.D)){
 				scrolls[pos].scroll.GetComponent<Scrollbar>().value += 0.15f;
 				if(scrolls[pos].scroll.GetComponent<Scrollbar>().value > 1f)scrolls[pos].scroll.GetComponent<Scrollbar>().value = 1f;
 			}
@@ -56,6 +56,10 @@ public class MenuOptions : MonoBehaviour {
         GameController.gameController.currentState = GameController.GameState.Paused;
 		pos = 0;
 		Time.timeScale = 0f;
+		ColorBlock cb = scrolls[2].button.GetComponent<Button>().colors;
+		cb.normalColor = corNormal;
+		cb.highlightedColor= corNormal;
+		scrolls[2].button.GetComponent<Button>().colors = cb;
 		menuOptionsUI.SetActive(true);
 		mudarPos(0);
 	}
@@ -88,11 +92,13 @@ public class MenuOptions : MonoBehaviour {
 	public void mudarPos(int novaPos){
 		ColorBlock cb = scrolls[pos].button.GetComponent<Button>().colors;
 		cb.normalColor = corNormal;
+		cb.highlightedColor= corNormal;
 		scrolls[pos].button.GetComponent<Button>().colors = cb;
 		pos = novaPos;
 
 		cb = scrolls[pos].button.GetComponent<Button>().colors;
 		cb.normalColor = corHighlighted;
+		cb.highlightedColor = corHighlighted;
 		scrolls[pos].button.GetComponent<Button>().colors = cb;
 	}
 

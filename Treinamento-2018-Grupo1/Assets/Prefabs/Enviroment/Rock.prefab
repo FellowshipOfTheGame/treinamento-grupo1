@@ -158,7 +158,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ativo: 0
-  velIr: 0
+  velIr: 0.01
   tempoMaximoAr: 0
   velVoltar: 0
   pontoFinal: {fileID: 4228458900155802}

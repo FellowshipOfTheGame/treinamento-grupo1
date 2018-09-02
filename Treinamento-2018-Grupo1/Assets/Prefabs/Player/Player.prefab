@@ -341,6 +341,7 @@ MonoBehaviour:
   _rigidbody: {fileID: 50447676289528406}
   _collider: {fileID: 70286393104603948}
   pixelsPerUnityRate: 64
+  velY: 0
   input:
     horizontalAxis: 0
     verticalAxis: 0
@@ -369,6 +370,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcc7b19eb2574f041a3a448ab5f0aa96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 114747814657226192}
   velocity: 3
   airAcelerationMultiplier: 0.025
   jumpHeight: 1.5

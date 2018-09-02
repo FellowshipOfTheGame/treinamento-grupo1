@@ -9,7 +9,7 @@
 [AddComponentMenu("Scripts/Player/Player Movement")]
 public class PlayerMovement : MonoBehaviour {
 
-    private Player target; // Player que recebe o input desse script.
+    public Player target; // Player que recebe o input desse script.
     private Rigidbody2D _rigidbody; // Rigidbody do target.
     private CapsuleCollider2D _collider; // Collider do target.
 
@@ -25,7 +25,7 @@ public class PlayerMovement : MonoBehaviour {
     void Start () {
 
         // Pega as referências necessárias ao player.
-        target = Player.player;
+        //target = Player.player;
         _rigidbody = target._rigidbody;
         _collider = target._collider;
 
@@ -91,8 +91,10 @@ public class PlayerMovement : MonoBehaviour {
         if (grounded) {
             bool crushed = Physics2D.Raycast(transform.position + new Vector3(_collider.offset.x, _collider.offset.y, 0) + new Vector3(0, _collider.size.y / 2, 0), Vector2.up, _collider.size.y * 0.03f, rayMask);
             crushed &= Physics2D.Raycast(transform.position + new Vector3(_collider.offset.x, _collider.offset.y, 0) + new Vector3(0, _collider.size.y / 2, 0), -Vector2.up, _collider.size.y * 0.03f, rayMask);
-            if (crushed)
-                gameObject.GetComponent<Player>().Death();
+            if (crushed){
+
+                GameController.gameController.RestartLevel();
+            }
 
             // DEBUG
 #if UNITY_EDITOR

@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 61012857509392370}
   - component: {fileID: 114518945614561732}
   - component: {fileID: 114693569901260180}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Rope
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,8 +36,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1168811870738768}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 25.078186, y: 16.02, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 24.774, y: 16.01895, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -82,6 +82,7 @@ MonoBehaviour:
   maxUses: 1
   targets:
   - {fileID: 114693569901260180}
+  - {fileID: 0}
   projetil: {fileID: 0}
 --- !u!114 &114693569901260180
 MonoBehaviour:
