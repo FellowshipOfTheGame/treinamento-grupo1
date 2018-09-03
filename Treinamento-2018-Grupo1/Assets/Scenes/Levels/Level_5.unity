@@ -4328,6 +4328,48 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d219e695c932a84a8a534941ae21063, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1001 &1010418203
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4239323093973206, guid: 683519663cdea224c8cf7062f5951c95, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 38.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 4239323093973206, guid: 683519663cdea224c8cf7062f5951c95, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 20.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 4239323093973206, guid: 683519663cdea224c8cf7062f5951c95, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4239323093973206, guid: 683519663cdea224c8cf7062f5951c95, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4239323093973206, guid: 683519663cdea224c8cf7062f5951c95, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4239323093973206, guid: 683519663cdea224c8cf7062f5951c95, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4239323093973206, guid: 683519663cdea224c8cf7062f5951c95, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4239323093973206, guid: 683519663cdea224c8cf7062f5951c95, type: 2}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 683519663cdea224c8cf7062f5951c95, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!4 &1028963510 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4229924263498758, guid: 8d219e695c932a84a8a534941ae21063,
@@ -4380,7 +4422,7 @@ Prefab:
     - target: {fileID: 114430003824604082, guid: 0faab40417a1c0f4d9deecd9685a6f5b,
         type: 2}
       propertyPath: nextSceneName
-      value: Level_final
+      value: Level_transition
       objectReference: {fileID: 0}
     - target: {fileID: 114430003824604082, guid: 0faab40417a1c0f4d9deecd9685a6f5b,
         type: 2}

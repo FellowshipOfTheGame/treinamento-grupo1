@@ -160,7 +160,7 @@ Prefab:
     - target: {fileID: 114430003824604082, guid: 0faab40417a1c0f4d9deecd9685a6f5b,
         type: 2}
       propertyPath: cameraBoundary.maxX
-      value: 4.5
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 114430003824604082, guid: 0faab40417a1c0f4d9deecd9685a6f5b,
         type: 2}
@@ -172,9 +172,19 @@ Prefab:
       propertyPath: nextSceneName
       value: Level_2
       objectReference: {fileID: 0}
+    - target: {fileID: 114430003824604082, guid: 0faab40417a1c0f4d9deecd9685a6f5b,
+        type: 2}
+      propertyPath: cameraBoundary.limitX
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0faab40417a1c0f4d9deecd9685a6f5b, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &367189094 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1715060815652346, guid: b3dd78553269d674292146c6716ec4da,
+    type: 2}
+  m_PrefabInternal: {fileID: 867018103}
 --- !u!1001 &724637295
 Prefab:
   m_ObjectHideFlags: 0
@@ -298,9 +308,74 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114235448085144500, guid: b3dd78553269d674292146c6716ec4da,
+        type: 2}
+      propertyPath: panell
+      value: 
+      objectReference: {fileID: 367189094}
+    - target: {fileID: 114235448085144500, guid: b3dd78553269d674292146c6716ec4da,
+        type: 2}
+      propertyPath: menuName
+      value: MenuPause
+      objectReference: {fileID: 0}
+    - target: {fileID: 114235448085144500, guid: b3dd78553269d674292146c6716ec4da,
+        type: 2}
+      propertyPath: valor
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114782067916883658, guid: b3dd78553269d674292146c6716ec4da,
+        type: 2}
+      propertyPath: panell
+      value: 
+      objectReference: {fileID: 367189094}
+    - target: {fileID: 114782067916883658, guid: b3dd78553269d674292146c6716ec4da,
+        type: 2}
+      propertyPath: menuName
+      value: MenuPause
+      objectReference: {fileID: 0}
+    - target: {fileID: 114782067916883658, guid: b3dd78553269d674292146c6716ec4da,
+        type: 2}
+      propertyPath: valor
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114074975668746196, guid: b3dd78553269d674292146c6716ec4da,
+        type: 2}
+      propertyPath: panell
+      value: 
+      objectReference: {fileID: 367189094}
+    - target: {fileID: 114074975668746196, guid: b3dd78553269d674292146c6716ec4da,
+        type: 2}
+      propertyPath: menuName
+      value: MenuPause
+      objectReference: {fileID: 0}
+    - target: {fileID: 114074975668746196, guid: b3dd78553269d674292146c6716ec4da,
+        type: 2}
+      propertyPath: valor
+      value: 3
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114005270492350354, guid: b3dd78553269d674292146c6716ec4da, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: b3dd78553269d674292146c6716ec4da, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &880538030 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1038786110151702, guid: b3dd78553269d674292146c6716ec4da,
+    type: 2}
+  m_PrefabInternal: {fileID: 867018103}
+--- !u!114 &880538035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 880538030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393a6eec8d1168c4f92269ddcfe5ed98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  valor: 0
+  panell: {fileID: 1425635075}
+  menuName: MenuPause
 --- !u!1001 &1180967070
 Prefab:
   m_ObjectHideFlags: 0
@@ -413,3 +488,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1425635075 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1554162328119248, guid: b3dd78553269d674292146c6716ec4da,
+    type: 2}
+  m_PrefabInternal: {fileID: 867018103}
