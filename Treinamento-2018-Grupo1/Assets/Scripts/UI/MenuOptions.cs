@@ -18,7 +18,7 @@ public class MenuOptions : MonoBehaviour {
         if (GameController.gameController == null)
             return;
 
-		if(GameController.gameController.currentState == GameController.GameState.Paused) {
+		if(GameController.gameController.currentState == GameController.GameState.Paused ) {
 			//Saindo do menu
 			if(Input.GetKeyDown(KeyCode.Escape))
 				sairMenu();
@@ -49,6 +49,7 @@ public class MenuOptions : MonoBehaviour {
 				scrolls[2].scroll.GetComponent<Scrollbar>().value = scrolls[0].scroll.GetComponent<Scrollbar>().value;
 			
 		}
+
 
 	}
 

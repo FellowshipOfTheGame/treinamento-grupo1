@@ -8,6 +8,8 @@ using System.Collections.Generic;
 // Controla o player.
 public class Player : MonoBehaviour {
 
+    [HideInInspector]
+    public bool movimentacaoAtiva = true;
     // Singleton para o player.
     public static Player player = null;
 
@@ -117,17 +119,18 @@ public class Player : MonoBehaviour {
 
     private void Update () {
 
-        if (Mathf.Abs(input.horizontalAxis) != 0)
-            _animator.SetBool("Walking", true);       
-        else
-            _animator.SetBool("Walking", false);
+        if(movimentacaoAtiva){
+            if (Mathf.Abs(input.horizontalAxis) != 0)
+                _animator.SetBool("Walking", true);       
+            else
+                _animator.SetBool("Walking", false);
 
+            if (input.horizontalAxis > 0)
+                facing = 1;
+            else if (input.horizontalAxis < 0)
+                facing = -1;
+        }
 
-        if (input.horizontalAxis > 0)
-            facing = 1;
-        else if (input.horizontalAxis < 0)
-            facing = -1;
-             
         if (_movement.grounded)
             _animator.SetBool("InAir", false);
         else
@@ -136,27 +139,28 @@ public class Player : MonoBehaviour {
         if(projectileDelay > 0)
             projectileDelay -= Time.deltaTime;
 
+        if(movimentacaoAtiva){
+            if (input.fireButton && GameController.gameController.currentState == GameController.GameState.Play) {
 
-        if (input.fireButton && GameController.gameController.currentState == GameController.GameState.Play) {
+                if(currentAbility != null && currentAbility.type == Ability.Type.Projectile) {
 
-            if(currentAbility != null && currentAbility.type == Ability.Type.Projectile) {
-
-                if (projectileDelay <= 0) {
-                    if(input.verticalAxis > 0) {
-                        Instantiate(currentAbility.projectileSettings._object, projectileSpawns[1].position, projectileSpawns[1].rotation);
-                        projectileDelay = currentAbility.projectileSettings.delay;
-                    } else if (facing == 1) {
-                        Instantiate(currentAbility.projectileSettings._object, projectileSpawns[0].position, projectileSpawns[0].rotation);
-                        projectileDelay = currentAbility.projectileSettings.delay;
+                    if (projectileDelay <= 0) {
+                        if(input.verticalAxis > 0) {
+                            Instantiate(currentAbility.projectileSettings._object, projectileSpawns[1].position, projectileSpawns[1].rotation);
+                            projectileDelay = currentAbility.projectileSettings.delay;
+                        } else if (facing == 1) {
+                            Instantiate(currentAbility.projectileSettings._object, projectileSpawns[0].position, projectileSpawns[0].rotation);
+                            projectileDelay = currentAbility.projectileSettings.delay;
+                        }
+                        else if (facing == -1) {
+                            Instantiate(currentAbility.projectileSettings._object, projectileSpawns[2].position, projectileSpawns[2].rotation);
+                            projectileDelay = currentAbility.projectileSettings.delay;
+                        }
                     }
-                    else if (facing == -1) {
-                        Instantiate(currentAbility.projectileSettings._object, projectileSpawns[2].position, projectileSpawns[2].rotation);
-                        projectileDelay = currentAbility.projectileSettings.delay;
-                    }
-                }
+
+               }
 
             }
-
         }
 
         if (facing == -1)
@@ -197,4 +201,6 @@ public class Player : MonoBehaviour {
     void LateUpdate(){
         velY = _rigidbody.velocity.y;
     }
+
+
 }
