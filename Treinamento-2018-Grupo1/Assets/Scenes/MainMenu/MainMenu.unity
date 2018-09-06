@@ -222,6 +222,66 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &52605339
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 52605341}
+  - component: {fileID: 52605340}
+  - component: {fileID: 52605342}
+  m_Layer: 0
+  m_Name: startActivator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &52605340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 52605339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b457746e0af01984e815bdd0f9a24312, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxUses: 1
+  secondaryActivations: []
+  sons:
+  - nome: bukidami
+    sfx: 0
+--- !u!4 &52605341
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 52605339}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 7.4674997, y: -6.225373, z: -0.06433721}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &52605342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 52605339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22674a86b50f6c44fb3342fb8541fad4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxUses: 1
+  targets:
+  - {fileID: 52605340}
 --- !u!1 &88018640
 GameObject:
   m_ObjectHideFlags: 0
@@ -4584,6 +4644,80 @@ Transform:
   - {fileID: 1091067026}
   m_Father: {fileID: 1305347855}
   m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1802332544
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1802332546}
+  - component: {fileID: 1802332545}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1802332545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1802332544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6d489f9f2663e94db3b4d902200c5d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sfxs:
+  - name: poderFogo
+    vol: 1
+    clip: {fileID: 8300000, guid: 0424873d6a2abb84e86ff0f59f3e5bc7, type: 3}
+    source: {fileID: 0}
+    loop: 0
+  - name: pedraCaindo
+    vol: 1
+    clip: {fileID: 8300000, guid: 808e10681d15ec3459f29641d45db448, type: 3}
+    source: {fileID: 0}
+    loop: 0
+  - name: subida
+    vol: 1
+    clip: {fileID: 8300000, guid: c9fef7eb2217bbc43addb2ef74f0c084, type: 3}
+    source: {fileID: 0}
+    loop: 0
+  - name: metalDoor
+    vol: 1
+    clip: {fileID: 8300000, guid: 3004b149b58059d4da79113c750bc77a, type: 3}
+    source: {fileID: 0}
+    loop: 0
+  - name: metalCrashing
+    vol: 1
+    clip: {fileID: 8300000, guid: 03cf0154063b70e47a49aa22c029be9d, type: 3}
+    source: {fileID: 0}
+    loop: 0
+  musics:
+  - name: bukidami
+    vol: 1
+    clip: {fileID: 8300000, guid: daaf552022c5a73479c68983efd66f21, type: 3}
+    source: {fileID: 0}
+    loop: 1
+  volumesfx: 1
+  volumeMusic: 1
+--- !u!4 &1802332546
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1802332544}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 7.4674997, y: -6.225373, z: -0.06433721}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1809364164
 GameObject:

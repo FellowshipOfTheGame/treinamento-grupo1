@@ -18,7 +18,8 @@ public class AudioManager : MonoBehaviour {
 		else{
 			Destroy(gameObject);
 			return;
-		} 
+		}
+		DontDestroyOnLoad(gameObject);
 
 		foreach(Sound s in sfxs){
 			if(s.source == null)s.source = gameObject.AddComponent<AudioSource>();

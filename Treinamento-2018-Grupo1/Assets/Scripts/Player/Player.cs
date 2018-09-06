@@ -8,6 +8,7 @@ using System.Collections.Generic;
 // Controla o player.
 public class Player : MonoBehaviour {
 
+    public AudioManager audioo;
     [HideInInspector]
     public bool movimentacaoAtiva = true;
     // Singleton para o player.
@@ -76,6 +77,10 @@ public class Player : MonoBehaviour {
     [Space(10)]
     public int facing = 1;
 
+    private void Start(){
+        AudioManager[] aux = FindObjectsOfType<AudioManager>();
+        audioo =  aux[aux.Length-1].GetComponent<AudioManager>();
+    }
     private void Awake () {
 
         DontDestroyOnLoad(gameObject);
@@ -145,6 +150,7 @@ public class Player : MonoBehaviour {
                 if(currentAbility != null && currentAbility.type == Ability.Type.Projectile) {
 
                     if (projectileDelay <= 0) {
+                        audioo.play("poderFogo",true);
                         if(input.verticalAxis > 0) {
                             Instantiate(currentAbility.projectileSettings._object, projectileSpawns[1].position, projectileSpawns[1].rotation);
                             projectileDelay = currentAbility.projectileSettings.delay;
