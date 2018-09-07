@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // Modifica valor de simulated do rigidbody2d
-[AddComponentMenu("Scripts/Utility/Actions/Destroy")]
+[AddComponentMenu("Scripts/Utility/Actions/Change Gravity")]
 public class ChangeGravity : ActionBase {
 
 

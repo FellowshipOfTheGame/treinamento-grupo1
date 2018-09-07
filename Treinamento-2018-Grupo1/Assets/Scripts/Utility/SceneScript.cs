@@ -23,6 +23,9 @@ public class SceneScript : MonoBehaviour {
 
     } public CameraBoundary cameraBoundary; // Limites nos quais a camera dessa cena tem que ficar no eixo-x.
 
+    // Faz com qu eo player comece sem uma habilidade.
+    public bool noAbility = false;
+
     // Nome da cena seguinte á atual.
     public string nextSceneName;
 
@@ -36,7 +39,7 @@ public class SceneScript : MonoBehaviour {
     // Carrega a próxima cena.
     public void NextScene () {
 
-        SceneManager.LoadScene(nextSceneName);
+        GameController.gameController.LoadScene(nextSceneName);
 
     }
 }

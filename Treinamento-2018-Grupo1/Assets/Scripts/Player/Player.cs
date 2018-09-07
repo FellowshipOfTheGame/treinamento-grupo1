@@ -35,7 +35,7 @@ public class Player : MonoBehaviour {
 
     // Guarda o input passado atrav�s de um PlayerInput.
     [System.Serializable]
-    public class Input {
+    public class UserInput {
 
         public float horizontalAxis = 0.0f;
         public float verticalAxis = 0.0f;
@@ -45,7 +45,7 @@ public class Player : MonoBehaviour {
 
     }
     [Space(10)]
-    public Input input;
+    public UserInput input;
 
     // Guarda os efeitos visuais produzidos pelo player..
     [System.Serializable]
@@ -68,7 +68,7 @@ public class Player : MonoBehaviour {
     public Transform[] projectileSpawns;
 
     // Usado para contar o delay entre disparo de projéteis.
-    private float projectileDelay = 0;
+    private float abilityDelay = 0;
 
     // Guarda para que lado o player est� olhando.
     [Space(10)]
@@ -85,8 +85,10 @@ public class Player : MonoBehaviour {
             Debug.LogError("(Player) More than one player found! There should only be a single instance of the player script at any given time!");
 
         // Força um poder inicial o player (none = sem poder inicial).
-        if (startingAbility != "none")
+        if (startingAbility != "none" && !SceneScript.currentSceneScript.noAbility) {
             SetAbility(startingAbility);
+            effects.habilityEffect.enabled = true;
+        }
 
         /*
         // Ajusta a camera para o tamanho apropriado baseado na resolução.
@@ -117,46 +119,68 @@ public class Player : MonoBehaviour {
 
     private void Update () {
 
+        if (GameController.gameController == null)
+            return;
+
+
+        // Toca a animação de andar.
         if (Mathf.Abs(input.horizontalAxis) != 0)
             _animator.SetBool("Walking", true);       
         else
             _animator.SetBool("Walking", false);
-
-
-        if (input.horizontalAxis > 0)
-            facing = 1;
-        else if (input.horizontalAxis < 0)
-            facing = -1;
-             
+        
+        // Toca a animação de estar no ar.
         if (_movement.grounded)
             _animator.SetBool("InAir", false);
         else
             _animator.SetBool("InAir", true);
 
-        if(projectileDelay > 0)
-            projectileDelay -= Time.deltaTime;
+        // Controla o delay entre o uso de abilidades.
+        if(abilityDelay > 0)
+            abilityDelay -= Time.deltaTime;
 
 
-        if (input.fireButton && GameController.gameController.currentState == GameController.GameState.Play) {
+        if (GameController.gameController.currentState == GameController.GameState.Play) {
 
-            if(currentAbility != null && currentAbility.type == Ability.Type.Projectile) {
+            // Pausa o jogo.
+            if (Input.GetButtonDown("Cancel"))
+                GameController.gameController.PauseGame();
 
-                if (projectileDelay <= 0) {
-                    if(input.verticalAxis > 0) {
-                        Instantiate(currentAbility.projectileSettings._object, projectileSpawns[1].position, projectileSpawns[1].rotation);
-                        projectileDelay = currentAbility.projectileSettings.delay;
-                    } else if (facing == 1) {
-                        Instantiate(currentAbility.projectileSettings._object, projectileSpawns[0].position, projectileSpawns[0].rotation);
-                        projectileDelay = currentAbility.projectileSettings.delay;
+
+            // Controla para que lado o player está olhando.
+            if (input.horizontalAxis > 0)
+                facing = 1;
+            else if (input.horizontalAxis < 0)
+                facing = -1;
+
+            // Faz o player usar habilidades.
+            if (input.fireButton) {
+
+                // Faz o player disparar projéteis.
+                if (currentAbility != null && currentAbility.type == Ability.Type.Projectile) {
+
+                    if (abilityDelay <= 0) {
+                        if (input.verticalAxis > 0) {
+                            Instantiate(currentAbility.projectileSettings._object, projectileSpawns[1].position, projectileSpawns[1].rotation);
+                            abilityDelay = currentAbility.projectileSettings.delay;
+                        }
+                        else if (facing == 1) {
+                            Instantiate(currentAbility.projectileSettings._object, projectileSpawns[0].position, projectileSpawns[0].rotation);
+                            abilityDelay = currentAbility.projectileSettings.delay;
+                        }
+                        else if (facing == -1) {
+                            Instantiate(currentAbility.projectileSettings._object, projectileSpawns[2].position, projectileSpawns[2].rotation);
+                            abilityDelay = currentAbility.projectileSettings.delay;
+                        }
                     }
-                    else if (facing == -1) {
-                        Instantiate(currentAbility.projectileSettings._object, projectileSpawns[2].position, projectileSpawns[2].rotation);
-                        projectileDelay = currentAbility.projectileSettings.delay;
-                    }
+
                 }
-
             }
 
+        } else if (GameController.gameController.currentState == GameController.GameState.Paused) {
+            // Despausa o jogo.
+            if (Input.GetButtonDown("Cancel"))
+                GameController.gameController.UnpauseGame();
         }
 
         if (facing == -1)
@@ -168,13 +192,15 @@ public class Player : MonoBehaviour {
 
     // Muda a habilidade do player.
     public void SetAbility(string hability) {
-        
+
         for(int i = 0; i < habilities.Count; i++) { 
             if(habilities[i]._name == hability) { // Encontra na lista a habilidade desejada.
 
                 currentAbility = habilities[i];
 
-                // (N�O IMPLEMENTADO) <<<<------------ Resto das coisas que dev�m acontecer
+                // Mostra o efeito da habilidade.
+                if (hability != "none")
+                    effects.habilityEffect.enabled = true;
 
                 effects.habilityEffect.sprite = currentAbility.displayEffect;
 
@@ -185,12 +211,16 @@ public class Player : MonoBehaviour {
         // Mostra um erro caso a habilidade seja inv�lida,
         Debug.LogError("(Player) Hability <" + hability + "> is not valid!");
 
+        
+
     }
 
     //Respawna o player
     public void Death() {
 
         GameController.gameController.currentState = GameController.GameState.Dead;
+        GameController.gameController.deathScreen.SetActive(true);
+        Destroy(gameObject);
 
     }
 

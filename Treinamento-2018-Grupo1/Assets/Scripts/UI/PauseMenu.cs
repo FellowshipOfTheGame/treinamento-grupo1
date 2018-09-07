@@ -29,13 +29,6 @@ public class PauseMenu : MonoBehaviour {
         if (GameController.gameController == null)
             return;
 
-        //entrando/saindo do menu
-        if (Input.GetKeyDown(KeyCode.Escape)){
-			if(GameController.gameController.currentState == GameController.GameState.Paused)
-				sairMenu();
-			else
-				entrarMenu();
-		}
 		else if(GameController.gameController.currentState == GameController.GameState.Paused) {
 			//selecionando opções dentro do menu
 			if(Input.GetKeyDown(KeyCode.W)){
@@ -64,16 +57,15 @@ public class PauseMenu : MonoBehaviour {
 	}
 
 	public void entrarMenu(){
-        GameController.gameController.currentState = GameController.GameState.Paused;
+
+        GameController.gameController.PauseGame();
+
 		pos = 0;
-		Time.timeScale = 0f;
-		menuPausaUI.SetActive(true);
 		mudarPos(0);
 	}
 	public void sairMenu(){
-		menuPausaUI.SetActive(false);
-        GameController.gameController.currentState = GameController.GameState.Play;
-		Time.timeScale = 1f;
+
+        GameController.gameController.UnpauseGame();
 
 		mudarPos(0);
 		for(int i=0;i<4;i++){
