@@ -14,6 +14,7 @@ public class GameController : MonoBehaviour {
 
     public GameObject pauseScreen;
     public GameObject deathScreen;
+    public GameObject loadingScreen;
     public Image transitionScreen;
 
     public bool loadingScene = true;
@@ -36,10 +37,14 @@ public class GameController : MonoBehaviour {
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
 
-        print(SceneManager.GetActiveScene().name);
-
         // Inicializa o GameController se a cena for um nível jogável.
         if (scene.name.Contains("Level_") && loadingScene) {
+
+            pauseScreen.SetActive(false);
+            deathScreen.SetActive(false);
+            loadingScreen.SetActive(false);
+
+            Time.timeScale = 1;
 
             transitionScreen.color = Color.black;
 
@@ -62,6 +67,8 @@ public class GameController : MonoBehaviour {
 
             // Se a cena não for um nível jogável destrói esse objeto e o player se ele existir.
 
+            Time.timeScale = 1;
+
             SceneManager.sceneLoaded -= OnSceneLoaded;
 
             if (Player.player != null)
@@ -79,7 +86,7 @@ public class GameController : MonoBehaviour {
 
         // Gera o efeito de fade in ao entrar em uma cena.
         Color transition_color = transitionScreen.color;
-        if (currentState == GameState.Transition && transition_color.a < 1) {
+        if ((currentState == GameState.Transition || loadingScreen.activeSelf) && transition_color.a < 1) {
 
             if (transition_color.a + Time.deltaTime > 1)
                 transition_color.a = 1;
@@ -122,24 +129,26 @@ public class GameController : MonoBehaviour {
     // Sai para o menu principal.
     public void QuitToMainMenu () {
 
-        Time.timeScale = 1;
-
-        SceneManager.LoadScene("MainMenu");
+        LoadScene("MainMenu", true);
 
     }
 
     public void RestartLevel () {
 
         // Recarrega a cena atual.
-        LoadScene(SceneManager.GetActiveScene().name);
+        LoadScene(SceneManager.GetActiveScene().name, true);
 
     }
 
-    public void LoadScene (string sceneName) {
+    public void LoadScene (string sceneName, bool loadScreen) {
 
-        // Esconde os menus.
-        pauseScreen.SetActive(false);
-        deathScreen.SetActive(false);
+        if (loadScreen) {
+
+            pauseScreen.SetActive(false);
+            deathScreen.SetActive(false);
+
+            loadingScreen.SetActive(true);
+        }
 
         // Carrega a cena.
         loadingScene = true;
