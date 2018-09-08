@@ -87,6 +87,7 @@ GameObject:
   - component: {fileID: 114054087469185126}
   - component: {fileID: 114952424561656188}
   - component: {fileID: 114113641120603782}
+  - component: {fileID: 114355583041087174}
   m_Layer: 0
   m_Name: ButtonColision
   m_TagString: Plataform
@@ -138,6 +139,7 @@ GameObject:
   - component: {fileID: 50973981141049994}
   - component: {fileID: 61164960294204582}
   - component: {fileID: 114123524470613314}
+  - component: {fileID: 114265573586714926}
   m_Layer: 0
   m_Name: Rockcolision
   m_TagString: Plataform
@@ -268,7 +270,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1433387404732126}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 18.27, y: 2.76, z: -0.1640625}
+  m_LocalPosition: {x: 2.4359128, y: 4.6907196, z: -0.1640625}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4229924263498758}
@@ -477,6 +479,7 @@ MonoBehaviour:
   maxUses: -1
   targets:
   - {fileID: 114158252336055678}
+  - {fileID: 114265573586714926}
   targetTag: Plataform
 --- !u!114 &114125103284172648
 MonoBehaviour:
@@ -523,6 +526,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   peso: 11
   botao: {fileID: 0}
+--- !u!114 &114265573586714926
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1464893330499218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b457746e0af01984e815bdd0f9a24312, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxUses: 1
+  secondaryActivations: []
+  sons:
+  - nome: pedraCaindo
+    sfx: 1
+--- !u!114 &114355583041087174
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1239299120026228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b457746e0af01984e815bdd0f9a24312, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxUses: 1
+  secondaryActivations: []
+  sons:
+  - nome: subida
+    sfx: 1
 --- !u!114 &114927291929924880
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -564,6 +599,7 @@ MonoBehaviour:
   - {fileID: 114054087469185126}
   acoesEntrandoPosInicial:
   - {fileID: 114113641120603782}
+  - {fileID: 114355583041087174}
   acoesSaindoPosFinal: []
 --- !u!212 &212348658668104180
 SpriteRenderer:

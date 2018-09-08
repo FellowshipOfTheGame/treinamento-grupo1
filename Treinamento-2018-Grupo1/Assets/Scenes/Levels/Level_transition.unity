@@ -62308,6 +62308,10 @@ Prefab:
       propertyPath: m_CompositePaths.m_Paths.Array.data[7].Array.data[55].y
       value: -15.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1883996059093060, guid: cb75336d205ebf348957b3e2df7dc487, type: 2}
+      propertyPath: m_TagString
+      value: Plataform
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb75336d205ebf348957b3e2df7dc487, type: 2}
   m_IsPrefabAsset: 0
@@ -62346,6 +62350,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114159099294459406, guid: 01fe6f6ad9c81e04dad2ef1c8b1ea1f2,
+        type: 2}
+      propertyPath: targets.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4497566240128274, guid: 01fe6f6ad9c81e04dad2ef1c8b1ea1f2, type: 2}
       propertyPath: m_LocalPosition.x
       value: 18.78
@@ -62378,9 +62387,46 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114159099294459406, guid: 01fe6f6ad9c81e04dad2ef1c8b1ea1f2,
+        type: 2}
+      propertyPath: targets.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114159099294459406, guid: 01fe6f6ad9c81e04dad2ef1c8b1ea1f2,
+        type: 2}
+      propertyPath: targets.Array.data[0]
+      value: 
+      objectReference: {fileID: 1634221994}
+    - target: {fileID: 114159099294459406, guid: 01fe6f6ad9c81e04dad2ef1c8b1ea1f2,
+        type: 2}
+      propertyPath: targetTag
+      value: Plataform
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114433778156740636, guid: 01fe6f6ad9c81e04dad2ef1c8b1ea1f2, type: 2}
   m_SourcePrefab: {fileID: 100100000, guid: 01fe6f6ad9c81e04dad2ef1c8b1ea1f2, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &1634221993 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1889711135249504, guid: 01fe6f6ad9c81e04dad2ef1c8b1ea1f2,
+    type: 2}
+  m_PrefabInternal: {fileID: 1634221992}
+--- !u!114 &1634221994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1634221993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b457746e0af01984e815bdd0f9a24312, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxUses: 1
+  secondaryActivations: []
+  sons:
+  - nome: pedraCaindo
+    sfx: 1
 --- !u!1001 &1735248880
 Prefab:
   m_ObjectHideFlags: 0

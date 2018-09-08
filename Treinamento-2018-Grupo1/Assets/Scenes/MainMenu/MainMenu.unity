@@ -4698,6 +4698,11 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 03cf0154063b70e47a49aa22c029be9d, type: 3}
     source: {fileID: 0}
     loop: 0
+  - name: descoberta
+    vol: 1
+    clip: {fileID: 8300000, guid: 3ab8faa7bb062f04c9079f783c87b1e7, type: 3}
+    source: {fileID: 0}
+    loop: 0
   musics:
   - name: bukidami
     vol: 1

@@ -17508,6 +17508,10 @@ Prefab:
       propertyPath: m_Tiles.Array.data[3961].second.m_ColliderType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1935521785529038, guid: b2b9891d2f743ca44a870409d28081f0, type: 2}
+      propertyPath: m_TagString
+      value: Plataform
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2b9891d2f743ca44a870409d28081f0, type: 2}
   m_IsPrefabAsset: 0
@@ -17573,6 +17577,22 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1889711135249504, guid: 01fe6f6ad9c81e04dad2ef1c8b1ea1f2,
     type: 2}
   m_PrefabInternal: {fileID: 345755436}
+--- !u!114 &345755438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 345755437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b457746e0af01984e815bdd0f9a24312, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxUses: 1
+  secondaryActivations: []
+  sons:
+  - nome: pedraCaindo
+    sfx: 1
 --- !u!114 &345755439
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17589,6 +17609,21 @@ MonoBehaviour:
   sons:
   - nome: metalCrashing
     sfx: 1
+--- !u!114 &345755440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 345755437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca183a77f000a014d9cdfd097e2ff16f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxUses: 1
+  targets:
+  - {fileID: 345755438}
+  targetTag: Plataform
 --- !u!1001 &352428111
 Prefab:
   m_ObjectHideFlags: 0
@@ -59346,6 +59381,22 @@ MonoBehaviour:
   secondaryActivations: []
   targets:
   - {fileID: 1886833431}
+--- !u!114 &888074629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 888074623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b457746e0af01984e815bdd0f9a24312, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxUses: 1
+  secondaryActivations: []
+  sons:
+  - nome: pedraCaindo
+    sfx: 1
 --- !u!1001 &1188886877
 Prefab:
   m_ObjectHideFlags: 0
@@ -59553,7 +59604,7 @@ Prefab:
     - target: {fileID: 114345007471946260, guid: a936f4f48af0a2240a98810860c662c4,
         type: 2}
       propertyPath: acoesEntrandoPosInicial.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4410598126474496, guid: a936f4f48af0a2240a98810860c662c4, type: 2}
       propertyPath: m_LocalPosition.x
@@ -59618,6 +59669,15 @@ Prefab:
       propertyPath: acoesEntrandoPosInicial.Array.data[0]
       value: 
       objectReference: {fileID: 888074628}
+    - target: {fileID: 114345007471946260, guid: a936f4f48af0a2240a98810860c662c4,
+        type: 2}
+      propertyPath: acoesEntrandoPosInicial.Array.data[1]
+      value: 
+      objectReference: {fileID: 888074629}
+    - target: {fileID: 1727759017732204, guid: a936f4f48af0a2240a98810860c662c4, type: 2}
+      propertyPath: m_TagString
+      value: Plataform
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a936f4f48af0a2240a98810860c662c4, type: 2}
   m_IsPrefabAsset: 0

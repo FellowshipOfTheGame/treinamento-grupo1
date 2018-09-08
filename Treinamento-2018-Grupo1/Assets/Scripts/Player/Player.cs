@@ -80,6 +80,8 @@ public class Player : MonoBehaviour {
     private void Start(){
         AudioManager[] aux = FindObjectsOfType<AudioManager>();
         audioo =  aux[aux.Length-1].GetComponent<AudioManager>();
+        if(aux.Length == 1)
+           audioo.play("bukidami",false);
     }
     private void Awake () {
 
