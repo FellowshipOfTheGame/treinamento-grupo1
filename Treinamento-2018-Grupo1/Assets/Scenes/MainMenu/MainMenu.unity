@@ -4690,7 +4690,7 @@ MonoBehaviour:
     loop: 0
   - name: metalDoor
     vol: 1
-    clip: {fileID: 8300000, guid: 3004b149b58059d4da79113c750bc77a, type: 3}
+    clip: {fileID: 8300000, guid: 6be61af9f0bfeef4584433f6a28dbf4c, type: 3}
     source: {fileID: 0}
     loop: 0
   - name: metalCrashing

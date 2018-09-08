@@ -93332,6 +93332,11 @@ Prefab:
       propertyPath: m_LocalPosition.y
       value: 0.17
       objectReference: {fileID: 0}
+    - target: {fileID: 114717670574654902, guid: b3dd78553269d674292146c6716ec4da,
+        type: 2}
+      propertyPath: sfxs.Array.data[3].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 6be61af9f0bfeef4584433f6a28dbf4c, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3dd78553269d674292146c6716ec4da, type: 2}
   m_IsPrefabAsset: 0
@@ -93469,6 +93474,10 @@ Prefab:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1460548213011018, guid: 01d38eedd5c97c2438de00c465cc2126, type: 2}
+      propertyPath: m_TagString
+      value: Plataform
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01d38eedd5c97c2438de00c465cc2126, type: 2}
   m_IsPrefabAsset: 0
@@ -93488,7 +93497,7 @@ GameObject:
   - component: {fileID: 1892946614}
   m_Layer: 0
   m_Name: level1Rock
-  m_TagString: Untagged
+  m_TagString: Plataform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
