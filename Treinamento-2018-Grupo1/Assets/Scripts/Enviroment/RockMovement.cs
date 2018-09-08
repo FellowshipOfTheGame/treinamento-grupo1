@@ -24,7 +24,7 @@ public class RockMovement : MonoBehaviour {
 
 	public List<ActionBase> acoesEntrandoPosInicial;
 
-	public List<ActionBase> acoesSaindoPosFinal;
+	public List<ActionBase> acoesTerminaTimer;
 
 	void Start () {
 		//recebendo os pontos iniciais e finais
@@ -58,6 +58,7 @@ public class RockMovement : MonoBehaviour {
 		direcao = 2;
 		//espera cooldown
  		yield return new WaitForSeconds(tempoMaximoAr);
+		terminaTimer();
 		direcao =0;
 	}
 
@@ -81,10 +82,10 @@ public class RockMovement : MonoBehaviour {
 			acoesEntrandoPosInicial[i].Activate();
 	}
 
-	protected virtual void saindoPosFinal(){
+	protected virtual void terminaTimer(){
 		//ativo = 0;
 
-		for(int i=0;i< acoesSaindoPosFinal.Count;i++)
-			acoesSaindoPosFinal[i].Activate();
+		for(int i=0;i< acoesTerminaTimer.Count;i++)
+			acoesTerminaTimer[i].Activate();
 	}
 }
