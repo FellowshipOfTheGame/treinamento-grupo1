@@ -17,8 +17,6 @@ public class GameController : MonoBehaviour {
     public GameObject loadingScreen;
     public Image transitionScreen;
 
-    public bool loadingScene = true;
-
 	void Awake () {
 
         // Garante que só exista um GameControler por vez.
@@ -37,8 +35,10 @@ public class GameController : MonoBehaviour {
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
 
+        Debug.Log("(GameController) Done loading " + scene.name + "!");
+
         // Inicializa o GameController se a cena for um nível jogável.
-        if (scene.name.Contains("Level_") && loadingScene) {
+        if (scene.name.Contains("Level_")) {
 
             pauseScreen.SetActive(false);
             deathScreen.SetActive(false);
@@ -60,8 +60,6 @@ public class GameController : MonoBehaviour {
                 Player.player.transform.position = SceneScript.currentSceneScript.playerSpawn.position;
                 Player.player._rigidbody.velocity = Vector3.zero;
             }
-
-            loadingScene = false;
 
         } else {
 
@@ -151,7 +149,6 @@ public class GameController : MonoBehaviour {
         }
 
         // Carrega a cena.
-        loadingScene = true;
         SceneManager.LoadSceneAsync(sceneName);
 
     }

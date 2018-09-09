@@ -7,6 +7,7 @@ public class NextSceneAction : ActionBase {
     // Delay até carregar a próxima cena.
     public float delay = 1;
     private float currentTime;
+    private bool loading = false;
 
     private void Update() {
 
@@ -14,7 +15,10 @@ public class NextSceneAction : ActionBase {
 
             currentTime += Time.deltaTime;
 
-            if (currentTime >= delay) {
+            if (currentTime >= delay && !loading) {
+
+                loading = true;
+
                 if (SceneScript.currentSceneScript != null)
 
                     SceneScript.currentSceneScript.NextScene();
