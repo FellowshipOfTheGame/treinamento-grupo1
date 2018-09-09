@@ -30,7 +30,7 @@ public class NextSceneAction : ActionBase {
 
     public override void Activate() {
 
-        GameController.gameController.currentState = GameController.GameState.Transition;
+        GameController.gameController.transition = true;
         currentTime += Time.deltaTime;
 
     }

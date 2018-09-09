@@ -7,7 +7,7 @@ public class GameController : MonoBehaviour {
 
     public static GameController gameController = null;
 
-    public enum GameState { Play, Paused, Dead, Cutscene, Transition };
+    public enum GameState { Play, Paused, Dead, Cutscene };
     public GameState currentState;
 
     public GameObject player;
@@ -16,6 +16,8 @@ public class GameController : MonoBehaviour {
     public GameObject deathScreen;
     public GameObject loadingScreen;
     public Image transitionScreen;
+    [HideInInspector]
+    public bool transition = false;
 
 	void Awake () {
 
@@ -43,6 +45,8 @@ public class GameController : MonoBehaviour {
             pauseScreen.SetActive(false);
             deathScreen.SetActive(false);
             loadingScreen.SetActive(false);
+
+            transition = false;
 
             Time.timeScale = 1;
 
@@ -84,7 +88,7 @@ public class GameController : MonoBehaviour {
 
         // Gera o efeito de fade in ao entrar em uma cena.
         Color transition_color = transitionScreen.color;
-        if ((currentState == GameState.Transition || loadingScreen.activeSelf) && transition_color.a < 1) {
+        if ((transition || loadingScreen.activeSelf) && transition_color.a < 1) {
 
             if (transition_color.a + Time.deltaTime > 1)
                 transition_color.a = 1;
