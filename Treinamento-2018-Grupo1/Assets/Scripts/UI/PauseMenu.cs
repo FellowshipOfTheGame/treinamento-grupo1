@@ -16,6 +16,8 @@ public class PauseMenu : MonoBehaviour {
 	public Color corHighlighted;//cor caso item selecionado
 	public Color corNormal;//cor caso item nao selecionado
 
+	[HideInInspector]
+	public bool creditosIniciados = false;
 	void Start(){
 		botoes = new GameObject[4];
 		botoes[0] = button0;
@@ -31,10 +33,16 @@ public class PauseMenu : MonoBehaviour {
 
         //entrando/saindo do menu
         if (Input.GetKeyDown(KeyCode.Escape)){
-			if(GameController.gameController.currentState == GameController.GameState.Paused)
-				sairMenu();
-			else
-				entrarMenu();
+			if(creditosIniciados){
+				Destroy(player.gameObject);
+				Exit();
+			}
+			else{
+				if(GameController.gameController.currentState == GameController.GameState.Paused)
+					sairMenu();
+				else
+					entrarMenu();
+			}
 		}
 		else if(GameController.gameController.currentState == GameController.GameState.Paused) {
 			//selecionando opções dentro do menu

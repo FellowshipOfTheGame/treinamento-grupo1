@@ -87,6 +87,7 @@ GameObject:
   - component: {fileID: 114054087469185126}
   - component: {fileID: 114952424561656188}
   - component: {fileID: 114113641120603782}
+  - component: {fileID: 114355583041087174}
   m_Layer: 0
   m_Name: ButtonColision
   m_TagString: Plataform
@@ -138,6 +139,7 @@ GameObject:
   - component: {fileID: 50973981141049994}
   - component: {fileID: 61164960294204582}
   - component: {fileID: 114123524470613314}
+  - component: {fileID: 114265573586714926}
   m_Layer: 0
   m_Name: Rockcolision
   m_TagString: Plataform
@@ -176,6 +178,34 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1923035838958346
+GameObject:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4081686045413070}
+  m_Layer: 0
+  m_Name: pontoFinal2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4081686045413070
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1923035838958346}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 10.22, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4229924263498758}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4132689374453312
 Transform:
   m_ObjectHideFlags: 1
@@ -222,13 +252,14 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1463116426313092}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 4, z: 0}
+  m_LocalPosition: {x: 0, y: 4.16, z: 0}
   m_LocalScale: {x: 0.9, y: 0.9, z: 1}
   m_Children:
   - {fileID: 4658215568537620}
   - {fileID: 4985126578175570}
   - {fileID: 4132689374453312}
   - {fileID: 4635959592210602}
+  - {fileID: 4081686045413070}
   m_Father: {fileID: 4249305829582706}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -239,7 +270,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1433387404732126}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.78, y: 0.82, z: -0.1640625}
+  m_LocalPosition: {x: 2.4359128, y: 4.6907196, z: -0.1640625}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4229924263498758}
@@ -283,7 +314,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1464893330499218}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.04, y: -4.09, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4229924263498758}
@@ -309,7 +340,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1208286873153932}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 3.83, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 1}
   m_Children: []
   m_Father: {fileID: 4229924263498758}
@@ -448,6 +479,7 @@ MonoBehaviour:
   maxUses: -1
   targets:
   - {fileID: 114158252336055678}
+  - {fileID: 114265573586714926}
   targetTag: Plataform
 --- !u!114 &114125103284172648
 MonoBehaviour:
@@ -494,6 +526,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   peso: 11
   botao: {fileID: 0}
+--- !u!114 &114265573586714926
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1464893330499218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b457746e0af01984e815bdd0f9a24312, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxUses: 1
+  secondaryActivations: []
+  sons:
+  - nome: pedraCaindo
+    sfx: 1
+--- !u!114 &114355583041087174
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1239299120026228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b457746e0af01984e815bdd0f9a24312, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxUses: 1
+  secondaryActivations: []
+  sons:
+  - nome: subida
+    sfx: 1
 --- !u!114 &114927291929924880
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -507,7 +571,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ativo: 0
   desaceleracao: 0.01
-  tempoMaximoAr: 4
+  tempoMaximoAr: 1
   desativarCasoCheguePosFinal: 1
   pontoFinal: {fileID: 4985126578175570}
   novaPosFinal: {x: 0, y: 0, z: 0}
@@ -535,6 +599,7 @@ MonoBehaviour:
   - {fileID: 114054087469185126}
   acoesEntrandoPosInicial:
   - {fileID: 114113641120603782}
+  - {fileID: 114355583041087174}
   acoesSaindoPosFinal: []
 --- !u!212 &212348658668104180
 SpriteRenderer:

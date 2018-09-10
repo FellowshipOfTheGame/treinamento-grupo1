@@ -44,4 +44,8 @@ public class CameraScript : MonoBehaviour {
         transform.position = new Vector3(camX, camY, transform.position.z);
 
 	}
+
+    public void ChangeTarget(GameObject novoTarget){
+        seekTarget = novoTarget.transform;
+    }
 }

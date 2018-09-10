@@ -56,6 +56,7 @@ GameObject:
   - component: {fileID: 222343591819409826}
   - component: {fileID: 114992990785429462}
   - component: {fileID: 114822640853886732}
+  - component: {fileID: 114039577737521110}
   m_Layer: 0
   m_Name: Button
   m_TagString: Untagged
@@ -93,7 +94,6 @@ GameObject:
   - component: {fileID: 222221878816120028}
   - component: {fileID: 114668054494518300}
   - component: {fileID: 114301408800653720}
-  - component: {fileID: 114005270492350354}
   m_Layer: 0
   m_Name: ButtonExit
   m_TagString: Untagged
@@ -192,6 +192,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1357901696716358
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4975174779977158}
+  - component: {fileID: 114717670574654902}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1364827617444150
 GameObject:
   m_ObjectHideFlags: 1
@@ -241,22 +257,6 @@ GameObject:
   - component: {fileID: 114562045458946030}
   m_Layer: 0
   m_Name: ButtonScrollbarMusic
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1433457712685056
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4314374367944970}
-  - component: {fileID: 114493829392245756}
-  m_Layer: 0
-  m_Name: AudioManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -684,19 +684,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4314374367944970
-Transform:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1433457712685056}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4869213609993214}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4584137025929052
 Transform:
   m_ObjectHideFlags: 1
@@ -732,12 +719,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1317553485189276}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 3.83, y: -0.64, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4873356806108308}
   - {fileID: 4626394947205824}
-  - {fileID: 4314374367944970}
+  - {fileID: 4975174779977158}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -753,6 +740,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4869213609993214}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4975174779977158
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1357901696716358}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 3.6374998, y: -5.585373, z: -0.06433721}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4869213609993214}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &20415600928184550
 Camera:
@@ -801,20 +801,6 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1560176824598402}
   m_Enabled: 1
---- !u!114 &114005270492350354
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1238512825316288}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 393a6eec8d1168c4f92269ddcfe5ed98, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  valor: 3
-  panell: {fileID: 1630181952391056}
-  menuName: MenuPause
 --- !u!114 &114019557367501050
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -856,6 +842,20 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114039577737521110
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1038786110151702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393a6eec8d1168c4f92269ddcfe5ed98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  valor: 0
+  panell: {fileID: 0}
+  menuName: 
 --- !u!114 &114054697507842704
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -977,7 +977,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   valor: 3
-  panell: {fileID: 1630181952391056}
+  panell: {fileID: 1715060815652346}
   menuName: MenuPause
 --- !u!114 &114080299605334428
 MonoBehaviour:
@@ -1291,7 +1291,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   valor: 1
-  panell: {fileID: 1630181952391056}
+  panell: {fileID: 1715060815652346}
   menuName: MenuPause
 --- !u!114 &114249596885239262
 MonoBehaviour:
@@ -1796,7 +1796,7 @@ MonoBehaviour:
     scroll: {fileID: 1818262223423926}
   player: {fileID: 0}
   menuOptionsUI: {fileID: 1906141955437586}
-  audioManager: {fileID: 1433457712685056}
+  audioManager: {fileID: 0}
   corHighlighted: {r: 0, g: 0, b: 0, a: 0.47058824}
   corNormal: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &114481406381318772
@@ -1867,21 +1867,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &114493829392245756
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1433457712685056}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6d489f9f2663e94db3b4d902200c5d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sfxs: []
-  musics: []
-  volumesfx: 1
-  volumeMusic: 1
 --- !u!114 &114547921288728434
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1978,6 +1963,7 @@ MonoBehaviour:
   button3: {fileID: 1201352373333868}
   corHighlighted: {r: 0, g: 0, b: 0, a: 0.47058824}
   corNormal: {r: 0, g: 0, b: 0, a: 0}
+  creditosIniciados: 0
 --- !u!114 &114582666772265124
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2141,6 +2127,51 @@ MonoBehaviour:
   m_Text: 'Exit
 
 '
+--- !u!114 &114717670574654902
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1357901696716358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6d489f9f2663e94db3b4d902200c5d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sfxs:
+  - name: poderFogo
+    vol: 1
+    clip: {fileID: 8300000, guid: 0424873d6a2abb84e86ff0f59f3e5bc7, type: 3}
+    source: {fileID: 0}
+    loop: 0
+  - name: pedraCaindo
+    vol: 1
+    clip: {fileID: 8300000, guid: 808e10681d15ec3459f29641d45db448, type: 3}
+    source: {fileID: 0}
+    loop: 0
+  - name: subida
+    vol: 1
+    clip: {fileID: 8300000, guid: c9fef7eb2217bbc43addb2ef74f0c084, type: 3}
+    source: {fileID: 0}
+    loop: 0
+  - name: metalDoor
+    vol: 1
+    clip: {fileID: 8300000, guid: 3004b149b58059d4da79113c750bc77a, type: 3}
+    source: {fileID: 0}
+    loop: 0
+  - name: metalCrashing
+    vol: 1
+    clip: {fileID: 8300000, guid: 03cf0154063b70e47a49aa22c029be9d, type: 3}
+    source: {fileID: 0}
+    loop: 0
+  musics:
+  - name: bukidami
+    vol: 1
+    clip: {fileID: 8300000, guid: daaf552022c5a73479c68983efd66f21, type: 3}
+    source: {fileID: 0}
+    loop: 1
+  volumesfx: 1
+  volumeMusic: 1
 --- !u!114 &114738345845089398
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2301,7 +2332,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   valor: 2
-  panell: {fileID: 1630181952391056}
+  panell: {fileID: 1715060815652346}
   menuName: MenuPause
 --- !u!114 &114818169925598450
 MonoBehaviour:

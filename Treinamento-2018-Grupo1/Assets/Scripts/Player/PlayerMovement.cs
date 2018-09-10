@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 
 // Realiza a movimentação do Player.
@@ -141,5 +142,25 @@ public class PlayerMovement : MonoBehaviour {
     void OnCollisionExit2D(Collision2D other){
         if(other.gameObject.tag == "Plataform")
             transform.SetParent (null);
+    }
+
+
+    //subrotina e funcao utilizada como parte do credito
+    IEnumerator subrotina(){
+
+        while(velocity > 0 || jumpHeight > 0){
+ 		    yield return new WaitForSeconds(0.1f);
+            velocity -= 0.11f;
+            jumpHeight -= 0.22f;
+            if(velocity < 0f)velocity = 0 ;
+            if(jumpHeight < 0f)jumpHeight = 0 ;
+        }
+        target.movimentacaoAtiva = false;
+        target._animator.SetBool("Walking", false);
+        target._animator.SetBool("InAir", false);
+	}
+
+    public void desacelerar(){
+        StartCoroutine(subrotina());
     }
 }
