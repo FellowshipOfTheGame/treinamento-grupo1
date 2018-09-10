@@ -8,7 +8,7 @@ public class KillPlayerAction : ActionBase {
         base.Activate();
 
         // Faz o player morrer.
-        GameController.gameController.RestartLevel();
+        Player.player.Death();
 
     }
 
