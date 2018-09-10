@@ -56,14 +56,16 @@ public class GameController : MonoBehaviour {
 
             if (Player.player == null) {
 
-                GameObject new_player = Instantiate(player, SceneScript.currentSceneScript.playerSpawn.position, SceneScript.currentSceneScript.playerSpawn.rotation);
-                CameraScript cam_script = Camera.main.GetComponent<CameraScript>();
-                cam_script.UpdateCameraScript(new_player.transform);
+                Instantiate(player, SceneScript.currentSceneScript.playerSpawn.position, SceneScript.currentSceneScript.playerSpawn.rotation);
 
             } else {
                 Player.player.transform.position = SceneScript.currentSceneScript.playerSpawn.position;
                 Player.player._rigidbody.velocity = Vector3.zero;
+                Player.player.UpdateAbility();
             }
+
+            CameraScript cam_script = Camera.main.GetComponent<CameraScript>();
+            cam_script.UpdateCameraScript(Player.player.transform);
 
         } else {
 

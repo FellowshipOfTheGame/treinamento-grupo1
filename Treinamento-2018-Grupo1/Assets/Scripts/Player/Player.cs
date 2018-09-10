@@ -51,7 +51,7 @@ public class Player : MonoBehaviour {
     [System.Serializable]
     public class Effects {
 
-        public SpriteRenderer habilityEffect;
+        public SpriteRenderer abilityEffect;
 
     }
     [Space(10)]
@@ -87,7 +87,7 @@ public class Player : MonoBehaviour {
         // Força um poder inicial o player (none = sem poder inicial).
         if (startingAbility != "none" && !SceneScript.currentSceneScript.noAbility) {
             SetAbility(startingAbility);
-            effects.habilityEffect.enabled = true;
+            effects.abilityEffect.enabled = true;
         }
 
         /*
@@ -190,26 +190,46 @@ public class Player : MonoBehaviour {
 
     }
 
+    public void UpdateAbility () {
+
+        // Força um poder inicial o player (none = sem poder inicial).
+        if (startingAbility != "none" && !SceneScript.currentSceneScript.noAbility)
+            SetAbility(startingAbility);
+        else
+            SetAbility("none");
+        
+    }
+
     // Muda a habilidade do player.
-    public void SetAbility(string hability) {
+    public void SetAbility(string ability) {
+
+        // Deixa o player sem habilidade.
+        if(ability == "none") {
+
+            currentAbility = null;
+
+            // Mostra o efeito da habilidade.
+            effects.abilityEffect.enabled = false;
+
+            return;
+        }
 
         for(int i = 0; i < habilities.Count; i++) { 
-            if(habilities[i]._name == hability) { // Encontra na lista a habilidade desejada.
+            if(habilities[i]._name == ability) { // Encontra na lista a habilidade desejada.
 
                 currentAbility = habilities[i];
 
                 // Mostra o efeito da habilidade.
-                if (hability != "none")
-                    effects.habilityEffect.enabled = true;
+                effects.abilityEffect.enabled = true;
 
-                effects.habilityEffect.sprite = currentAbility.displayEffect;
+                effects.abilityEffect.sprite = currentAbility.displayEffect;
 
                 return;
             }
         }
 
         // Mostra um erro caso a habilidade seja inv�lida,
-        Debug.LogError("(Player) Hability <" + hability + "> is not valid!");
+        Debug.LogError("(Player) ability <" + ability + "> is not valid!");
 
         
 
