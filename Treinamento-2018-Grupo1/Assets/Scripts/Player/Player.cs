@@ -8,9 +8,6 @@ using System.Collections.Generic;
 // Controla o player.
 public class Player : MonoBehaviour {
 
-    public AudioManager audioo;
-    [HideInInspector]
-    public bool movimentacaoAtiva = true;
     // Singleton para o player.
     public static Player player = null;
 
@@ -77,12 +74,6 @@ public class Player : MonoBehaviour {
     [Space(10)]
     public int facing = 1;
 
-    private void Start(){
-        AudioManager[] aux = FindObjectsOfType<AudioManager>();
-        audioo =  aux[aux.Length-1].GetComponent<AudioManager>();
-        if(aux.Length == 1)
-           audioo.play("bukidami",false);
-    }
     private void Awake () {
 
         DontDestroyOnLoad(gameObject);
@@ -148,8 +139,6 @@ public class Player : MonoBehaviour {
         if(abilityDelay > 0)
             abilityDelay -= Time.deltaTime;
 
-        if(movimentacaoAtiva){
-            if (input.fireButton && GameController.gameController.currentState == GameController.GameState.Play) {
 
         if (GameController.gameController.currentState == GameController.GameState.Play) {
 
@@ -258,6 +247,4 @@ public class Player : MonoBehaviour {
     void LateUpdate(){
         velY = _rigidbody.velocity.y;
     }
-
-
 }

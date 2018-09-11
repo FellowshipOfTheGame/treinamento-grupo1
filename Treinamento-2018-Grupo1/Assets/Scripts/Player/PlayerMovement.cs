@@ -100,7 +100,7 @@ public class PlayerMovement : MonoBehaviour {
 
                 RaycastHit2D ray;
                 if (ray = Physics2D.Raycast(transform.position + new Vector3(_collider.offset.x, _collider.offset.y, 0) + new Vector3(0, _collider.size.y / 2, 0), Vector2.up, _collider.size.y * 0.03f, rayMask))
-                    if (ray.collider.tag == "Crushable")
+                    if (ray.collider.tag == "Plataform")
                         crushed = true;
 
                 if (crushed) {
@@ -155,7 +155,7 @@ public class PlayerMovement : MonoBehaviour {
             transform.SetParent (null);
     }
 
-
+/*
     //subrotina e funcao utilizada como parte do credito
     IEnumerator subrotina(){
 
@@ -174,4 +174,5 @@ public class PlayerMovement : MonoBehaviour {
     public void desacelerar(){
         StartCoroutine(subrotina());
     }
+    */
 }

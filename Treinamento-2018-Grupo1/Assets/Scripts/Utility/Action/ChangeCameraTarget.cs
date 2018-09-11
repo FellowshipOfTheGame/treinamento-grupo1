@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,4 +17,4 @@ public class ChangeCameraTarget : ActionBase {
         FindObjectsOfType<CameraScript>()[0].ChangeTarget(novoTarget);
 
     }
-}
+}*/

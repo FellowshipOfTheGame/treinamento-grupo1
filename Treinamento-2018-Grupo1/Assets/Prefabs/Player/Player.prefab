@@ -335,7 +335,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de20fe611fdf92f45b15ed0228d59497, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movimentacaoAtiva: 1
   _movement: {fileID: 114788229468223738}
   _renderer: {fileID: 212999126857171956}
   _animator: {fileID: 95534083621945604}

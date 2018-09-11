@@ -7,7 +7,6 @@ TagManager:
   - Projectile
   - Plataform
   - DestructibleGround
-  - Crushable
   layers:
   - Default
   - TransparentFX
