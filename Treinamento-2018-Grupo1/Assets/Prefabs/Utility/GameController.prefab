@@ -1121,7 +1121,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1112381148111666}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: -11.46, y: 0.82, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4651090856057486}
@@ -2585,8 +2585,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6d489f9f2663e94db3b4d902200c5d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sfxs: []
-  musics: []
+  sfxs:
+  - name: descoberta
+    vol: 1
+    clip: {fileID: 8300000, guid: 3ab8faa7bb062f04c9079f783c87b1e7, type: 3}
+    source: {fileID: 0}
+    loop: 0
+  - name: poderFogo
+    vol: 1
+    clip: {fileID: 8300000, guid: 0424873d6a2abb84e86ff0f59f3e5bc7, type: 3}
+    source: {fileID: 0}
+    loop: 0
+  - name: metalCrashing
+    vol: 1
+    clip: {fileID: 8300000, guid: 03cf0154063b70e47a49aa22c029be9d, type: 3}
+    source: {fileID: 0}
+    loop: 0
+  - name: metalDoor
+    vol: 1
+    clip: {fileID: 8300000, guid: 6be61af9f0bfeef4584433f6a28dbf4c, type: 3}
+    source: {fileID: 0}
+    loop: 0
+  - name: pedraCaindo
+    vol: 1
+    clip: {fileID: 8300000, guid: ae6ea18c904e17a48bfa89bde04a5ae2, type: 3}
+    source: {fileID: 0}
+    loop: 0
+  - name: subida
+    vol: 1
+    clip: {fileID: 8300000, guid: c9fef7eb2217bbc43addb2ef74f0c084, type: 3}
+    source: {fileID: 0}
+    loop: 0
+  musics:
+  - name: bukidami
+    vol: 1
+    clip: {fileID: 8300000, guid: daaf552022c5a73479c68983efd66f21, type: 3}
+    source: {fileID: 0}
+    loop: 1
   volumesfx: 1
   volumeMusic: 1
 --- !u!114 &114649612135631180

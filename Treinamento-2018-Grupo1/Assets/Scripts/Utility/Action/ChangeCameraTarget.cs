@@ -1,4 +1,4 @@
-﻿/*using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,10 +11,10 @@ public class ChangeCameraTarget : ActionBase {
 
         base.Activate();
 		Player aux = FindObjectsOfType<Player>()[0];
-		FindObjectsOfType<PlayerMovement>()[0].desacelerar();
-		FindObjectsOfType<PauseMenu>()[0].creditosIniciados = true;
+		//FindObjectsOfType<PlayerMovement>()[0].desacelerar();
+		//FindObjectsOfType<PauseMenu>()[0].creditosIniciados = true;
 		novoTarget.transform.position = aux.transform.position;
         FindObjectsOfType<CameraScript>()[0].ChangeTarget(novoTarget);
 
     }
-}*/
+}

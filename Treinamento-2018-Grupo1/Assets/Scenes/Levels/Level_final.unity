@@ -429,7 +429,6 @@ MonoBehaviour:
   targets:
   - {fileID: 349002817}
   - {fileID: 1509326842}
-  - {fileID: 1830271888}
   targetTag: none
   targetHabilty: none
 --- !u!61 &1077180846
@@ -7447,7 +7446,7 @@ GameObject:
   - component: {fileID: 1830271889}
   - component: {fileID: 1830271888}
   m_Layer: 10
-  m_Name: teste
+  m_Name: movimentarPalavrasCreditos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7467,7 +7466,7 @@ MonoBehaviour:
   maxUses: 1
   secondaryActivations: []
   targets:
-  - {fileID: 0}
+  - {fileID: 2114951855}
 --- !u!4 &1830271889
 Transform:
   m_ObjectHideFlags: 0

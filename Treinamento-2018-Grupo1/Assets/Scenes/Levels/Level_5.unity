@@ -27081,6 +27081,8 @@ MonoBehaviour:
   sons:
   - nome: metalDoor
     sfx: 1
+  - nome: descoberta
+    sfx: 1
 --- !u!1 &1278279970
 GameObject:
   m_ObjectHideFlags: 0

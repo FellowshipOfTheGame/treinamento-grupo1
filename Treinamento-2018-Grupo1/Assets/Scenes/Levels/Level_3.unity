@@ -88376,7 +88376,7 @@ MonoBehaviour:
   maxUses: 1
   secondaryActivations: []
   sons:
-  - nome: subida
+  - nome: descoberta
     sfx: 1
 --- !u!114 &1799055053
 MonoBehaviour:
