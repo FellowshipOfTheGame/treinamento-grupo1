@@ -7,6 +7,7 @@ using System.Collections.Generic;
 [AddComponentMenu("Scripts/UI/Main Menu")]
 public class MainMenu : MonoBehaviour {
 
+
     // Lista dos menus.
     public MenuGroup[] menuGroups;
 

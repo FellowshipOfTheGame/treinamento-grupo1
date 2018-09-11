@@ -8,6 +8,9 @@ using System.Collections.Generic;
 // Controla o player.
 public class Player : MonoBehaviour {
 
+    [HideInInspector]
+    public bool entrandoCredito = false;
+
     private AudioManager audioo;
 
     // Singleton para o player.
@@ -194,6 +197,14 @@ public class Player : MonoBehaviour {
             _renderer.flipX = true;
         else
             _renderer.flipX = false;
+
+        if(entrandoCredito){
+            _renderer.flipX = false;
+            if(_movement.velocity > 0f)
+                _animator.SetBool("Walking", true);
+            else
+                _animator.SetBool("Walking", false);
+        }
 
     }
 

@@ -10,6 +10,9 @@ using System.Collections;
 [AddComponentMenu("Scripts/Player/Player Movement")]
 public class PlayerMovement : MonoBehaviour {
 
+    [HideInInspector]
+    public bool entrandoCredito = false;
+
     public Player target; // Player que recebe o input desse script.
     private Rigidbody2D _rigidbody; // Rigidbody do target.
     private CapsuleCollider2D _collider; // Collider do target.
@@ -43,11 +46,13 @@ public class PlayerMovement : MonoBehaviour {
             float vNewVel; // Nova velocidade vertical do player.
 
             // Movimento horizontal, também garante que o player nunca ultrapasse a velocidade máxima.
+            if(entrandoCredito)
+                target.input.verticalAxis = 0f;
+
             if (grounded)
                 hNewVel = target.input.horizontalAxis * velocity;
             else
                 hNewVel = Mathf.Clamp(_rigidbody.velocity.x + Mathf.CeilToInt(target.input.horizontalAxis * velocity) * airAcelerationMultiplier, -velocity, velocity);
-
             // Movimento vertical.
             vNewVel = _rigidbody.velocity.y;
 
@@ -135,6 +140,10 @@ public class PlayerMovement : MonoBehaviour {
             if (target.input.jumpButton && grounded)
                 vNewVel = 0;
 
+            if(entrandoCredito){
+                hNewVel = velocity;
+            }
+
             // Aplica a velocidade ao player.
             _rigidbody.velocity = new Vector2(hNewVel, vNewVel);
 
@@ -155,24 +164,21 @@ public class PlayerMovement : MonoBehaviour {
             transform.SetParent (null);
     }
 
-/*
+
     //subrotina e funcao utilizada como parte do credito
     IEnumerator subrotina(){
 
         while(velocity > 0 || jumpHeight > 0){
  		    yield return new WaitForSeconds(0.1f);
-            velocity -= 0.11f;
-            jumpHeight -= 0.22f;
+            velocity -= 0.17f;
+            jumpHeight -= 0.11f;
             if(velocity < 0f)velocity = 0 ;
             if(jumpHeight < 0f)jumpHeight = 0 ;
         }
-        target.movimentacaoAtiva = false;
-        target._animator.SetBool("Walking", false);
-        target._animator.SetBool("InAir", false);
 	}
 
     public void desacelerar(){
         StartCoroutine(subrotina());
     }
-    */
+    
 }

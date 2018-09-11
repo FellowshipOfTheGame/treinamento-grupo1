@@ -11,8 +11,11 @@ public class Creditos : ActionBase {
     public override void Activate() {
 
         base.Activate();
-		menu.SetActive(true);
-		menu.GetComponent<RectTransform>().SetParent(creditoPosition.transform);
+		//menu.SetActive(true);
+		//menu.GetComponent<RectTransform>().SetParent(creditoPosition.transform);
+        FindObjectOfType<PlayerMovement>().entrandoCredito = true;
+        FindObjectOfType<PlayerMovement>().desacelerar();
+        FindObjectOfType<Player>().entrandoCredito = true;
 
     }
 }
