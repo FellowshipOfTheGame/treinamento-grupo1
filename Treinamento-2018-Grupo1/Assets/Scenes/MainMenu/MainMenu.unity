@@ -4905,6 +4905,8 @@ MonoBehaviour:
     source: {fileID: 0}
     loop: 1
   volumeMusic: 1
+  sourceTemplate: {fileID: 1486838043464014, guid: 8b06c184e6170034d87583deba41c13e,
+    type: 2}
 --- !u!4 &1802332546
 Transform:
   m_ObjectHideFlags: 0

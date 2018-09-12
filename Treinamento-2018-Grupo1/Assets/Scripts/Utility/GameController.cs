@@ -42,6 +42,8 @@ public class GameController : MonoBehaviour {
         // Inicializa o GameController se a cena for um nível jogável.
         if (scene.name.Contains("Level_")) {
 
+            AudioManager.instance.RebuildSFX();
+
             pauseScreen.SetActive(false);
             deathScreen.SetActive(false);
             loadingScreen.SetActive(false);

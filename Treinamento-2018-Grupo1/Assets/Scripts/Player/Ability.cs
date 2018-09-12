@@ -10,6 +10,9 @@ public class Ability : ScriptableObject {
     // Efeito ao redor do player quando está com essa habilidade.
     public Sprite displayEffect;
 
+    // O efeito sonoro dessa habilidade.
+    public Sound soundEffect;
+
     // Tipo da habilidade.
     public enum Type { Projectile }
     public Type type;

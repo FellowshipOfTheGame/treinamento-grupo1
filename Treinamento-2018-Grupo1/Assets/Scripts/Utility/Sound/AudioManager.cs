@@ -1,6 +1,4 @@
-﻿using System;
-using UnityEngine;
-using UnityEngine.Audio;
+﻿using UnityEngine;
 
 [AddComponentMenu("Scripts/Utility/Audio Manager")]
 public class AudioManager : MonoBehaviour {
@@ -49,6 +47,28 @@ public class AudioManager : MonoBehaviour {
 
 		}
 	}
+
+    public void RebuildSFX() {
+
+        foreach (Sound s in sfxs) {
+
+            if (s.source != null) {
+
+                Destroy(s.source.gameObject);
+
+                GameObject src = Instantiate(sourceTemplate, transform.position, transform.rotation);
+                src.transform.SetParent(transform);
+
+                s.source = src.GetComponent<AudioSource>();
+            }
+
+            s.source.clip = s.clip;
+            s.source.loop = s.loop;
+            s.source.volume = s.vol;
+
+        }
+
+    }
 
 	public void mudarVolumeMusic(){
 

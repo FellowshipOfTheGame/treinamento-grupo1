@@ -8,8 +8,6 @@ using System.Collections.Generic;
 // Controla o player.
 public class Player : MonoBehaviour {
 
-    private AudioManager audioo;
-
     // Singleton para o player.
     public static Player player = null;
 
@@ -65,6 +63,9 @@ public class Player : MonoBehaviour {
     public List<Ability> habilities;
     public Ability currentAbility = null;
 
+    // Toca os sons relacionados a habilidades.
+    public AudioSource abilityAudioSource;
+
     // Spawns dos proj�teis do player. Coloca-los começando da direita em sentido horário.
     [Space(10)]
     public Transform[] projectileSpawns;
@@ -76,10 +77,6 @@ public class Player : MonoBehaviour {
     [Space(10)]
     public int facing = 1;
 
-    private void Start(){
-        AudioManager[] aux = FindObjectsOfType<AudioManager>();
-        audioo = aux[aux.Length -1];
-    }
     private void Awake () {
 
         DontDestroyOnLoad(gameObject);
@@ -164,7 +161,8 @@ public class Player : MonoBehaviour {
 
                 // Faz o player disparar projéteis.
                 if (currentAbility != null && currentAbility.type == Ability.Type.Projectile) {
-                    audioo.play("poderFogo",true);
+
+                    abilityAudioSource.Play();
                     
                     if (abilityDelay <= 0) {
                         if (input.verticalAxis > 0) {
@@ -238,6 +236,11 @@ public class Player : MonoBehaviour {
                 effects.abilityEffect.enabled = true;
 
                 effects.abilityEffect.sprite = currentAbility.displayEffect;
+
+                // Set o clipe de audio da habilidade.
+                abilityAudioSource.clip = currentAbility.soundEffect.clip;
+                abilityAudioSource.volume = currentAbility.soundEffect.vol;
+                abilityAudioSource.loop = currentAbility.soundEffect.loop;
 
                 return;
             }
