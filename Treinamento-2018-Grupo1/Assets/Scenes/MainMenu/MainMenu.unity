@@ -1360,8 +1360,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -120}
-  m_SizeDelta: {x: 600, y: 200}
+  m_AnchoredPosition: {x: 0, y: -170}
+  m_SizeDelta: {x: 600, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &634727200
 MonoBehaviour:
@@ -1396,9 +1396,10 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Game made by FOG during the training of the 2018 new members.\nMade by
-    training group 1.\n\n- Daniel\n- Fabr\xEDcio\n- Gustavo\n- Lu\xEDs Eduardo\n-
-    Michelle"
+  m_Text: "Game made by the Fellowship of the Game group during the training of the
+    2018 new members.\nMade by training group 1.\n\nArtist:\n- Michelle Wingter\nGame
+    Designer:\n- Daniel Fro\xE9s\nProgrammers:\n- Gustavo Sasaki Roncaglia\n- Lu\xEDs
+    Eduardo Rozante\nAdvisor:\n- Fabr\xEDcio Guedes"
 --- !u!222 &634727201
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3333,7 +3334,7 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 478043585}
   m_FillRect: {fileID: 1841047419}
   m_HandleRect: {fileID: 478043584}
@@ -3344,7 +3345,18 @@ MonoBehaviour:
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1338609762}
+        m_MethodName: ToggleMusicVolume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!1 &1356755854
@@ -4115,7 +4127,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 640, y: 320}
+  m_SizeDelta: {x: 640, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1603529349
 MonoBehaviour:
@@ -4892,7 +4904,6 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: daaf552022c5a73479c68983efd66f21, type: 3}
     source: {fileID: 0}
     loop: 1
-  volumesfx: 1
   volumeMusic: 1
 --- !u!4 &1802332546
 Transform:
@@ -5303,7 +5314,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Music Volume (TODO):'
+  m_Text: 'Music Volume:'
 --- !u!222 &1890168520
 CanvasRenderer:
   m_ObjectHideFlags: 0

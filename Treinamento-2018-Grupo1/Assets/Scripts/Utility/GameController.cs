@@ -110,6 +110,9 @@ public class GameController : MonoBehaviour {
 
         }
 
+        if (currentState == GameState.Cutscene && Input.GetButtonDown("Cancel"))
+            QuitToMainMenu();
+
 	}
 
     // Puasa o jogo.

@@ -10,9 +10,6 @@ using System.Collections;
 [AddComponentMenu("Scripts/Player/Player Movement")]
 public class PlayerMovement : MonoBehaviour {
 
-    [HideInInspector]
-    public bool entrandoCredito = false;
-
     public Player target; // Player que recebe o input desse script.
     private Rigidbody2D _rigidbody; // Rigidbody do target.
     private CapsuleCollider2D _collider; // Collider do target.
@@ -40,13 +37,13 @@ public class PlayerMovement : MonoBehaviour {
         if (GameController.gameController == null)
             return;
 
-        if (GameController.gameController.currentState == GameController.GameState.Play) {
+        if (GameController.gameController.currentState == GameController.GameState.Play || GameController.gameController.currentState == GameController.GameState.Cutscene) {
 
             float hNewVel; // Nova velocidade horizontal do player.
             float vNewVel; // Nova velocidade vertical do player.
 
             // Movimento horizontal, também garante que o player nunca ultrapasse a velocidade máxima.
-            if(entrandoCredito)
+            if(GameController.gameController.currentState == GameController.GameState.Cutscene)
                 target.input.verticalAxis = 0f;
 
             if (grounded)
@@ -58,36 +55,6 @@ public class PlayerMovement : MonoBehaviour {
 
             // Verifica que esta tocando no chão.
             grounded = Physics2D.CapsuleCast(transform.position + new Vector3(_collider.offset.x, _collider.offset.y, 0), new Vector2(_collider.size.x, _collider.size.y), CapsuleDirection2D.Vertical, 0, -Vector2.up, 0.1f, rayMask);
-
-            /*
-            // Checa por rampas.
-            if (!grounded) {
-                RaycastHit2D hit;
-                float[] dotProduct = new float[2];
-
-                hit = Physics2D.Raycast(transform.position + new Vector3(_collider.offset.x, _collider.offset.y, 0) + new Vector3(_collider.size.x / 2, -_collider.size.y / 2 + 0.5f, 0), -Vector2.up, 0.55f, rayMask);
-                dotProduct[0] = Vector3.Dot(hit.normal, Vector2.up);
-
-
-    #if UNITY_EDITOR
-                if (hit.collider != null) {
-                    if (0.64 < dotProduct[0] && dotProduct[0] < 0.76)
-                        Debug.DrawLine(transform.position + new Vector3(_collider.offset.x, _collider.offset.y, 0) + new Vector3(_collider.size.x / 2, -_collider.size.y / 2 + 0.5f, 0), transform.position + new Vector3(_collider.offset.x, -0.55f + -_collider.offset.y, 0) + new Vector3(_collider.size.x / 2, -_collider.size.y / 2 + 0.5f, 0), Color.red);
-                    else
-                        Debug.DrawLine(transform.position + new Vector3(_collider.offset.x, _collider.offset.y, 0) + new Vector3(_collider.size.x / 2, -_collider.size.y / 2 + 0.5f, 0), transform.position + new Vector3(_collider.offset.x, -0.55f + -_collider.offset.y, 0) + new Vector3(_collider.size.x / 2, -_collider.size.y / 2 + 0.5f, 0), Color.yellow);
-                } else
-                    Debug.DrawLine(transform.position + new Vector3(_collider.offset.x, _collider.offset.y, 0) + new Vector3(_collider.size.x / 2, -_collider.size.y / 2 + 0.5f, 0), transform.position + new Vector3(_collider.offset.x, -0.55f + -_collider.offset.y, 0) + new Vector3(_collider.size.x / 2, -_collider.size.y / 2 + 0.5f, 0), Color.green);
-    #endif
-
-
-            hit = Physics2D.Raycast(transform.position + new Vector3(_collider.offset.x, _collider.offset.y, 0) + new Vector3(-_collider.size.x / 2, -_collider.size.y / 2 - 0.5f, 0), -Vector2.up, 0.51f, rayMask);
-                dotProduct[1] = Vector3.Dot(hit.normal, Vector2.up);
-
-
-                if (0.64 < dotProduct[0] && dotProduct[0] < 0.76 || 0.64 < dotProduct[0] && dotProduct[0] < 0.76)
-                    grounded = true;
-            }
-            */
 
             // DEBUG
 #if UNITY_EDITOR
@@ -140,7 +107,7 @@ public class PlayerMovement : MonoBehaviour {
             if (target.input.jumpButton && grounded)
                 vNewVel = 0;
 
-            if(entrandoCredito){
+            if(GameController.gameController.currentState == GameController.GameState.Cutscene){
                 hNewVel = velocity;
             }
 
@@ -172,7 +139,10 @@ public class PlayerMovement : MonoBehaviour {
  		    yield return new WaitForSeconds(0.1f);
             velocity -= 0.17f;
             jumpHeight -= 0.11f;
-            if(velocity < 0f)velocity = 0 ;
+            if (velocity < 0f) {
+                StopCoroutine(subrotina());
+                velocity = 0;
+            }
             if(jumpHeight < 0f)jumpHeight = 0 ;
         }
 	}

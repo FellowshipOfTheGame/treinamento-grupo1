@@ -16,7 +16,7 @@ public class MainMenu : MonoBehaviour {
     [Header("- Resolução:")]
     // Dropdown das resoluções.
     public Dropdown resolutionDropdown;
-    private Resolution[] avaliableResolutions;
+    private List<Resolution> avaliableResolutions;
     // Toggle de tela cheia.
     public Toggle fullscreenToogle;
 
@@ -29,11 +29,21 @@ public class MainMenu : MonoBehaviour {
     public void Start() {
 
         // Cria uma lista de resoluções disponíveis e adiciona elas nas opções do Dropdown, também detecta qual é a opção de resolução atual.
-        avaliableResolutions = Screen.resolutions;
+        Resolution[] resolutions = Screen.resolutions;
+        avaliableResolutions = new List<Resolution>();
+
+        // Garante que não sejam adicionadas resoluções inválidas na lista.
+        for (int i = 0; i < resolutions.Length; i++) {
+
+            if (resolutions[i].height >= 600 || Screen.height < 600)
+                avaliableResolutions.Add(resolutions[i]);
+
+        }
+
         List<Dropdown.OptionData> resOptions = new List<Dropdown.OptionData>();
         int currentResIndex = 0;
 
-        for(int i = 0; i < avaliableResolutions.Length; i++) {
+        for(int i = 0; i < avaliableResolutions.Count; i++) {
 
             Dropdown.OptionData opt = new Dropdown.OptionData();
             opt.text = avaliableResolutions[i].width + "x" + avaliableResolutions[i].height + " (" + avaliableResolutions[i].refreshRate + "Hz)";
@@ -61,7 +71,19 @@ public class MainMenu : MonoBehaviour {
 
         AudioListener.volume = masterVolumeSlider.value;
 
-        // VOLUME DA MÚSICA (TODO)
+        // Detecta o volume da música do jogo seta ele e ajeita o Slider.
+
+        if (PlayerPrefs.HasKey("musicVolume"))
+            musicVolumeSlider.value = PlayerPrefs.GetFloat("musicVolume");
+        else {
+            PlayerPrefs.SetFloat("musicVolume", 1.0f);
+            musicVolumeSlider.value = PlayerPrefs.GetFloat("musicVolume");
+        }
+
+        if(AudioManager.instance != null) {
+            AudioManager.instance.volumeMusic = musicVolumeSlider.value;
+            AudioManager.instance.mudarVolumeMusic();
+        }
 
     }
 
@@ -93,7 +115,10 @@ public class MainMenu : MonoBehaviour {
         int index = resolutionDropdown.value;
         bool isFullscreen = fullscreenToogle.isOn;
 
-        Screen.SetResolution(avaliableResolutions[index].width, avaliableResolutions[index].height, isFullscreen, avaliableResolutions[index].refreshRate);
+        if(avaliableResolutions[index].height > 600)
+            Screen.SetResolution(avaliableResolutions[index].width, avaliableResolutions[index].height, isFullscreen, avaliableResolutions[index].refreshRate);
+        else
+            Screen.SetResolution(800, 600, isFullscreen, avaliableResolutions[index].refreshRate);
 
     }
 
@@ -102,6 +127,17 @@ public class MainMenu : MonoBehaviour {
         PlayerPrefs.SetFloat("masterVolume", masterVolumeSlider.value);
         PlayerPrefs.Save();
         AudioListener.volume = masterVolumeSlider.value;
+
+    }
+
+    public void ToggleMusicVolume() {
+
+        PlayerPrefs.SetFloat("musicVolume", musicVolumeSlider.value);
+        PlayerPrefs.Save();
+        if (AudioManager.instance != null) {
+            AudioManager.instance.volumeMusic = musicVolumeSlider.value;
+            AudioManager.instance.mudarVolumeMusic();
+        }
 
     }
 }

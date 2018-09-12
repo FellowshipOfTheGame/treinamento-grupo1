@@ -8,7 +8,6 @@ public class AudioManager : MonoBehaviour {
 	public Sound[] sfxs;
 	public Sound[] musics;
 	public static AudioManager instance;
-	public float volumesfx = 1f;
 	public float volumeMusic = 1f;
 
 	void Awake(){
@@ -25,7 +24,7 @@ public class AudioManager : MonoBehaviour {
 			if(s.source == null)s.source = gameObject.AddComponent<AudioSource>();
 			s.source.clip = s.clip;
 			s.source.loop = s.loop;
-			s.source.volume =  s.vol * volumesfx;
+			s.source.volume =  s.vol;
 		}
 
 		foreach(Sound s in musics){
@@ -33,13 +32,6 @@ public class AudioManager : MonoBehaviour {
 			s.source.clip = s.clip;
 			s.source.loop = s.loop;
 			s.source.volume =  s.vol * volumeMusic;
-		}
-	}
-
-
-	public void mudarVolumeSfx(){
-		foreach(Sound s in sfxs){
-			s.source.volume =  s.vol * volumesfx;
 		}
 	}
 

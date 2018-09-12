@@ -8,9 +8,6 @@ using System.Collections.Generic;
 // Controla o player.
 public class Player : MonoBehaviour {
 
-    [HideInInspector]
-    public bool entrandoCredito = false;
-
     private AudioManager audioo;
 
     // Singleton para o player.
@@ -198,7 +195,7 @@ public class Player : MonoBehaviour {
         else
             _renderer.flipX = false;
 
-        if(entrandoCredito){
+        if (GameController.gameController.currentState == GameController.GameState.Cutscene){
             _renderer.flipX = false;
             if(_movement.velocity > 0f)
                 _animator.SetBool("Walking", true);

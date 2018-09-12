@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Creditos : ActionBase {
 
@@ -11,11 +9,10 @@ public class Creditos : ActionBase {
     public override void Activate() {
 
         base.Activate();
-		//menu.SetActive(true);
-		//menu.GetComponent<RectTransform>().SetParent(creditoPosition.transform);
-        FindObjectOfType<PlayerMovement>().entrandoCredito = true;
+        //menu.SetActive(true);
+        //menu.GetComponent<RectTransform>().SetParent(creditoPosition.transform);
+        GameController.gameController.currentState = GameController.GameState.Cutscene;
         FindObjectOfType<PlayerMovement>().desacelerar();
-        FindObjectOfType<Player>().entrandoCredito = true;
 
     }
 }
