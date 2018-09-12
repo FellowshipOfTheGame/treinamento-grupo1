@@ -25,14 +25,14 @@ public class Background : MonoBehaviour {
         currentBackground = this;
 
         // Coloca o background dentro da camera para evitar que o background se mova de um jeito estranho.
-        if(GameController.gameController != null)
+        if(GameController.instance != null)
             transform.SetParent(Camera.main.transform);
 
     }
 
     void Update () {
 
-        if (GameController.gameController == null)
+        if (GameController.instance == null)
             return;
 
             // "Move" cada camada em uma velocidade baseada na camera principal.

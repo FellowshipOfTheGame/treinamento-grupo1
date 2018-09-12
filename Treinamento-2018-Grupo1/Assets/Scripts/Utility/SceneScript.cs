@@ -39,7 +39,7 @@ public class SceneScript : MonoBehaviour {
     // Carrega a próxima cena.
     public void NextScene () {
 
-        GameController.gameController.LoadScene(nextSceneName, true);
+        GameController.instance.LoadScene(nextSceneName, true);
 
     }
 }

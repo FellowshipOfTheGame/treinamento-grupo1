@@ -9,7 +9,7 @@ using System.Collections.Generic;
 public class Player : MonoBehaviour {
 
     // Singleton para o player.
-    public static Player player = null;
+    public static Player instance = null;
 
     // Script que controla a moviumenta��o do player.
     public PlayerMovement _movement;
@@ -63,9 +63,6 @@ public class Player : MonoBehaviour {
     public List<Ability> habilities;
     public Ability currentAbility = null;
 
-    // Toca os sons relacionados a habilidades.
-    public AudioSource abilityAudioSource;
-
     // Spawns dos proj�teis do player. Coloca-los começando da direita em sentido horário.
     [Space(10)]
     public Transform[] projectileSpawns;
@@ -82,8 +79,8 @@ public class Player : MonoBehaviour {
         DontDestroyOnLoad(gameObject);
 
         // Pega uma refer�ncia ao player no iníco e da um erro caso exista mais de um player.
-        if (player == null)
-            player = this;
+        if (instance == null)
+            instance = this;
         else
             Debug.LogError("(Player) More than one player found! There should only be a single instance of the player script at any given time!");
 
@@ -122,7 +119,7 @@ public class Player : MonoBehaviour {
 
     private void Update () {
 
-        if (GameController.gameController == null)
+        if (GameController.instance == null)
             return;
 
 
@@ -143,11 +140,11 @@ public class Player : MonoBehaviour {
             abilityDelay -= Time.deltaTime;
 
 
-        if (GameController.gameController.currentState == GameController.GameState.Play) {
+        if (GameController.instance.currentState == GameController.GameState.Play) {
 
             // Pausa o jogo.
             if (Input.GetButtonDown("Cancel"))
-                GameController.gameController.PauseGame();
+                GameController.instance.PauseGame();
 
 
             // Controla para que lado o player está olhando.
@@ -162,9 +159,12 @@ public class Player : MonoBehaviour {
                 // Faz o player disparar projéteis.
                 if (currentAbility != null && currentAbility.type == Ability.Type.Projectile) {
 
-                    abilityAudioSource.Play();
+                    
                     
                     if (abilityDelay <= 0) {
+
+                        AudioManager.instance.PlaySound(currentAbility.soundEffectName, true);
+
                         if (input.verticalAxis > 0) {
                             Instantiate(currentAbility.projectileSettings._object, projectileSpawns[1].position, projectileSpawns[1].rotation);
                             abilityDelay = currentAbility.projectileSettings.delay;
@@ -182,10 +182,10 @@ public class Player : MonoBehaviour {
                 }
             }
 
-        } else if (GameController.gameController.currentState == GameController.GameState.Paused) {
+        } else if (GameController.instance.currentState == GameController.GameState.Paused) {
             // Despausa o jogo.
             if (Input.GetButtonDown("Cancel"))
-                GameController.gameController.UnpauseGame();
+                GameController.instance.UnpauseGame();
         }
 
         if (facing == -1)
@@ -193,7 +193,7 @@ public class Player : MonoBehaviour {
         else
             _renderer.flipX = false;
 
-        if (GameController.gameController.currentState == GameController.GameState.Cutscene){
+        if (GameController.instance.currentState == GameController.GameState.Cutscene){
             _renderer.flipX = false;
             if(_movement.velocity > 0f)
                 _animator.SetBool("Walking", true);
@@ -236,12 +236,6 @@ public class Player : MonoBehaviour {
                 effects.abilityEffect.enabled = true;
 
                 effects.abilityEffect.sprite = currentAbility.displayEffect;
-
-                // Set o clipe de audio da habilidade.
-                abilityAudioSource.clip = currentAbility.soundEffect.clip;
-                abilityAudioSource.volume = currentAbility.soundEffect.vol;
-                abilityAudioSource.loop = currentAbility.soundEffect.loop;
-
                 return;
             }
         }
@@ -256,8 +250,8 @@ public class Player : MonoBehaviour {
     //Respawna o player
     public void Death() {
 
-        GameController.gameController.currentState = GameController.GameState.Dead;
-        GameController.gameController.deathScreen.SetActive(true);
+        GameController.instance.currentState = GameController.GameState.Dead;
+        GameController.instance.deathScreen.SetActive(true);
         Destroy(gameObject);
 
     }

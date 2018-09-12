@@ -13,12 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: fire
   displayEffect: {fileID: 0}
-  soundEffect:
-    name: podeFogo
-    vol: 1
-    clip: {fileID: 8300000, guid: 0424873d6a2abb84e86ff0f59f3e5bc7, type: 3}
-    source: {fileID: 0}
-    loop: 0
+  soundEffectName: poderFogo
   type: 0
   projectileSettings:
     _object: {fileID: 1360303304893458, guid: c7662119dc422b94b8d50477b7bebac4, type: 2}

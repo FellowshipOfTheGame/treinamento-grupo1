@@ -28,7 +28,7 @@ public class UseActivate : ActivatorBase {
         
         // Verifica se o player está dentro da área de ativação.
         if(isOnRange) {
-            if (Player.player.input.useButton) // Detecta quando o player tenta usar este objeto.
+            if (Player.instance.input.useButton) // Detecta quando o player tenta usar este objeto.
                 ActivateTargets();
         }
 

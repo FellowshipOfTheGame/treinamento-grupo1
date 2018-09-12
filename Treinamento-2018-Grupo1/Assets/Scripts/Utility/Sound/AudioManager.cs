@@ -8,8 +8,9 @@ public class AudioManager : MonoBehaviour {
 	public static AudioManager instance;
 	public float volumeMusic = 1f;
     public GameObject sourceTemplate;
+    public string startingMusic;
 
-	void Awake() {
+    void Awake() {
 
 		//evitando que audioManager seja destruido ou duplicado
 		if(instance == null)
@@ -26,6 +27,7 @@ public class AudioManager : MonoBehaviour {
             if (s.source == null) {
                 GameObject src = Instantiate(sourceTemplate, transform.position, transform.rotation);
                 src.transform.SetParent(transform);
+                src.transform.name = s.clip.name;
 
                 s.source = src.GetComponent<AudioSource>();
             }
@@ -46,31 +48,11 @@ public class AudioManager : MonoBehaviour {
 			s.source.volume =  s.vol * volumeMusic;
 
 		}
-	}
 
-    public void RebuildSFX() {
-
-        foreach (Sound s in sfxs) {
-
-            if (s.source != null) {
-
-                Destroy(s.source.gameObject);
-
-                GameObject src = Instantiate(sourceTemplate, transform.position, transform.rotation);
-                src.transform.SetParent(transform);
-
-                s.source = src.GetComponent<AudioSource>();
-            }
-
-            s.source.clip = s.clip;
-            s.source.loop = s.loop;
-            s.source.volume = s.vol;
-
-        }
-
+        PlaySound(startingMusic, false);
     }
 
-	public void mudarVolumeMusic(){
+	public void ChangeMusicVolume(){
 
 		foreach(Sound s in musics){
 			s.source.volume =  s.vol * volumeMusic;
@@ -78,7 +60,7 @@ public class AudioManager : MonoBehaviour {
 
 	}
     
-	public void play(string name, bool sfx){
+	public void PlaySound(string name, bool sfx){
 
 		Sound s = null;
 
@@ -96,7 +78,7 @@ public class AudioManager : MonoBehaviour {
         if (s != null) {
             s.source.Play();
         } else
-            Debug.Log(name + " nao encontrado");
+            Debug.Log("(Audio Manager) "+ name + " not found!");
 
 	}
 }

@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 [AddComponentMenu("Scripts/Utility/Game Controller")]
 public class GameController : MonoBehaviour {
 
-    public static GameController gameController = null;
+    public static GameController instance = null;
 
     public enum GameState { Play, Paused, Dead, Cutscene };
     public GameState currentState;
@@ -22,12 +22,12 @@ public class GameController : MonoBehaviour {
 	void Awake () {
 
         // Garante que só exista um GameControler por vez.
-        if (gameController != null) {
+        if (instance != null) {
             Destroy(gameObject);
             return;
         }
         // Garante que esse GameCOntroller passe para as próximas cenas.
-        gameController = this;
+        instance = this;
         DontDestroyOnLoad(gameObject);
 
         // Cria um delegate a ser chamado quando uma nova cena é carregada.
@@ -42,7 +42,7 @@ public class GameController : MonoBehaviour {
         // Inicializa o GameController se a cena for um nível jogável.
         if (scene.name.Contains("Level_")) {
 
-            AudioManager.instance.RebuildSFX();
+            //AudioManager.instance.RebuildSFX();
 
             pauseScreen.SetActive(false);
             deathScreen.SetActive(false);
@@ -54,20 +54,20 @@ public class GameController : MonoBehaviour {
 
             transitionScreen.color = Color.black;
 
-            gameController.currentState = GameState.Play;
+            instance.currentState = GameState.Play;
 
-            if (Player.player == null) {
+            if (Player.instance == null) {
 
                 Instantiate(player, SceneScript.currentSceneScript.playerSpawn.position, SceneScript.currentSceneScript.playerSpawn.rotation);
 
             } else {
-                Player.player.transform.position = SceneScript.currentSceneScript.playerSpawn.position;
-                Player.player._rigidbody.velocity = Vector3.zero;
-                Player.player.UpdateAbility();
+                Player.instance.transform.position = SceneScript.currentSceneScript.playerSpawn.position;
+                Player.instance._rigidbody.velocity = Vector3.zero;
+                Player.instance.UpdateAbility();
             }
 
             CameraScript cam_script = Camera.main.GetComponent<CameraScript>();
-            cam_script.UpdateCameraScript(Player.player.transform);
+            cam_script.UpdateCameraScript(Player.instance.transform);
 
         } else {
 
@@ -77,10 +77,10 @@ public class GameController : MonoBehaviour {
 
             SceneManager.sceneLoaded -= OnSceneLoaded;
 
-            if (Player.player != null)
-                Destroy(Player.player.gameObject);
+            if (Player.instance != null)
+                Destroy(Player.instance.gameObject);
 
-            gameController = null;
+            instance = null;
             Destroy(gameObject);
 
         }
@@ -120,7 +120,7 @@ public class GameController : MonoBehaviour {
     // Puasa o jogo.
     public void PauseGame () {
 
-        gameController.currentState = GameState.Paused;
+        instance.currentState = GameState.Paused;
         pauseScreen.SetActive(true);
         Time.timeScale = 0;
 
@@ -129,7 +129,7 @@ public class GameController : MonoBehaviour {
     // Despausa o jogo.
     public void UnpauseGame() {
 
-        gameController.currentState = GameState.Play;
+        instance.currentState = GameState.Play;
         pauseScreen.SetActive(false);
         Time.timeScale = 1;
 

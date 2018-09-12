@@ -82,7 +82,7 @@ public class MainMenu : MonoBehaviour {
 
         if(AudioManager.instance != null) {
             AudioManager.instance.volumeMusic = musicVolumeSlider.value;
-            AudioManager.instance.mudarVolumeMusic();
+            AudioManager.instance.ChangeMusicVolume();
         }
 
     }
@@ -136,7 +136,7 @@ public class MainMenu : MonoBehaviour {
         PlayerPrefs.Save();
         if (AudioManager.instance != null) {
             AudioManager.instance.volumeMusic = musicVolumeSlider.value;
-            AudioManager.instance.mudarVolumeMusic();
+            AudioManager.instance.ChangeMusicVolume();
         }
 
     }

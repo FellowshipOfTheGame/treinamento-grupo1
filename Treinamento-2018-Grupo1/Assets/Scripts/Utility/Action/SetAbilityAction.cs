@@ -10,7 +10,7 @@ public class SetAbilityAction : ActionBase {
 
         base.Activate();
 
-        Player.player.SetAbility(ability);
+        Player.instance.SetAbility(ability);
 
     }
 }

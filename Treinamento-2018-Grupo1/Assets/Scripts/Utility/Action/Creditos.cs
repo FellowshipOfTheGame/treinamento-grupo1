@@ -11,7 +11,7 @@ public class Creditos : ActionBase {
         base.Activate();
         //menu.SetActive(true);
         //menu.GetComponent<RectTransform>().SetParent(creditoPosition.transform);
-        GameController.gameController.currentState = GameController.GameState.Cutscene;
+        GameController.instance.currentState = GameController.GameState.Cutscene;
         FindObjectOfType<PlayerMovement>().desacelerar();
 
     }

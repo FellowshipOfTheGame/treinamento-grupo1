@@ -13,7 +13,7 @@ public class PlaySoundAction : ActionBase {
 
 		// Toca os sons.
         for (int i = 0; i < sons.Length; i++)
-            FindObjectsOfType<AudioManager>()[0].GetComponent<AudioManager>().play(sons[i].nome,sons[i].sfx);
+            FindObjectsOfType<AudioManager>()[0].GetComponent<AudioManager>().PlaySound(sons[i].nome,sons[i].sfx);
 
     }
 }

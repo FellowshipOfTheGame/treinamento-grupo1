@@ -35,8 +35,8 @@ public class UseHabilityActivate : ActivatorBase {
         
         // Verifica se o player está dentro da área de ativação e com a habilidade certa.
         if(isOnRange ) {
-            if(targetHabilty ==  "none" || (Player.player.currentAbility != null && Player.player.currentAbility._name == targetHabilty)){
-                if (Player.player.input.useButton && pdAtivar){ // Detecta quando o player tenta usar este objeto.
+            if(targetHabilty ==  "none" || (Player.instance.currentAbility != null && Player.instance.currentAbility._name == targetHabilty)){
+                if (Player.instance.input.useButton && pdAtivar){ // Detecta quando o player tenta usar este objeto.
                     ActivateTargets();
                    StartCoroutine( comecarCooldown());
                 }

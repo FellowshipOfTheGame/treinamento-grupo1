@@ -270,7 +270,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1433387404732126}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.4359128, y: 4.6907196, z: -0.1640625}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4229924263498758}
@@ -600,7 +600,7 @@ MonoBehaviour:
   acoesEntrandoPosInicial:
   - {fileID: 114113641120603782}
   - {fileID: 114355583041087174}
-  acoesSaindoPosFinal: []
+  acoesTerminaTimer: []
 --- !u!212 &212348658668104180
 SpriteRenderer:
   m_ObjectHideFlags: 1

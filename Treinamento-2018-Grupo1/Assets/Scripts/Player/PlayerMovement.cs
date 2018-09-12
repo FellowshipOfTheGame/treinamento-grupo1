@@ -34,16 +34,16 @@ public class PlayerMovement : MonoBehaviour {
 
     void Update () {
 
-        if (GameController.gameController == null)
+        if (GameController.instance == null)
             return;
 
-        if (GameController.gameController.currentState == GameController.GameState.Play || GameController.gameController.currentState == GameController.GameState.Cutscene) {
+        if (GameController.instance.currentState == GameController.GameState.Play || GameController.instance.currentState == GameController.GameState.Cutscene) {
 
             float hNewVel; // Nova velocidade horizontal do player.
             float vNewVel; // Nova velocidade vertical do player.
 
             // Movimento horizontal, também garante que o player nunca ultrapasse a velocidade máxima.
-            if(GameController.gameController.currentState == GameController.GameState.Cutscene)
+            if(GameController.instance.currentState == GameController.GameState.Cutscene)
                 target.input.verticalAxis = 0f;
 
             if (grounded)
@@ -77,7 +77,7 @@ public class PlayerMovement : MonoBehaviour {
 
                 if (crushed) {
 
-                    Player.player.Death();
+                    Player.instance.Death();
                 }
 
                 // DEBUG
@@ -90,7 +90,7 @@ public class PlayerMovement : MonoBehaviour {
             }
 
             // Verifica se o Player está tentando andar contra uma parede, usado para evitar que ele possa "grudar em paredes" durante um pulo.
-            bool blocked = Physics2D.CapsuleCast(transform.position + new Vector3(_collider.offset.x, _collider.offset.y, 0), new Vector2(_collider.size.x, _collider.size.y * 0.95f), CapsuleDirection2D.Vertical, 0, Player.player.facing * Vector2.right, 0.05f, rayMask);
+            bool blocked = Physics2D.CapsuleCast(transform.position + new Vector3(_collider.offset.x, _collider.offset.y, 0), new Vector2(_collider.size.x, _collider.size.y * 0.95f), CapsuleDirection2D.Vertical, 0, Player.instance.facing * Vector2.right, 0.05f, rayMask);
 
             if (blocked)
                 hNewVel = 0;
@@ -98,16 +98,16 @@ public class PlayerMovement : MonoBehaviour {
             // DEBUG
 #if UNITY_EDITOR
             if (blocked)
-                Debug.DrawLine(transform.position + new Vector3(_collider.offset.x, _collider.offset.y, 0), transform.position + Player.player.facing * (new Vector3(0.05f, 0, 0) + new Vector3(_collider.size.x / 2, 0, 0)), Color.red);
+                Debug.DrawLine(transform.position + new Vector3(_collider.offset.x, _collider.offset.y, 0), transform.position + Player.instance.facing * (new Vector3(0.05f, 0, 0) + new Vector3(_collider.size.x / 2, 0, 0)), Color.red);
             else
-                Debug.DrawLine(transform.position + new Vector3(_collider.offset.x, _collider.offset.y, 0), transform.position + Player.player.facing * (new Vector3(0.05f, 0, 0) + new Vector3(_collider.size.x / 2, 0, 0)), Color.green);
+                Debug.DrawLine(transform.position + new Vector3(_collider.offset.x, _collider.offset.y, 0), transform.position + Player.instance.facing * (new Vector3(0.05f, 0, 0) + new Vector3(_collider.size.x / 2, 0, 0)), Color.green);
 #endif
 
             // Evita a soma de addForces no pulo.
             if (target.input.jumpButton && grounded)
                 vNewVel = 0;
 
-            if(GameController.gameController.currentState == GameController.GameState.Cutscene){
+            if(GameController.instance.currentState == GameController.GameState.Cutscene){
                 hNewVel = velocity;
             }
 
