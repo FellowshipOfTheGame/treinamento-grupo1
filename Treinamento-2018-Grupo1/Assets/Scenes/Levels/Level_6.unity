@@ -7025,6 +7025,10 @@ Prefab:
       propertyPath: targets.Array.data[1]
       value: 
       objectReference: {fileID: 345755439}
+    - target: {fileID: 1889711135249504, guid: 01fe6f6ad9c81e04dad2ef1c8b1ea1f2, type: 2}
+      propertyPath: m_TagString
+      value: Plataform
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01fe6f6ad9c81e04dad2ef1c8b1ea1f2, type: 2}
   m_IsPrefabAsset: 0
