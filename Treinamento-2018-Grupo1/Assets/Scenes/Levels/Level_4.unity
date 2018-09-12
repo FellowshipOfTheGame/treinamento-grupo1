@@ -21975,11 +21975,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114646994939233310, guid: b3dd78553269d674292146c6716ec4da,
-        type: 2}
-      propertyPath: sfxs.Array.data[4].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: ae6ea18c904e17a48bfa89bde04a5ae2, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3dd78553269d674292146c6716ec4da, type: 2}
   m_IsPrefabAsset: 0

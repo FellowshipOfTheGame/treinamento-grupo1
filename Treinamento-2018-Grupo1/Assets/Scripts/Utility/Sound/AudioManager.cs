@@ -9,8 +9,10 @@ public class AudioManager : MonoBehaviour {
 	public Sound[] musics;
 	public static AudioManager instance;
 	public float volumeMusic = 1f;
+    public GameObject sourceTemplate;
 
-	void Awake(){
+	void Awake() {
+
 		//evitando que audioManager seja destruido ou duplicado
 		if(instance == null)
 			instance = this;
@@ -18,12 +20,17 @@ public class AudioManager : MonoBehaviour {
 			Destroy(gameObject);
 			return;
 		}
+
 		DontDestroyOnLoad(gameObject);
 
 		foreach(Sound s in sfxs){
 
-			if(s.source == null)
-                s.source = gameObject.AddComponent<AudioSource>();
+            if (s.source == null) {
+                GameObject src = Instantiate(sourceTemplate, transform.position, transform.rotation);
+                src.transform.SetParent(transform);
+
+                s.source = src.GetComponent<AudioSource>();
+            }
 
 			s.source.clip = s.clip;
 			s.source.loop = s.loop;
@@ -56,9 +63,15 @@ public class AudioManager : MonoBehaviour {
 		Sound s = null;
 
 		if(sfx)
-            s = Array.Find(sfxs, sound =>sound.name == name);
+            for(int i = 0; i < sfxs.Length; i++) {
+                if (name == sfxs[i].name)
+                    s = sfxs[i];
+            }
 		else
-            s = Array.Find(musics, sound =>sound.name == name);
+            for (int i = 0; i < musics.Length; i++) {
+                if (name == musics[i].name)
+                    s = musics[i];
+            }
 
         if (s != null) {
             s.source.Play();
