@@ -359,6 +359,9 @@ MonoBehaviour:
   - layerObject: {fileID: 1129886300163518}
     x_multiplier: 0.8
     y_multiplier: 0.8
+  - layerObject: {fileID: 1602590616100240}
+    x_multiplier: 1
+    y_multiplier: 1
 --- !u!212 &212057614131786314
 SpriteRenderer:
   m_ObjectHideFlags: 1
