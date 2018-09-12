@@ -1206,7 +1206,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Music Volume (TODO):'
+  m_Text: 'Music Volume:'
 --- !u!114 &114072071745138048
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2091,7 +2091,7 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 114746572103083210}
   m_FillRect: {fileID: 224016038787633134}
   m_HandleRect: {fileID: 224812694945117146}
