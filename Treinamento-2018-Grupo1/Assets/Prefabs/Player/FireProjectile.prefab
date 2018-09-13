@@ -139,7 +139,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocity: 7.5
   _rigidbody: {fileID: 50428699109877124}
-  lifeTime: 2.5
+  lifeTime: 7.5
 --- !u!212 &212248588929956438
 SpriteRenderer:
   m_ObjectHideFlags: 1

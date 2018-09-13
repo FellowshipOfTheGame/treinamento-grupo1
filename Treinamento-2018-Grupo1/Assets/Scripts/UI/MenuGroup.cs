@@ -5,6 +5,7 @@
 public class MenuGroup : MonoBehaviour {
 
     public string id;
-    public GameObject groupObject; 
+    public GameObject groupObject;
+    public GameObject firstEventTarget;
 
 }

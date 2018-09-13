@@ -104,7 +104,7 @@ public class PlayerMovement : MonoBehaviour {
 #endif
 
             // Evita a soma de addForces no pulo.
-            if (target.input.jumpButton && grounded)
+            if (target.input.jumpButton && grounded && GameController.instance.currentState == GameController.GameState.Play)
                 vNewVel = 0;
 
             if(GameController.instance.currentState == GameController.GameState.Cutscene){
@@ -115,40 +115,41 @@ public class PlayerMovement : MonoBehaviour {
             _rigidbody.velocity = new Vector2(hNewVel, vNewVel);
 
             // Realiza o pulo.
-            if (target.input.jumpButton && grounded)
+            if (target.input.jumpButton && grounded && GameController.instance.currentState == GameController.GameState.Play)
                 _rigidbody.AddForce(_rigidbody.mass * Mathf.Sqrt(2 * jumpHeight * 10) * Vector2.up, ForceMode2D.Impulse);
         }
 	}
 
-    //"colando" player a plataforma
-    void OnCollisionEnter2D(Collision2D other){
-        if(other.gameObject.tag == "Plataform")
-            transform.SetParent (other.transform);
+    // Usado para "colar" o player em uma plataforma que se mova.
+    void OnCollisionEnter2D(Collision2D other) {
+        if (other.gameObject.tag == "Plataform")
+            transform.SetParent(other.transform);
     }
 
-    void OnCollisionExit2D(Collision2D other){
-        if(other.gameObject.tag == "Plataform")
-            transform.SetParent (null);
+    void OnCollisionExit2D(Collision2D other) {
+        if (other.gameObject.tag == "Plataform")
+            transform.SetParent(null);
     }
 
 
-    //subrotina e funcao utilizada como parte do credito
-    IEnumerator subrotina(){
+    //Usado para parar o player nos do créditos.
+    IEnumerator StopPlayer() {
 
-        while(velocity > 0 || jumpHeight > 0){
- 		    yield return new WaitForSeconds(0.1f);
+        while (velocity > 0 || jumpHeight > 0) {
+            yield return new WaitForSeconds(0.1f);
             velocity -= 0.17f;
             jumpHeight -= 0.11f;
             if (velocity < 0f) {
-                StopCoroutine(subrotina());
+                StopCoroutine(StopPlayer());
                 velocity = 0;
             }
-            if(jumpHeight < 0f)jumpHeight = 0 ;
+            if (jumpHeight < 0f) jumpHeight = 0;
         }
-	}
-
-    public void desacelerar(){
-        StartCoroutine(subrotina());
     }
-    
+
+    // Chama as funções necessárias relacionadas ao player em uma cutscene.
+    public void StartCutscene() {
+        StartCoroutine(StopPlayer());
+    }
+
 }

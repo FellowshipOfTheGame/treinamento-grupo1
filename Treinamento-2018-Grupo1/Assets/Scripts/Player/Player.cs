@@ -122,18 +122,20 @@ public class Player : MonoBehaviour {
         if (GameController.instance == null)
             return;
 
+        if (GameController.instance.currentState == GameController.GameState.Play || GameController.instance.currentState == GameController.GameState.Cutscene) {
 
-        // Toca a animação de andar.
-        if (Mathf.Abs(input.horizontalAxis) != 0)
-            _animator.SetBool("Walking", true);       
-        else
-            _animator.SetBool("Walking", false);
-        
-        // Toca a animação de estar no ar.
-        if (_movement.grounded)
-            _animator.SetBool("InAir", false);
-        else
-            _animator.SetBool("InAir", true);
+            // Toca a animação de andar.
+            if (Mathf.Abs(input.horizontalAxis) != 0)
+                _animator.SetBool("Walking", true);
+            else
+                _animator.SetBool("Walking", false);
+
+            // Toca a animação de estar no ar.
+            if (_movement.grounded)
+                _animator.SetBool("InAir", false);
+            else
+                _animator.SetBool("InAir", true);
+        }
 
         // Controla o delay entre o uso de abilidades.
         if(abilityDelay > 0)
@@ -250,8 +252,9 @@ public class Player : MonoBehaviour {
     //Respawna o player
     public void Death() {
 
+
         GameController.instance.currentState = GameController.GameState.Dead;
-        GameController.instance.deathScreen.SetActive(true);
+        GameController.instance.DisplayDeathMenu();
         Destroy(gameObject);
 
     }

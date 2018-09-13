@@ -653,7 +653,7 @@ MonoBehaviour:
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit
-  m_CancelButton: Cancel
+  m_CancelButton: Back
   m_InputActionsPerSecond: 10
   m_RepeatDelay: 0.5
   m_ForceModuleActive: 0
@@ -668,7 +668,7 @@ MonoBehaviour:
   m_Script: {fileID: -619905303, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 1469198132}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &1411686825
@@ -762,6 +762,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1469198132 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1690301213958336, guid: 53bbcdb33c936c5419d39100de660c8a,
+    type: 2}
+  m_PrefabInternal: {fileID: 1997215643}
 --- !u!1 &1504649073
 GameObject:
   m_ObjectHideFlags: 0
@@ -1162,10 +1167,11 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1659992530116542, guid: 53bbcdb33c936c5419d39100de660c8a, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
+    - target: {fileID: 114709382644877944, guid: 53bbcdb33c936c5419d39100de660c8a,
+        type: 2}
+      propertyPath: eventSystem
+      value: 
+      objectReference: {fileID: 1411686824}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53bbcdb33c936c5419d39100de660c8a, type: 2}
   m_IsPrefabAsset: 0

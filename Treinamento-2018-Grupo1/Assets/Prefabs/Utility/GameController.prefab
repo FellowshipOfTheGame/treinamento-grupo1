@@ -89,7 +89,6 @@ GameObject:
   m_Component:
   - component: {fileID: 224237377661714738}
   - component: {fileID: 222590026272704720}
-  - component: {fileID: 114998174798892932}
   - component: {fileID: 114627841843465616}
   m_Layer: 5
   m_Name: Main
@@ -125,6 +124,7 @@ GameObject:
   - component: {fileID: 224644136975438646}
   - component: {fileID: 222182343088152296}
   - component: {fileID: 114534475145813076}
+  - component: {fileID: 114855580202473034}
   m_Layer: 0
   m_Name: DeathMenu
   m_TagString: Untagged
@@ -327,9 +327,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 224081323543642600}
-  - component: {fileID: 114716457326719384}
   - component: {fileID: 222479902552879520}
-  - component: {fileID: 114671652810919602}
+  - component: {fileID: 114144642552953098}
   m_Layer: 5
   m_Name: PauseMenu
   m_TagString: Untagged
@@ -619,6 +618,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4579899125319174}
+  - component: {fileID: 114378074580449258}
   m_Layer: 0
   m_Name: Menus
   m_TagString: Untagged
@@ -980,7 +980,6 @@ GameObject:
   m_Component:
   - component: {fileID: 224665567341302926}
   - component: {fileID: 222578506330898662}
-  - component: {fileID: 114549037545923580}
   - component: {fileID: 114895013134929218}
   m_Layer: 5
   m_Name: Instructions
@@ -1247,7 +1246,6 @@ GameObject:
   m_Component:
   - component: {fileID: 224459846659219680}
   - component: {fileID: 222729102064531434}
-  - component: {fileID: 114481609865573218}
   - component: {fileID: 114473229192963068}
   m_Layer: 5
   m_Name: Options
@@ -1768,6 +1766,33 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114144642552953098
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1162773629287852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.392}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
 --- !u!114 &114153656116934302
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2169,8 +2194,8 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_HighlightedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_PressedColor: {r: 0.7058824, g: 0.7058824, b: 0.7058824, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -2191,7 +2216,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114716457326719384}
+      - m_Target: {fileID: 0}
         m_MethodName: ChangeScreenResolution
         m_Mode: 1
         m_Arguments:
@@ -2462,7 +2487,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 2
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -2568,7 +2593,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 2
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -2608,6 +2633,27 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114378074580449258
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1334538844227424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a86857e75af8834e98fda40a30bfe2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultMenu: {fileID: 114627841843465616}
+  menuGroups:
+  - {fileID: 114627841843465616}
+  - {fileID: 114895013134929218}
+  - {fileID: 114473229192963068}
+  eventSystem: {fileID: 114902489593910972}
+  resolutionDropdown: {fileID: 114392977598523768}
+  fullscreenToogle: {fileID: 114260984182862366}
+  masterVolumeSlider: {fileID: 114751755710036140}
+  musicVolumeSlider: {fileID: 114442076561174944}
 --- !u!114 &114390062986641422
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2647,7 +2693,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114716457326719384}
+      - m_Target: {fileID: 114378074580449258}
         m_MethodName: ToggleMenu
         m_Mode: 5
         m_Arguments:
@@ -2680,8 +2726,8 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_HighlightedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_PressedColor: {r: 0.7058824, g: 0.7058824, b: 0.7058824, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -2707,7 +2753,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114716457326719384}
+      - m_Target: {fileID: 0}
         m_MethodName: ChangeScreenResolution
         m_Mode: 1
         m_Arguments:
@@ -2860,8 +2906,8 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_HighlightedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_PressedColor: {r: 0.7058824, g: 0.7058824, b: 0.7058824, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -2886,7 +2932,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114716457326719384}
+      - m_Target: {fileID: 0}
         m_MethodName: ToggleMusicVolume
         m_Mode: 1
         m_Arguments:
@@ -3100,6 +3146,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: options
   groupObject: {fileID: 1825668791349430}
+  firstEventTarget: {fileID: 1240031435079960}
 --- !u!114 &114476173392778496
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3147,33 +3194,6 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
---- !u!114 &114481609865573218
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1825668791349430}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.06666667, g: 0.06666667, b: 0.06666667, a: 0.392}
-  m_RaycastTarget: 0
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3294,7 +3314,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 2
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -3321,7 +3341,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114716457326719384}
+      - m_Target: {fileID: 114378074580449258}
         m_MethodName: ToggleMenu
         m_Mode: 5
         m_Arguments:
@@ -3334,33 +3354,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &114549037545923580
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1600328571393302}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.06666667, g: 0.06666667, b: 0.06666667, a: 0.392}
-  m_RaycastTarget: 0
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
 --- !u!114 &114558048663505456
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3601,6 +3594,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: main
   groupObject: {fileID: 1058158780795374}
+  firstEventTarget: {fileID: 1070568664260674}
 --- !u!114 &114645802802116736
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3679,6 +3673,7 @@ MonoBehaviour:
   volumeMusic: 1
   sourceTemplate: {fileID: 1486838043464014, guid: 8b06c184e6170034d87583deba41c13e,
     type: 2}
+  startingMusic: 
 --- !u!114 &114649612135631180
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3692,8 +3687,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: 0
   player: {fileID: 1532370946218510, guid: 76b94c5ec6138f04784a5ca3d4f95619, type: 2}
+  menu: {fileID: 114378074580449258}
   pauseScreen: {fileID: 1162773629287852}
   deathScreen: {fileID: 1068337505360358}
+  deathMenuGroup: {fileID: 114855580202473034}
   loadingScreen: {fileID: 1542910204443930}
   transitionScreen: {fileID: 114256448660488354}
   transition: 0
@@ -3732,33 +3729,6 @@ MonoBehaviour:
   m_Text: 'Restart
 
 '
---- !u!114 &114671652810919602
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1162773629287852}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.392}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
 --- !u!114 &114693049938917408
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3771,7 +3741,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 0
+    m_Mode: 2
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -3844,25 +3814,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Interact
---- !u!114 &114716457326719384
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1162773629287852}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a86857e75af8834e98fda40a30bfe2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  menuGroups:
-  - {fileID: 114627841843465616}
-  - {fileID: 114895013134929218}
-  - {fileID: 114473229192963068}
-  resolutionDropdown: {fileID: 114392977598523768}
-  fullscreenToogle: {fileID: 114260984182862366}
-  masterVolumeSlider: {fileID: 114751755710036140}
-  musicVolumeSlider: {fileID: 114442076561174944}
 --- !u!114 &114720140067859640
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3916,7 +3867,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 0
+    m_Mode: 2
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -3995,7 +3946,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 2
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -4069,8 +4020,8 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_HighlightedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_PressedColor: {r: 0.7058824, g: 0.7058824, b: 0.7058824, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -4095,7 +4046,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114716457326719384}
+      - m_Target: {fileID: 0}
         m_MethodName: ToggleMasterVolume
         m_Mode: 1
         m_Arguments:
@@ -4414,6 +4365,20 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 1, y: -1}
   m_UseGraphicAlpha: 1
+--- !u!114 &114855580202473034
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1068337505360358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96a964edbb5d22f439dc5a6868655a25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: death
+  groupObject: {fileID: 1068337505360358}
+  firstEventTarget: {fileID: 1530431649873156}
 --- !u!114 &114862271474727614
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4580,6 +4545,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: instructions
   groupObject: {fileID: 1600328571393302}
+  firstEventTarget: {fileID: 1535275484046562}
 --- !u!114 &114902489593910972
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4606,7 +4572,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 2
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
@@ -4633,7 +4599,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114716457326719384}
+      - m_Target: {fileID: 114378074580449258}
         m_MethodName: ToggleMenu
         m_Mode: 5
         m_Arguments:
@@ -4659,6 +4625,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: loading
   groupObject: {fileID: 1542910204443930}
+  firstEventTarget: {fileID: 0}
 --- !u!114 &114911577514803680
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4806,7 +4773,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114716457326719384}
+      - m_Target: {fileID: 114378074580449258}
         m_MethodName: ToggleMenu
         m_Mode: 5
         m_Arguments:
@@ -4864,33 +4831,6 @@ MonoBehaviour:
   m_InputActionsPerSecond: 10
   m_RepeatDelay: 0.5
   m_ForceModuleActive: 0
---- !u!114 &114998174798892932
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1058158780795374}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.06666667, g: 0.06666667, b: 0.06666667, a: 0.392}
-  m_RaycastTarget: 0
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
 --- !u!114 &114998320304580378
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5580,7 +5520,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 75}
+  m_AnchoredPosition: {x: 0, y: 105}
   m_SizeDelta: {x: 200, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224059109942747968

@@ -12,8 +12,11 @@ public class GameController : MonoBehaviour {
 
     public GameObject player;
 
+    public MainMenu menu;
+
     public GameObject pauseScreen;
     public GameObject deathScreen;
+    public MenuGroup deathMenuGroup;
     public GameObject loadingScreen;
     public Image transitionScreen;
     [HideInInspector]
@@ -90,6 +93,14 @@ public class GameController : MonoBehaviour {
     // Update is called once per frame
     void Update () {
 
+        if(currentState == GameState.Play || currentState == GameState.Cutscene) {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        } else if(Input.GetAxis("Mouse X") != 0 || Input.GetAxis("Mouse Y") != 0) {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+
         // Gera o efeito de fade in ao entrar em uma cena.
         Color transition_color = transitionScreen.color;
         if ((transition || loadingScreen.activeSelf) && transition_color.a < 1) {
@@ -122,6 +133,7 @@ public class GameController : MonoBehaviour {
 
         instance.currentState = GameState.Paused;
         pauseScreen.SetActive(true);
+        menu.GoToDefaultMenu();
         Time.timeScale = 0;
 
     }
@@ -146,6 +158,13 @@ public class GameController : MonoBehaviour {
 
         // Recarrega a cena atual.
         LoadScene(SceneManager.GetActiveScene().name, true);
+
+    }
+
+    public void DisplayDeathMenu() {
+
+        deathScreen.SetActive(true);
+        menu.eventSystem.SetSelectedGameObject(deathMenuGroup.firstEventTarget);
 
     }
 

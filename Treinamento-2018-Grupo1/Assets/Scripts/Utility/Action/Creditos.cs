@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+[AddComponentMenu("Scripts/Utility/Credits")]
 public class Creditos : ActionBase {
 
     // Lista de objetos a serem destruídos.
@@ -12,7 +13,7 @@ public class Creditos : ActionBase {
         //menu.SetActive(true);
         //menu.GetComponent<RectTransform>().SetParent(creditoPosition.transform);
         GameController.instance.currentState = GameController.GameState.Cutscene;
-        FindObjectOfType<PlayerMovement>().desacelerar();
+        FindObjectOfType<PlayerMovement>().StartCutscene();
 
     }
 }

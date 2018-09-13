@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 
@@ -7,9 +8,12 @@ using System.Collections.Generic;
 [AddComponentMenu("Scripts/UI/Main Menu")]
 public class MainMenu : MonoBehaviour {
 
+    public MenuGroup defaultMenu;
 
     // Lista dos menus.
     public MenuGroup[] menuGroups;
+
+    public EventSystem eventSystem;
 
     [Header("Opções:")]
 
@@ -26,7 +30,14 @@ public class MainMenu : MonoBehaviour {
     // Slider do volume da música
     public Slider musicVolumeSlider;
 
-    public void Start() {
+    public void Awake() {
+
+        if(SceneManager.GetActiveScene().name == "MainMenu") {
+
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+
+        }
 
         // Cria uma lista de resoluções disponíveis e adiciona elas nas opções do Dropdown, também detecta qual é a opção de resolução atual.
         Resolution[] resolutions = Screen.resolutions;
@@ -87,13 +98,43 @@ public class MainMenu : MonoBehaviour {
 
     }
 
+    private void Update() {
+
+        if (SceneManager.GetActiveScene().name == "MainMenu") {
+
+            if (Input.GetAxis("Mouse X") != 0 || Input.GetAxis("Mouse Y") != 0) {
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+            }
+
+        }
+
+    }
+
     public void ToggleMenu (string id) {
 
         for (int i = 0; i < menuGroups.Length; i++)
-            if (id == menuGroups[i].id)
+            if (id == menuGroups[i].id) {
                 menuGroups[i].groupObject.SetActive(true);
-            else
+                if(menuGroups[i].firstEventTarget != null)
+                    eventSystem.SetSelectedGameObject(menuGroups[i].firstEventTarget);
+            } else {
                 menuGroups[i].groupObject.SetActive(false);
+            }
+
+    }
+
+    public void GoToDefaultMenu() {
+
+        for (int i = 0; i < menuGroups.Length; i++)
+            if (defaultMenu.id == menuGroups[i].id) {
+                menuGroups[i].groupObject.SetActive(true);
+                if (menuGroups[i].firstEventTarget != null)
+                    eventSystem.SetSelectedGameObject(menuGroups[i].firstEventTarget);
+            }
+            else {
+                menuGroups[i].groupObject.SetActive(false);
+            }
 
     }
 
