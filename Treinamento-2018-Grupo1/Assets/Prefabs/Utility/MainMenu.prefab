@@ -3061,7 +3061,8 @@ MonoBehaviour:
   m_Text: "Game made by the Fellowship of the Game group during the training of the
     2018 new members.\n\nArtist:\n- Michelle Wingter\nGame Designer:\n- Daniel Fro\xE9s\nProgrammers:\n-
     Gustavo Sasaki Roncaglia\n- Lu\xEDs Eduardo Rozante\nTutor:\n- Fabr\xEDcio Guedes\n\nAll
-    audio files come from free sources that stated they do not require to be credited."
+    audio files used come from free sources that stated they do not require to be
+    credited."
 --- !u!114 &114527586422254158
 MonoBehaviour:
   m_ObjectHideFlags: 1
