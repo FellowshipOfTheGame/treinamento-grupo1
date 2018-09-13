@@ -2932,7 +2932,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 114378074580449258}
         m_MethodName: ToggleMusicVolume
         m_Mode: 1
         m_Arguments:
@@ -4046,7 +4046,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 114378074580449258}
         m_MethodName: ToggleMasterVolume
         m_Mode: 1
         m_Arguments:
