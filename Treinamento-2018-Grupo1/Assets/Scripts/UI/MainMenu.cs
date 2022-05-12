@@ -145,22 +145,25 @@ public class MainMenu : MonoBehaviour {
     }
 
     public void ExitGame() {
-
-        Application.Quit();
-        Debug.Log("Application.Quit()");
-
+        # if !UNITY_WEBGL
+            Application.Quit();
+            Debug.Log("Application.Quit()");
+        # endif
     }
 
     public void ChangeScreenResolution() {
+        # if !UNITY_WEBGL
+            int index = resolutionDropdown.value;
+            bool isFullscreen = fullscreenToogle.isOn;
 
-        int index = resolutionDropdown.value;
-        bool isFullscreen = fullscreenToogle.isOn;
+            if(avaliableResolutions == null || index >= avaliableResolutions.Count)
+                return;
 
-        if(avaliableResolutions[index].height > 600)
-            Screen.SetResolution(avaliableResolutions[index].width, avaliableResolutions[index].height, isFullscreen, avaliableResolutions[index].refreshRate);
-        else
-            Screen.SetResolution(800, 600, isFullscreen, avaliableResolutions[index].refreshRate);
-
+            if(avaliableResolutions[index].height > 600)
+                Screen.SetResolution(avaliableResolutions[index].width, avaliableResolutions[index].height, isFullscreen, avaliableResolutions[index].refreshRate);
+            else
+                Screen.SetResolution(800, 600, isFullscreen, avaliableResolutions[index].refreshRate);
+        # endif
     }
 
     public void ToggleMasterVolume() {
